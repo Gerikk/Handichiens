@@ -3,6 +3,7 @@
 {% block title %}Handi'Chiens - Connexion{% endblock %}
 
 {% block body %}
+<span><i><a href="{{ path('home') }}">Retour à l'accueil</a></i></span>
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

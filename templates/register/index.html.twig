@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello RegisterController!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,14 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <p>Hello {{ controller_name }}! ✅</p>
+    <h1>Hello REGISTER! ✅</h1>
 
-    <h1>HANDI'CHIENS</h1>
+    <span><i><a href="{{ path('home') }}">Retour à l'accueil</a></i></span>
+    <div class="containerRegister">
+        <h1>Inscription</h1>
 
-    <div>
-        <p><a {#href="{{ path('app_login') }}"#}>Se connecter</a></p>
+        <div class="form">
+            {{ form(form) }}
+        </div>
 
-        <p><a href="{{ path('register') }}">S'inscrire</a></p>
     </div>
 </div>
 {% endblock %}
