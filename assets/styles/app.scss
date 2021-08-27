@@ -3,3 +3,34 @@
 body {
   background-color: lightgray;
 }
+
+.navbar {
+    background-color: rgba(79,79,79,0.9);
+
+    .navbar-brand {
+        margin-left: 2rem;
+    }
+
+    .navbar-nav {
+        margin-left: 3rem;
+    }
+
+    .nav-link {
+        color: white;
+
+        &:hover {
+            color: #5EB6DE;
+        }
+    }
+
+    .btn {
+        margin-right: 2rem;
+        border-radius: .3rem;
+        background-color: #5EB6DE;
+
+        &:hover {
+            color: #5EB6DE;
+            background-color: white;
+        }
+    }
+}
