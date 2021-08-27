@@ -59,11 +59,13 @@ class UserType extends AbstractType
                 'required'        => true,
                 'first_options'   => [
                     'label' => 'Mot de passe',
-                    'attr'  => ['placeholder' => 'Merci de saisir votre mot de passe.']
+                    'attr'  => ['placeholder' => 'Merci de saisir votre mot de passe.',
+                                'class'=>'form-control']
                 ],
                 'second_options'  => [
                     'label' => 'Confirmez votre mot de passe',
-                    'attr'  => ['placeholder' => 'Merci de confirmer votre mot de passe.']
+                    'attr'  => ['placeholder' => 'Merci de confirmer votre mot de passe.',
+                                'class'=>'form-control']
                 ]
             ])
             ->add('register', SubmitType::class, [

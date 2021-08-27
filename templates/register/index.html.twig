@@ -3,20 +3,32 @@
 {% block title %}Hello RegisterController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
 
 <div class="example-wrapper">
-    <h1>Hello REGISTER! ✅</h1>
 
-    <span><i><a href="{{ path('home') }}">Retour à l'accueil</a></i></span>
-    <div class="containerRegister">
-        <h1>Inscription</h1>
+    <span><a class="btn btn-primary" href="{{ path('home') }}">Retour à l'accueil</a></span>
+    <div class="containerRegister bg-light shadow my-3 p-3">
+        <h1 class="text-color-title text-center">Inscription</h1>
 
         <div class="form">
-            {{ form(form) }}
+
+            {{ form_start(form) }}
+                <span class="row row-cols-2">
+                    {{ form_row(form.lastname, {label: 'Nom','attr':{'class':'form-control'}}) }}
+                    {{ form_row(form.firstname, {label:'Prénom', 'attr':{'class':'form-control'}}) }}
+
+                    {{ form_row(form.email, {'attr':{'class':'form-control'}}) }}
+
+                    {{ form_row(form.password, {
+                        label: 'Mot de passe'
+                    }) }}
+                </span>
+
+            <span class="d-flex justify-content-center col-12">
+                {{ form_row(form.register,{'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
+                </span>
+            {{ form_end(form) }}
         </div>
 
     </div>
