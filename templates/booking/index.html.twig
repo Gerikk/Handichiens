@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Booking index{% endblock %}
+{% block title %}Planning index{% endblock %}
 
 {% block body %}
-    <h1>Booking index</h1>
+    <h1>Planning index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>BeginAt</th>
-                <th>EndAt</th>
-                <th>Title</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Titre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,27 +23,29 @@
                 <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ booking.title }}</td>
                 <td>
-                    <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
+                    <a class="btn btn-secondary" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
+                    <a class="btn btn-secondary" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun résultat trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('booking_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('booking_new') }}">Créer nouveau</a>
 
-    <span>
 
-    <div id="calendar-holder"></div>
-    </span>
+<div class="row justify-content-end">
+    <span class="bg-light m-3 p-3 col-6" id="calendar-holder"></span>
+</div>
+
 {% endblock %}
 
 {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
