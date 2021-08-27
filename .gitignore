@@ -20,3 +20,5 @@
 ###< phpunit/phpunit ###
 .idea
 /node_modules/
+
+/public/build/app.css
