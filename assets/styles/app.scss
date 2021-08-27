@@ -1,5 +1,35 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  background-color: lightgray;
+@import "~bootstrap/scss/functions";
+
+// Default variable overrides
+$body-bg: #E5E5E5;
+
+$primary: #5EB6DE;
+
+
+
+// Required
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+//Custom code
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
+body{
+font-family: 'Raleway', sans-serif;
+}
+
+
+//Override page bootstrap
+.btn-primary {
+  color: #fff;
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.btn-primary:hover {
+  color: $primary;
+  background-color: #fff;
+  border-color: $primary;
 }
