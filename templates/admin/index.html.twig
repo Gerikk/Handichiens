@@ -4,7 +4,8 @@
 
 {% block body %}
 
-    <h1>Bonjour {{ app.user.firstname }} {{ app.user.firstname }}</h1>
+    <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+    <h2>Handi'Chiens - Dashboard ADMINISTRATEUR</h2>
     <h4>Gestion de réservation des chiens</h4>
 
     {% if app.user %}
@@ -12,9 +13,6 @@
             <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
-
-    <p>Gérer la hiérarchie des rôles</p>
-
 
 
     <nav class="navigation">
