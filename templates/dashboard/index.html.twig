@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+        <small>Vous êtes connectés en tant
+                    {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
+                    {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
+                    {% if is_granted("ROLE_FAMILLE") %} que famille relais{% endif %}
+        </small>
+
+        {% if app.user %}
+            <div class="mb-3">
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
+
+        <div>
+            <p><a href="{{ path("profil") }}">Accès à mon profil.</a></p>
+        </div>
+
+
+        {% if is_granted ('ROLE_ADMIN') %}
+        {% endif %}
+
+
+        {% if is_granted ('ROLE_EDUCATEUR') %}
+            <nav class="navigation">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">Les chiens</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Les familles relais</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Mon compte</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Ajouter une disponibilité</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <section class="admin_main-content">
+                <h2>Les prochains chiens en famille relais</h2>
+                <ul class="list-booked-dogs">
+                    <li class="booked-dog">
+                        <span>Nom du chien</span>
+                        <span>Nom de la famille relais</span>
+                        <p>Prise en charge du chien du ???? au ????</p>
+                    </li>
+                    <li class="booked-dog">
+                        <span>Nom du chien</span>
+                        <span>Nom de la famille relais</span>
+                        <p>Prise en charge du chien du ???? au ????</p>
+                    </li>
+                    <li class="booked-dog">
+                        <span>Nom du chien</span>
+                        <span>Nom de la famille relais</span>
+                        <p>Prise en charge du chien du ???? au ????</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="admin-dogs-counter">
+                <div class="admin-dogs_single">
+                    <span>???</span>
+                    <p>Chiens placés</p>
+                </div>
+                <div class="admin-dogs_single">
+                    <span>???</span>
+                    <p>Chiens libres</p>
+                </div>
+            </section>
+        {% endif %}
+
+
+        {% if is_granted ('ROLE_FAMILLE') %}
+            <nav class="navigation">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">Planning</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Historique</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Mon compte</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}
