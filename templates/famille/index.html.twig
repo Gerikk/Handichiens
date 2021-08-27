@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Handi'Chiens - ADMINISTRATEUR{% endblock %}
+{% block title %}Handi'Chiens - Famille{% endblock %}
 
 {% block body %}
 
-    <h1>Bonjour {{ app.user.firstname }} {{ app.user.firstname }}</h1>
-    <h4>Gestion de réservation des chiens</h4>
+    <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+    <h2>DASHBOARD FAMILLE</h2>
 
     {% if app.user %}
         <div class="mb-3">
@@ -13,23 +13,16 @@
         </div>
     {% endif %}
 
-    <p>Gérer la hiérarchie des rôles</p>
-
-
-
     <nav class="navigation">
         <ul class="menu">
             <li class="menu-item">
-                <a href="#">Les chiens</a>
+                <a href="#">Planning</a>
             </li>
             <li class="menu-item">
-                <a href="#">Les familles relais</a>
+                <a href="#">Historique</a>
             </li>
             <li class="menu-item">
                 <a href="#">Mon compte</a>
-            </li>
-            <li class="menu-item">
-                <a href="#">Ajouter une disponibilité</a>
             </li>
         </ul>
     </nav>
