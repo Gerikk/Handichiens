@@ -873,6 +873,28 @@
   "resolved" "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz"
   "version" "0.5.3"
 
+"@fullcalendar/core@^4.4.2", "@fullcalendar/core@~4.4.0":
+  "integrity" "sha512-vq7KQGuAJ1ieFG5tUqwxwUwmXYtblFOTjHaLAVHo6iEPB52mS7DS45VJfkhaQmX4+5/+BHRpg82G1qkuAINwtg=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/core/-/core-4.4.2.tgz"
+  "version" "4.4.2"
+
+"@fullcalendar/daygrid@^4.4.2", "@fullcalendar/daygrid@~4.4.0":
+  "integrity" "sha512-axjfMhxEXHShV3r2TZjf+2niJ1C6LdAxkHKmg7mVq4jXtUQHOldU5XsjV0v2lUAt1urJBFi2zajfK8798ukL3Q=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/daygrid/-/daygrid-4.4.2.tgz"
+  "version" "4.4.2"
+
+"@fullcalendar/interaction@^4.4.2":
+  "integrity" "sha512-3ItpGFnxcYQT4NClqhq93QTQwOI8x3mlMf5M4DgK5avVaSzpv9g8p+opqeotK2yzpFeINps06cuQyB1h7vcv1Q=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/interaction/-/interaction-4.4.2.tgz"
+  "version" "4.4.2"
+
+"@fullcalendar/timegrid@^4.4.2":
+  "integrity" "sha512-M5an7qii8OUmI4ogY47k5pn2j/qUbLp6sa6Vo0gO182HR5pb9YtrEZnoQhnScok+I0BkDkLFzMQoiAMTjBm2PQ=="
+  "resolved" "https://registry.npmjs.org/@fullcalendar/timegrid/-/timegrid-4.4.2.tgz"
+  "version" "4.4.2"
+  dependencies:
+    "@fullcalendar/daygrid" "~4.4.0"
+
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -1466,6 +1488,11 @@
   "integrity" "sha1-aN/1++YMUes3cl6p4+0xDcwed24="
   "resolved" "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   "version" "1.0.0"
+
+"bootstrap-icons@^1.5.0":
+  "integrity" "sha512-44feMc7DE1Ccpsas/1wioN8ewFJNquvi5FewA06wLnqct7CwMdGDVy41ieHaacogzDqLfG8nADIvMNp9e4bfbA=="
+  "resolved" "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.5.0.tgz"
+  "version" "1.5.0"
 
 "bootstrap@^5.1.0":
   "integrity" "sha512-bs74WNI9BgBo3cEovmdMHikSKoXnDgA6VQjJ7TyTotU6L7d41ZyCEEelPwkYEzsG/Zjv3ie9IE3EMAje0W9Xew=="
