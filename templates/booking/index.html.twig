@@ -19,8 +19,8 @@
         {% for booking in bookings %}
             <tr>
                 <td>{{ booking.id }}</td>
-                <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ booking.title }}</td>
                 <td>
                     <a class="btn btn-secondary" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
@@ -39,12 +39,12 @@
 
 
 <div class="row justify-content-end">
-    <span class="bg-light m-3 p-3 col-6" id="calendar-holder"></span>
+    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6" id="calendar-holder"></span>
 </div>
 
 {% endblock %}
 
-{% block stylesheets %}
+{% block stylesheets  %}
     {{ encore_entry_link_tags('app') }}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
@@ -53,17 +53,21 @@
 
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/locales-all.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => {
-            var calendarEl = document.getElementById('calendar-holder');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                defaultView: 'dayGridMonth',
+        document.addEventListener('DOMContentLoaded', () => {
+            let calendarEl = document.getElementById('calendar-holder');
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'fr',
+                //initialView: 'dayGridMonth',
                 editable: true,
+                weekNumberCalculation: 'ISO',
                 eventSources: [
                     {
                         url: "{{ path('fc_load_events') }}",
@@ -79,12 +83,16 @@
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    right: 'dayGridMonth,timeGridWeek',
                 },
                 plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
                 timeZone: 'UTC',
             });
             calendar.render();
+            calendar.setOption('locale', 'fr');
+
         });
+
     </script>
+
 {% endblock %}
