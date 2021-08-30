@@ -1,8 +1,6 @@
 @import "~bootstrap/scss/functions";
 
 // Default variable overrides
-$body-bg: #E5E5E5;
-
 $primary: #5EB6DE;
 
 $danger: #D41B1B;
@@ -22,6 +20,7 @@ $danger: #D41B1B;
 @import "~bootstrap/scss/helpers";
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/navbar";
 
 //bootstrap API (for generation of "utilities" classes)
 @import "~bootstrap/scss/utilities/api";
@@ -61,6 +60,9 @@ font-family: 'Raleway', sans-serif;
 
     .nav-link {
         color: white;
+        text-decoration: none;
+        transition: .5s;
+        margin-right: 1rem;
 
         &:hover {
             color: #5EB6DE;
@@ -98,4 +100,7 @@ font-family: 'Raleway', sans-serif;
 .example-wrapper {
     margin: 1em auto;
     max-width: 800px;
-    width: 95%; }
+    width: 95%; 
+}
+
+@import 'pages/chiens';

@@ -13,7 +13,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body id="{{ pageId is defined ? pageId : '' }}">
             <nav class="navbar navbar-expand-lg mb-5 px-2">
                 <a class="navbar-brand" href="/admin">
                     <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
@@ -25,13 +25,13 @@
                                 <a class="nav-link" href="/dashboard">DASHBOARD</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">LES CHIENS</span></a>
+                                <a class="nav-link" href="/chiens">LES CHIENS</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">LES FAMILLES D'ACCUEIL</a>
+                                <a class="nav-link" href="/famille_relais">LES FAMILLES RELAIS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">MON COMPTE</a>
+                                <a class="nav-link" href="/profil">MON COMPTE</a>
                             </li>
                         {% endif %}
                         {% if is_granted('ROLE_FAMILLE') %}
@@ -45,10 +45,9 @@
                                 <a class="nav-link" href="/admin">HISTORIQUE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin">MON COMPTE</a>
+                                <a class="nav-link" href="/profil">MON COMPTE</a>
                             </li>
                         {% endif %}
-
                     </ul>
 
                 </div>
