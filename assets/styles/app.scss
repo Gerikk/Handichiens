@@ -83,11 +83,11 @@ font-family: 'Raleway', sans-serif;
 //Override page bootstrap
 .btn-primary {
     color: #fff;
-}
 
-.btn-primary:hover {
-    color : $primary;
-    background-color: #fff;
+    &:hover{
+        color : $primary;
+        background-color: #fff;
+    }
 }
 
 .form-control,
