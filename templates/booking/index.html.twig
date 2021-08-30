@@ -39,68 +39,23 @@
 
 
 <div class="row justify-content-end">
-    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6" id="calendar-holder"></span>
+    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
+          id="calendar-holder"
+          data-events-url="{{ path('fc_load_events') }}">
+
+    </span>
 </div>
 
 {% endblock %}
 
 {% block stylesheets  %}
     {{ encore_entry_link_tags('app') }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.4.2/main.min.css">
+    {{ encore_entry_link_tags('calendar') }}
+
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/locales-all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.4.2/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.4.2/main.min.js"></script>
+    {{ encore_entry_script_tags('calendar') }}
 
-    <script type="text/javascript">
-
-        document.addEventListener('DOMContentLoaded', () => {
-            let calendarEl = document.getElementById('calendar-holder');
-
-            let calendar = new FullCalendar.Calendar(calendarEl, {
-                locale: 'fr',
-                nowIndicator: true,
-                defaultView: 'dayGridMonth',
-                editable: false,
-                weekNumberCalculation: 'ISO',
-                navLinks: true,
-                businessHours: {
-                    // days of week. an array of zero-based day of week integers (0=Sunday)
-                    daysOfWeek: [ 1, 2, 3, 4, 5 ], // Monday - Thursday
-
-                    startTime: '10:00', // a start time (10am in this example)
-                    endTime: '18:00', // an end time (6pm in this example)
-                },
-                eventSources: [
-                    {
-                        url: "{{ path('fc_load_events') }}",
-                        method: "POST",
-                        extraParams: {
-                            filters: JSON.stringify({})
-                        },
-                        failure: () => {
-                            // alert("There was an error while fetching FullCalendar!");
-                        },
-                    },
-                ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
-                },
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                timeZone: 'local',
-            });
-            calendar.render();
-
-        });
-
-    </script>
 
 {% endblock %}
