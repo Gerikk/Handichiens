@@ -10,3 +10,13 @@
 .fc th {
     font-weight: inherit;
 }
+
+.fc-event {
+    background-color: #5EB6DE;
+    border-color: #5EB6DE;
+}
+
+.fc-event:hover{
+    background-color: #5EB6DE;
+    border-color: #5EB6DE;
+}
