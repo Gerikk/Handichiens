@@ -44,7 +44,7 @@ class BookingController extends AbstractController
 
         return $this->renderForm('booking/new.html.twig', [
             'booking' => $booking,
-            'form' => $form,
+            'formPlanning' => $form,
         ]);
     }
 
