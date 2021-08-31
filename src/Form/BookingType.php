@@ -21,7 +21,7 @@ class BookingType extends AbstractType
                       'required' => true,
                       'widget' => 'choice',
                       'date_format' => 'ddMMMMy',
-                      'years' => range(date('Y'), date('Y') + 5),
+                      'years' => range(date('Y'), date('Y')),
                       'data' => new \DateTime(),
                       'attr' => ['class' => 'form-control']
                   ])
@@ -32,15 +32,15 @@ class BookingType extends AbstractType
                       'required' => false,
                       'widget' => 'choice',
                       'date_format' => 'ddMMMMy',
-                      'years' => range(date('Y'), date('Y') + 5),
+                      'years' => range(date('Y'), date('Y')),
                       'attr' => ['class' => 'form-control']
                   ])
-            ->add('title', TextType::class,
+            /*->add('title', TextType::class,
                   [
                       'label'=>'Titre',
                       'required' => true,
                       'attr' => ['class' => 'form-control mb-3']
-                  ])
+                  ])*/
         ;
     }
 
