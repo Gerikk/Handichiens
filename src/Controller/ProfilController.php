@@ -9,8 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfilController extends AbstractController
 {
@@ -35,7 +35,7 @@ class ProfilController extends AbstractController
     /**
      * @Route("/register/{id}/edit", name="edit_profil")
      */
-    public function edit(User $profil, UserPasswordEncoderInterface $passwordEncoder, Request $request)
+    public function edit(User $profil, UserPasswordHasherInterface $passwordEncoder, Request $request)
     : Response {
         $form = $this->createForm(UserType::class, $profil);
 
@@ -44,7 +44,7 @@ class ProfilController extends AbstractController
             $profil = $form->getData();
 
             // Encoder le mot de passe
-            $profil->setPassword($passwordEncoder->encodePassword($profil, $profil->getPassword()));
+            $profil->setPassword($passwordEncoder->hashPassword($profil, $profil->getPassword()));
 
             $this->entityManager->persist($profil);
             $this->entityManager->flush();
