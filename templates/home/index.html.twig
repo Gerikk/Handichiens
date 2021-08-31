@@ -4,15 +4,31 @@
 
 {% block body %}
 
-<div class="example-wrapper">
+<div>
 
-    <h1>HANDI'CHIENS</h1>
-    <h2>Bienvenue sur le système de réservation des chiens Handi’Chiens.</h2>
+    <h1 class="text-center">HANDI'CHIENS</h1>
+    <h2 class="text-center">Bienvenue sur le système de réservation des chiens Handi’Chiens.</h2>
 
-    <div>
-        <a class="btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
+    <div class=" bg-light rounded shadow">
 
-        <a class="btn btn-secondary" href="{{ path('register') }}">S'inscrire</a>
+        <article class="container d-flex justify-content-around m-5">
+
+            <section class="p-5">
+
+                <p class="h5">Vous êtes déjà une <br><strong>famille relais</strong> ? </p>
+
+                <a class="btn-home d-flex justify-content-center btn btn-lg btn-primary p-3 mt-5" href="{{ path('app_login') }}">Se connecter</a>
+
+            </section>
+
+            <section class="p-5">
+                <p class="h5">Vous souhaitez devenir une <br><strong>famille relais</strong> ? </p>
+
+                <a class="btn-home d-flex justify-content-center btn btn-lg btn-secondary p-3 mt-5" href="{{ path('register') }}">S'inscrire</a>
+
+            </section>
+
+        </article>
     </div>
 </div>
 
