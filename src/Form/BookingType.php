@@ -35,12 +35,6 @@ class BookingType extends AbstractType
                       'years' => range(date('Y'), date('Y')),
                       'attr' => ['class' => 'booking-select']
                   ])
-            /*->add('title', TextType::class,
-                  [
-                      'label'=>'Titre',
-                      'required' => true,
-                      'attr' => ['class' => 'form-control mb-3']
-                  ])*/
         ;
     }
 
