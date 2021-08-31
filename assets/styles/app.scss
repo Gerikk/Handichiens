@@ -2,7 +2,6 @@
 
 // Default variable overrides
 $primary: #5EB6DE;
-
 $danger: #D41B1B;
 
 // Required
@@ -29,8 +28,8 @@ $danger: #D41B1B;
 //@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-//Custom code
 
+//Custom code
 /* raleway-regular - latin */
 @font-face {
     font-family: 'Raleway';
@@ -63,7 +62,7 @@ $danger: #D41B1B;
 //@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
 
 body{
-font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .navbar {
@@ -72,13 +71,12 @@ font-family: 'Raleway', sans-serif;
     .navbar-brand {
         margin-left: 2rem;
     }
-
     .navbar-nav {
         margin-left: 3rem;
     }
-
     .nav-link {
         color: white;
+
         text-decoration: none;
         transition: .5s;
         margin-right: 1rem;
@@ -87,12 +85,10 @@ font-family: 'Raleway', sans-serif;
             color: #5EB6DE;
         }
     }
-
     .btn {
         margin-right: 2rem;
         border-radius: .3rem;
         background-color: #5EB6DE;
-
         &:hover {
             color: #5EB6DE;
             background-color: white;
@@ -104,7 +100,6 @@ font-family: 'Raleway', sans-serif;
 //Override page bootstrap
 .btn-primary {
     color: #fff;
-
     &:hover{
         color : $primary;
         background-color: #fff;
@@ -126,4 +121,6 @@ font-family: 'Raleway', sans-serif;
     width: 15rem;
 }
 
+// Import des fichiers SCSS
+@import "pages/dashboard.scss";
 @import 'pages/chiens';

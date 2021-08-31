@@ -3,95 +3,151 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
-        <small>Vous êtes connectés en tant
+    <div class="row justify-content-between">
+        <div class="col-6 last-info">
+            <div class="welcome">
+                <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+                <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
+                        {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
+                        {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
+                    Vous êtes connectés en tant
                     {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
                     {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
-                    {% if is_granted("ROLE_FAMILLE") %} que famille relais{% endif %}
-        </small>
-
-        {% if app.user %}
-            <div class="mb-3">
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                    {% if is_granted("ROLE_FAMILLE") %} que famille relais.{% endif %}
+                </small>
             </div>
-        {% endif %}
 
-        <div>
-            <p><a href="{{ path("profil") }}">Accès à mon profil.</a></p>
+            {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
+                <section class="row justify-content-around admin-dogs-counter">
+                    <div class="col-3 admin-dogs_single">
+                        <p class="number-dogs">28</p>
+                        <p>Chien(s) placé(s)</p>
+                    </div>
+                    <div class="col-3 admin-dogs_single">
+                        <p class="number-dogs">6</p>
+                        <p>Chien(s) libre(s)</p>
+                    </div>
+                </section>
+
+                <section class="row admin-main-content">
+                    <h2>Les derniers chiens placés en famille relais</h2>
+                    <ul class="list-booked-dogs">
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-award-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>Prunelle</p>
+                                <p>Fabien Bernard</p>
+                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
+                            </div>
+                        </li>
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-award-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>Pepite</p>
+                                <p>Gaëlle Marez</p>
+                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
+                            </div>
+                        </li>
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-award-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>Pimprenelle</p>
+                                <p>Sophie Hourtel</p>
+                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            {% endif %}
+
+            {% if is_granted ('ROLE_FAMILLE') %}
+                <section class="row famille-main-content">
+                    <h2>Mes dernières disponibilités ajoutés</h2>
+                    <ul class="list-booked-dogs">
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>23/08/2021 au 25/08/2021</p>
+                                <p class="success-dog">Aucun chien n'a été affecté sur cette période.</p>
+                            </div>
+                        </li>
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>23/08/2021 au 25/08/2021</p>
+                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
+                            </div>
+                        </li>
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>23/08/2021 au 25/08/2021</p>
+                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
+                            </div>
+                        </li>
+                        <li class="row booked-dog">
+                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                <i class="bi bi-calendar-week-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p>23/08/2021 au 25/08/2021</p>
+                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            {% endif %}
         </div>
 
-
-        {% if is_granted ('ROLE_ADMIN') %}
-        {% endif %}
-
-
-        {% if is_granted ('ROLE_EDUCATEUR') %}
-            <nav class="navigation">
-                <ul class="menu">
-                    <li class="menu-item">
-                        <a href="#">Les chiens</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Les familles relais</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Mon compte</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Ajouter une disponibilité</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <section class="admin_main-content">
-                <h2>Les prochains chiens en famille relais</h2>
-                <ul class="list-booked-dogs">
-                    <li class="booked-dog">
-                        <span>Nom du chien</span>
-                        <span>Nom de la famille relais</span>
-                        <p>Prise en charge du chien du ???? au ????</p>
-                    </li>
-                    <li class="booked-dog">
-                        <span>Nom du chien</span>
-                        <span>Nom de la famille relais</span>
-                        <p>Prise en charge du chien du ???? au ????</p>
-                    </li>
-                    <li class="booked-dog">
-                        <span>Nom du chien</span>
-                        <span>Nom de la famille relais</span>
-                        <p>Prise en charge du chien du ???? au ????</p>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="admin-dogs-counter">
-                <div class="admin-dogs_single">
-                    <span>???</span>
-                    <p>Chiens placés</p>
-                </div>
-                <div class="admin-dogs_single">
-                    <span>???</span>
-                    <p>Chiens libres</p>
-                </div>
-            </section>
-        {% endif %}
+        <div class="col-5 navigation">
+            {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="#"><i class="bi bi-award-fill"></i> Les chiens</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#"><i class="bi bi-people-fill"></i> Les familles relais</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#"><i class="bi bi-calendar-week-fill"></i> Ajouter une disponibilité</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ path("profil") }}"><i class="bi bi-person-circle"></i> Mon compte</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
 
 
-        {% if is_granted ('ROLE_FAMILLE') %}
-            <nav class="navigation">
-                <ul class="menu">
-                    <li class="menu-item">
-                        <a href="#">Planning</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Historique</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Mon compte</a>
-                    </li>
-                </ul>
-            </nav>
-        {% endif %}
+            {% if is_granted ('ROLE_FAMILLE') %}
+                <nav class="navigation">
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="#"><i class="bi bi-calendar-week-fill"></i> Planning</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#"><i class="bi bi-clock-history"></i> Historique</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ path("profil") }}"><i class="bi bi-person-circle"></i> Mon compte</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
     </div>
+
 {% endblock %}
