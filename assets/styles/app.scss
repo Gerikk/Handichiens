@@ -121,8 +121,26 @@ body{
     width: 15rem;
 }
 
+// CSS page inscription
+#page-register {
+    .form-register {
+        .row {
+            justify-content: start !important;
+        }
+        .color {
+            color: $danger;
+            font-weight: bold;
+        }
+    }
+}
+
+
+
 // Import des fichiers SCSS
 @import 'pages/chiens';
+@import "pages/dashboard";
+@import 'pages/profil-user';
+
 @import 'pages/profil-chien';
 @import "pages/dashboard";
 @import 'pages/familles';
