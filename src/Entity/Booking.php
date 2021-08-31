@@ -32,6 +32,12 @@ class Booking
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bookings")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $famille;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +75,18 @@ class Booking
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getFamille(): ?User
+    {
+        return $this->famille;
+    }
+
+    public function setFamille(?User $famille): self
+    {
+        $this->famille = $famille;
 
         return $this;
     }

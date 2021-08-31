@@ -11,15 +11,17 @@
                 <th>Titre</th>
                 <th>Date début</th>
                 <th>Date fin</th>
+                <th>Famille</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for booking in bookings %}
+        {% for booking in app.user.bookings %}
             <tr>
                 <td>{{ booking.title }}</td>
                 <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ booking.famille.firstname }} {{ booking.famille.lastname }}</td>
                 <td>
                     <a class="btn btn-secondary" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
                     <a class="btn btn-secondary" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
