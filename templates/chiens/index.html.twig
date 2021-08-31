@@ -4,90 +4,87 @@
 {% block title %}Handi'Chiens - LES CHIENS{% endblock %}
 
 {% block body %}
-<body>
-    <h1>La liste des chiens</h1>
-    <div class="bloc-bottom">
-        <div class="btn-ajouter">
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="#" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>
-            {% endif %}
-        </div>
-        <p>Nombre de chiens : 50</p>
+<h1>La liste des chiens</h1>
+<div class="bloc-bottom">
+    <div class="btn-ajouter">
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+            <a href="#" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>
+        {% endif %}
     </div>
-    <div class="container">
-        <div class="row">
-            <a href="#" class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <div class="btn btn-primary">Voir plus</div>
-                </div>
-            </a>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+    <p>Nombre de chiens : 50</p>
+</div>
+<div class="container">
+    <div class="row">
+        <a href="/profil_chien" class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <div class="btn btn-primary">Voir plus</div>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </a>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
-            <div class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Pépite</h5>
-                    <a href="#" class="btn btn-primary">Voir plus</a>
-                </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Pépite</h5>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
         </div>
     </div>
 </div>
-</body>
 {% endblock %}

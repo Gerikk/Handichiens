@@ -1,0 +1,43 @@
+{% set pageId = "page-profil-chien" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - LE PROFIL DU CHIEN{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <img src="{{ asset('images/chien.jpg') }}" alt="" class="dog-profile">
+        <h2><strong>Pépite</strong></h2>
+    </div>
+    <div class="caract">
+        <h3>Caractère</h3>
+    </div>
+    <div class="row">
+        <ul class="list-caract">
+            <li class="col-3">
+                <p>joueur</p>
+                <p>calme</p>
+            </li>
+            <li class="col-3">
+                <p>calme</p>
+                <p>attentionné</p>
+            </li>
+            <li class="col-3">
+                <p>calme</p>
+                <p>calme</p>
+            </li>
+            <li class="col-3">
+                <p>calme</p>
+                <p>calme</p>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="btn-modifier">
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+            <a href="/profil_chien" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
