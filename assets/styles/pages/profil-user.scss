@@ -1,0 +1,22 @@
+#page-edit-profil {
+    .form-register {
+      .row {
+        justify-content: start !important;
+      }
+
+      i {
+        color: $danger;
+        font-weight: bold;
+      }
+
+      .form-control {
+          &::placeholder {
+            font-size: 13px !important;
+        }
+      }
+    }
+}
+
+#page-profil {
+
+}

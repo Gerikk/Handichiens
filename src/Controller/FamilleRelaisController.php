@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FamilleRelaisController extends AbstractController
 {
     /**
-     * @Route("/famille/relais", name="famille_relais")
+     * @Route("/familles/relais", name="famille_relais")
      */
     public function index(): Response
     {
