@@ -23,7 +23,7 @@ class BookingType extends AbstractType
                       'date_format' => 'ddMMMMy',
                       'years' => range(date('Y'), date('Y')),
                       'data' => new \DateTime(),
-                      'attr' => ['class' => 'form-control']
+                      'attr' => ['class' => 'booking-select']
                   ])
             ->add('endAt', DateTimeType::class,
                   [
@@ -33,7 +33,7 @@ class BookingType extends AbstractType
                       'widget' => 'choice',
                       'date_format' => 'ddMMMMy',
                       'years' => range(date('Y'), date('Y')),
-                      'attr' => ['class' => 'form-control']
+                      'attr' => ['class' => 'booking-select']
                   ])
             /*->add('title', TextType::class,
                   [
