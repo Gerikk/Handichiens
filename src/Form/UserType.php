@@ -91,7 +91,7 @@ class UserType extends AbstractType
                     'placeholder' => 'Votre numéro de téléphone'
                 ]
             ])
-            ->add('photo', Type::class, [
+            ->add('photo', BlobType::class, [
                 'label'       => 'Photo',
                 'required'    => false,
                 'attr'        => [
