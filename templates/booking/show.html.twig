@@ -5,11 +5,15 @@
 {% block body %}
     <h1>Enregistrement de "{{ booking.title }}"</h1>
 
-    <table class="table">
+    <table class="table table-hover">
         <tbody>
-            <tr>
+            {#<tr>
                 <th>Id</th>
                 <td>{{ booking.id }}</td>
+            </tr>#}
+            <tr>
+                <th>Nom</th>
+                <td>{{ booking.title }}</td>
             </tr>
             <tr>
                 <th>Date début</th>
@@ -19,10 +23,7 @@
                 <th>Date fin</th>
                 <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
             </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ booking.title }}</td>
-            </tr>
+
         </tbody>
     </table>
 

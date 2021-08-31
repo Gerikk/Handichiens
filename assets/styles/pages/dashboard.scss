@@ -1,0 +1,113 @@
+// Général
+ul[class],
+ol[class] { list-style: none; }
+a { text-decoration: none; }
+
+
+/// Côté Gauche
+
+// Compteurs
+.admin-dogs-counter {
+  margin-top: 35px;
+  margin-bottom: 40px;
+  .admin-dogs_single {
+    //box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.28);
+    border: 2px solid $primary;
+    border-radius: 3px;
+    padding: 18px 15px;
+    .number-dogs {
+      font-size: 27px;
+      font-weight: bold;
+      color: $primary;
+    }
+    p {
+      text-align: center;
+      margin: 0;
+      margin: 5px;
+    }
+  }
+}
+
+
+// Derniers chiens
+.admin-main-content {
+  .list-booked-dogs {
+    .icon-dog {
+      font-size: 30px;
+    }
+    li {
+      margin: 25px;
+      border-radius: 3px;
+      padding: 10px;
+      box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.15);
+      p {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+.famille-main-content {
+  h2 {
+    margin-top: 35px;
+  }
+  .list-booked-dogs {
+    .icon-dog {
+      font-size: 30px;
+    }
+    li {
+      margin: 25px;
+      border-radius: 3px;
+      padding: 10px;
+      box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.15);
+      p {
+        margin: 5px;
+      }
+      .icon-dog {
+        i {
+          color: $primary;
+        }
+      }
+
+      //.success-dog {
+      //  //color: $danger;
+      //}
+      .warning-dog {
+        color: $danger;
+      }
+    }
+  }
+}
+
+
+
+/// Côté Droit
+
+// Navigation
+.navigation {
+  .menu-item {
+    display: inline-block;
+    margin: 15px;
+    width: 90%;
+    border-radius: 3px;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.28);
+    a {
+      padding: 40px;
+      display: inline-block;
+      border-radius: 3px;
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+      color: $primary !important;
+      text-transform: uppercase;
+      &:hover {
+        color: white !important;
+        background-color: $primary;
+      }
+      i {
+        margin-right: 15px;
+        font-size: 30px;
+      }
+    }
+  }
+}

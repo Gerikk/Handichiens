@@ -74,7 +74,7 @@ class BookingController extends AbstractController
 
         return $this->renderForm('booking/edit.html.twig', [
             'booking' => $booking,
-            'form' => $form,
+            'formPlanning' => $form,
         ]);
     }
 
@@ -92,11 +92,4 @@ class BookingController extends AbstractController
         return $this->redirectToRoute('booking_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    /**
-     * @Route("/calendar", name="booking_calendar", methods={"GET"})
-     */
-    public function calendar(): Response
-    {
-        return $this->render('booking/calendar.html.twig');
-    }
 }
