@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FamilleRelaisController extends AbstractController
+class ProfilFamilleRelaisController extends AbstractController
 {
     /**
-     * @Route("/les-familles-relais", name="famille_relais")
+     * @Route("/profil/famille/relais", name="profil_famille_relais")
      */
     public function index(): Response
     {
-        return $this->render('famille_relais/index.html.twig', [
-            'controller_name' => 'FamilleRelaisController',
+        return $this->render('profil_famille_relais/index.html.twig', [
+            'controller_name' => 'ProfilFamilleRelaisController',
         ]);
     }
 }
