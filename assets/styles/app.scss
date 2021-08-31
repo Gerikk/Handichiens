@@ -122,5 +122,7 @@ body{
 }
 
 // Import des fichiers SCSS
-@import "pages/dashboard.scss";
 @import 'pages/chiens';
+@import 'pages/profil-chien';
+@import "pages/dashboard";
+@import 'pages/familles';

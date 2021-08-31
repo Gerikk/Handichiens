@@ -1,9 +1,125 @@
+{% set pageId = "page-familles" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FamilleRelaisController!{% endblock %}
+{% block title %}Handi'Chiens - Les familles relais{% endblock %}
 
 {% block body %}
 
-
+<body>
+<h1>La liste des familles relais</h1>
+<div class="dropdown-select">
+    <h3>Disponibilités:</h3>
+    <div class="dropdown-select_start-date">
+        <select name="startDate" id="startDate">
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+        </select>
+    </div>
+    <div class="dropdown-select_end-date">
+        <select name="endDate" id="endDate">
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+            <option value="#">Date</option>
+        </select>
+    </div>
+    <input type="submit" value="Rechercher" class="btn btn-primary">
+</div>
+<div class="bloc-bottom">
+    <div class="btn-ajouter">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="#" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
+        {% endif %}
+    </div>
+    <p>Nombre de familles relais : 50</p>
+</div>
+<div class="container">
+    <div class="row">
+        <a href="#" class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/famille-relais.jpg') }}" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Dupont</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <div class="btn btn-primary">Voir plus</div>
+            </div>
+        </a>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Marchands</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Dupont</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Marchands</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Dupont</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Marchands</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Dupont</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Marchands</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Dupont</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+        <div class="card col-3" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}"  width="150" height="150" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Marchands</h5>
+                <p>Disponible: <br> 15/08/2021 au 20/08/2021</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
 
 {% endblock %}
