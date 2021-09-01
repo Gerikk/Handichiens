@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Cassandra\Blob;
-use Doctrine\DBAL\Types\BlobType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -91,13 +89,7 @@ class UserType extends AbstractType
                     'placeholder' => 'Votre numéro de téléphone'
                 ]
             ])
-            ->add('photo', BlobType::class, [
-                'label'       => 'Photo',
-                'required'    => false,
-                'attr'        => [
-                    'placeholder' => 'Une photo'
-                ]
-            ])
+
             ->add('register', SubmitType::class);
     }
 
