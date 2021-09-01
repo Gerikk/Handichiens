@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfilFamilleRelaisController extends AbstractController
 {
     /**
-     * @Route("/profil/famille/relais", name="profil_famille_relais")
+     * @Route("/profil-famille-relais", name="profil_famille_relais")
      */
     public function index(): Response
     {
-        return $this->render('profil_famille_relais/index.html.twig', [
+        return $this->render('famille_relais/profil.html.twig', [
             'controller_name' => 'ProfilFamilleRelaisController',
         ]);
     }

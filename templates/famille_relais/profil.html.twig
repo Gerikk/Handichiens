@@ -1,0 +1,93 @@
+{% set pageId = "page-profil-famille" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - PROFIL DE LA FAMILLE{% endblock %}
+{% block stylesheets  %}
+     {{ encore_entry_link_tags('app') }}
+     {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <a href="/les-familles-relais">< Retour</a>
+        <section class="family-profil_container">
+            <div class="family-profil_picture">
+                <img src="{{ asset('images/famille-relais.jpg') }}" alt="Photo de profil de la famille relais">
+                <div class="family-profil-status">
+                    <span>NOVICE</span>
+                </div>
+            </div>
+            <div class="family-profil_description">
+                <h2>Caractéristiques de la famille</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut arcu lorem. Pellentesque non dapibus sapien, ultricies aliquam elit. Praesent scelerisque nibh sapien. Aliquam erat volutpat. Mauris rutrum imperdiet purus, id imperdiet ipsum auctor et. </p>
+                <ul>
+                    <li>Nulla dui dui, porttitor nec condimentum a, rutrum sit amet est. </li>
+                    <li>Cras dolor tellus, tempor vitae maximus vitae, malesuada vitae felis. Nullam a lobortis dui, quis aliquam lectus.</li>
+                    <li>Nullam a lobortis dui, quis aliquam lectus</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="family-profil_informations">
+            <div class="family-profil_main-informations">
+                <h2>Informations de la famille</h2>
+                <div class="family-profil_main-informations-detailed">
+                    <h3>Les informations</h3>
+                    <p>Nom: </p>
+                    <p>Prénom: </p>
+                    <p>Adresse: </p>
+                    <p>Téléphone: </p>
+                    <p>Adresse e-mail: </p>
+                </div>
+            </div>
+            <div class="family-profil_dog-attribution">
+                <h2>Attribution du chien</h2>
+                <div class="family-profil_dog-pick">
+                    <p class="guidance-select">
+                        Veuillez sélectionner le chien à attribuer:
+                    </p>
+                    <select name="dogAttribution" id="dogAttribution" class="dog-attribution">
+                        <option value="#">Pépite</option>
+                        <option value="#">Olympe</option>
+                        <option value="#">Oscard</option>
+                        <option value="#">Pumba</option>
+                    </select>
+                    <input type="submit" value="Valider" class="btn btn-primary mx-2 my-sm-0">
+                </div>
+                <div class="family-profil_dog-history">
+                    <div class="family-profil_dog-history-single">
+                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
+                    </div>
+                    <div class="family-profil_dog-history-single">
+                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
+                    </div>
+                    <div class="family-profil_dog-history-single">
+                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
+                    </div>
+                    <div class="family-profil_dog-history-single">
+                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
+                    </div>
+                </div>
+            </div>
+            <div class="family-profil_calendar">
+                <h2>Disponibilités:</h2>
+                <div class="family-profil_calendar-container">
+                    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
+                          id="calendar-holder"
+                          data-events-url="{{ path('fc_load_events') }}">
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="btn-modifier">
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+                <a href="/profil_chien" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
+                <a href="/profil_chien" class="btn btn-primary mx-2 my-sm-0">Supprimer</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
