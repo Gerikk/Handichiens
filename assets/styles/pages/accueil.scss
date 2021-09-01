@@ -1,0 +1,31 @@
+#page-accueil {
+  h1 {
+    font-weight: bold;
+  }
+  .login-signup-container {
+    max-width: 790px;
+    width: 100%;
+    text-align: center;
+    min-height: 400px;
+    display: flex;
+    align-content: baseline;
+    align-items: center;
+    margin: 50px auto;
+  }
+  .border-left {
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 1px;
+        height: 100%;
+        background-color: #000000;
+      }
+  }
+
+}

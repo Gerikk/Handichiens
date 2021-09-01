@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% set pageId = "page-accueil" %}
 
 {% block title %}Handi'Chiens - Accueil{% endblock %}
 
@@ -9,19 +10,19 @@
     <h1 class="text-center">HANDI'CHIENS</h1>
     <h2 class="text-center">Bienvenue sur le système de réservation des chiens Handi’Chiens.</h2>
 
-    <div class=" bg-light rounded shadow">
+    <div class=" bg-light rounded shadow login-signup-container">
 
-        <article class="container d-flex justify-content-around m-5">
+        <article class="d-flex justify-content-around m-5">
 
             <section class="p-5">
 
-                <p class="h5">Vous êtes déjà une <br><strong>famille relais</strong> ? </p>
+                <p class="h5">Vous êtes déjà un <br><strong>membre</strong> ? </p>
 
                 <a class="btn-home d-flex justify-content-center btn btn-lg btn-primary p-3 mt-5" href="{{ path('app_login') }}">Se connecter</a>
 
             </section>
 
-            <section class="p-5">
+            <section class="p-5 border-left">
                 <p class="h5">Vous souhaitez devenir une <br><strong>famille relais</strong> ? </p>
 
                 <a class="btn-home d-flex justify-content-center btn btn-lg btn-secondary p-3 mt-5" href="{{ path('register') }}">S'inscrire</a>
