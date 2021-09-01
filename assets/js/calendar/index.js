@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin], // https://fullcalendar.io/docs/plugin-index
-        timeZone: "local",
+        timeZone: "UTC",
     });
     calendar.render();
 });
