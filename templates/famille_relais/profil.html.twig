@@ -7,7 +7,12 @@
      {{ encore_entry_link_tags('calendar') }}
 {% endblock %}
 {% block javascripts %}
-    {{ encore_entry_script_tags('calendar_edu') }}
+
+    <script type="text/javascript">
+        const familleId = {{ famille.id }}
+    </script>
+
+    {{ encore_entry_script_tags('calendar_profil_famille') }}
 {% endblock %}
 {% block body %}
     <div class="container">
