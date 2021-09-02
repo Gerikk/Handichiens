@@ -40,6 +40,19 @@ class CalendarSubscriber implements EventSubscriberInterface
         $filters = $calendar->getFilters();
         $userId = $this->security->getUser()->getId();
 
+        switch($filters['calendar-id']) {
+            case 'famille-calendar':
+                $this->fillCalendarFamille($calendar, $start, $end, $filters, $userId);
+                break;
+            case 'edu-calendar':
+                $this->fillCalendarEdu($calendar, $start, $end, $filters);
+                break;
+        }
+
+
+    }
+
+    public function fillCalendarFamille(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters, $userId){
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
@@ -80,6 +93,42 @@ class CalendarSubscriber implements EventSubscriberInterface
             );
 
             // finally, add the event to the CalendarEvent to fill the calendar
+            $calendar->addEvent($bookingEvent);
+        }
+    }
+
+    public function fillCalendarEdu(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
+    {
+        //TODO: Ajouter id de l'utilisateur visé par la page.
+        $bookings = $this->bookingRepository
+            ->createQueryBuilder('booking')
+            ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->setParameter('start', $start->format('Y-m-d H:i:s'))
+            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->getQuery()
+            ->getResult()
+        ;
+
+        foreach ($bookings as $booking) {
+
+            $bookingEvent = new Event(
+                $booking->getFamille()->getLastname(),
+                $booking->getBeginAt(),
+                $booking->getEndAt()
+            );
+
+
+            $bookingEvent->setOptions([
+                                          'backgroundColor' => 'darkblue',
+                                          'borderColor' => 'darkblue',
+                                      ]);
+            $bookingEvent->addOption(
+                'url',
+                $this->router->generate('booking_show', [
+                    'id' => $booking->getId(),
+                ])
+            );
+
             $calendar->addEvent($bookingEvent);
         }
     }
