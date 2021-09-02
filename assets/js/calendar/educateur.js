@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: eventsUrl,
                 method: "POST",
                 extraParams: {
-                    filters: JSON.stringify({"calendar-id": "famille-calendar"})
+                    filters: JSON.stringify({ "calendar-id": "edu-calendar" })
                 },
                 failure: () => {
                     // alert("There was an error while fetching FullCalendar!");
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         header: {
             left: "prev,next today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin], // https://fullcalendar.io/docs/plugin-index
         timeZone: "UTC",

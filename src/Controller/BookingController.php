@@ -32,13 +32,9 @@ class BookingController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $user = $this->getUser();
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
-
-        $booking->setFamille($user);
-        $booking->setTitle("Dispo");
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

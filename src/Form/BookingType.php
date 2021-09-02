@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -34,6 +35,12 @@ class BookingType extends AbstractType
                       'years' => range(date('Y'), date('Y')),
                       'attr' => ['class' => 'booking-select']
                   ])
+            ->add('title', TextType::class,
+                [
+                    'label'=>'Titre',
+                    'required'=> true,
+                    'attr'=>['class'=>'form-control mb-3']
+                ])
         ;
     }
 
