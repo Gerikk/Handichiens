@@ -21,12 +21,11 @@
             </div>
             <div class="family-profil_description">
                 <h2>Caractéristiques de la famille</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut arcu lorem. Pellentesque non dapibus sapien, ultricies aliquam elit. Praesent scelerisque nibh sapien. Aliquam erat volutpat. Mauris rutrum imperdiet purus, id imperdiet ipsum auctor et. </p>
-                <ul>
-                    <li>Nulla dui dui, porttitor nec condimentum a, rutrum sit amet est. </li>
-                    <li>Cras dolor tellus, tempor vitae maximus vitae, malesuada vitae felis. Nullam a lobortis dui, quis aliquam lectus.</li>
-                    <li>Nullam a lobortis dui, quis aliquam lectus</li>
-                </ul>
+                {%  if famille.description %}
+                    <p>{{ famille.description }}</p>
+                {% else %}
+                    <p>Non renseigné</p>
+                {% endif %}
             </div>
         </section>
 
@@ -104,8 +103,8 @@
 
         <div class="btn-modifier">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-                <a href="/profil_chien" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
-                <a href="/profil_chien" class="btn btn-primary mx-2 my-sm-0">Supprimer</a>
+                <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
+                <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Supprimer</a>
             {% endif %}
         </div>
     </div>
