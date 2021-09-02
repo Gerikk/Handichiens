@@ -35,11 +35,30 @@
                 <h2>Informations de la famille</h2>
                 <div class="family-profil_main-informations-detailed">
                     <h3>Les informations</h3>
-                    <p>Nom: </p>
-                    <p>Prénom: </p>
-                    <p>Adresse: </p>
-                    <p>Téléphone: </p>
-                    <p>Adresse e-mail: </p>
+                    <p>Nom: {{famille.lastname}} </p>
+                    <p>Prénom: {{famille.firstname}} </p>
+                    <p> Ville:
+                        {%  if famille.ville %}
+                            {{famille.ville}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                    <p> Téléphone:
+                        {%  if famille.telephone %}
+                            {{famille.telephone}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                    <p> Code postal:
+                        {%  if famille.codePostal %}
+                            {{famille.codePostal}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                    <p>Adresse e-mail: {{famille.email}} </p>
                 </div>
             </div>
             <div class="family-profil_dog-attribution">
