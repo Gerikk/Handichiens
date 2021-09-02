@@ -1,7 +1,7 @@
 {% set pageId = "page-planning-detail" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Booking{% endblock %}
+{% block title %}Planning{% endblock %}
 
 {% block body %}
     <h1>Enregistrement de "{{ booking.title }}"</h1>
@@ -25,9 +25,13 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('booking_index') }}">Retour à la liste</a>
+    <div>
+        <a class="btn btn-primary" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+    </div>
 
-    <a class="btn btn-primary" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+    <div>
+        <a class="btn btn-primary my-3" href="{{ path('booking_index') }}">Retour à la liste</a>
+    </div>
 
     {{ include('booking/_delete_form.html.twig') }}
 {% endblock %}

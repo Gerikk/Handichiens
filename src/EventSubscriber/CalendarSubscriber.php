@@ -99,8 +99,7 @@ class CalendarSubscriber implements EventSubscriberInterface
 
     public function fillCalendarEdu(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
     {
-        // Modify the query to fit to your entity and needs
-        // Change booking.beginAt by your start date property
+        //TODO: Ajouter id de l'utilisateur visé par la page.
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
@@ -111,19 +110,13 @@ class CalendarSubscriber implements EventSubscriberInterface
         ;
 
         foreach ($bookings as $booking) {
-            // this create the events with your data (here booking data) to fill calendar
+
             $bookingEvent = new Event(
                 $booking->getFamille()->getLastname(),
                 $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+                $booking->getEndAt()
             );
 
-            /*
-             * Add custom options to events
-             *
-             * For more information see: https://fullcalendar.io/docs/event-object
-             * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
-             */
 
             $bookingEvent->setOptions([
                                           'backgroundColor' => 'darkblue',
@@ -136,7 +129,6 @@ class CalendarSubscriber implements EventSubscriberInterface
                 ])
             );
 
-            // finally, add the event to the CalendarEvent to fill the calendar
             $calendar->addEvent($bookingEvent);
         }
     }
