@@ -42,17 +42,17 @@ class CalendarSubscriber implements EventSubscriberInterface
 
         switch($filters['calendar-id']) {
             case 'dispo-famille-calendar':
-                $this->fillCalendarFamille($calendar, $start, $end, $filters, $userId);
+                $this->fillCalendarDispo($calendar, $start, $end, $filters, $userId);
                 break;
             case 'profil-famille-calendar':
-                $this->fillCalendarEdu($calendar, $start, $end, $filters);
+                $this->fillCalendarProfilFamille($calendar, $start, $end, $filters);
                 break;
         }
 
 
     }
 
-    public function fillCalendarFamille(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters, $userId){
+    public function fillCalendarDispo(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters, $userId){
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
@@ -97,7 +97,7 @@ class CalendarSubscriber implements EventSubscriberInterface
         }
     }
 
-    public function fillCalendarEdu(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
+    public function fillCalendarProfilFamille(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
     {
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
