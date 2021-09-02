@@ -1,18 +1,18 @@
-{% set pageId = "page-register" %}
+{% set pageId = "page-edit-profil-famille" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Modification du profil de la famille{% endblock %}
 
 {% block body %}
 
-<div class="example-wrapper">
+    <div class="example-wrapper">
 
-    <span><a href="{{ path('home') }}"> < Retour à l'accueil</a></span>
-    <div class="containerRegister bg-light shadow my-3 p-3">
-        <h1 class="text-primary text-center">Inscription</h1>
+        <span><a class="" href="{{ path('profil_famille_relais', {'id': famille.id}) }}"> < Retour</a></span>
+        <div class="containerRegister bg-light shadow my-3 p-3">
+            <h1 class="text-primary text-center">Modification du profil de la famille: {{ famille.lastname }}</h1>
 
-        <div class="form form-register">
-            {{ form_start(form) }}
+            <div class="form form-register">
+                {{ form_start(form) }}
                 <div class="row form-row">
                     <div class="row mb-2">
                         <div class="col-6">
@@ -27,12 +27,6 @@
                             {{ form_row(form.email, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            {{ form_row(form.password, {'attr':{'class':'form-control'}}) }}
-                        </div>
-                    </div>
-
                     <div class="row mb-2">
                         <div class="col-6">
                             {{ form_row(form.code_postal, {'attr':{'class':'form-control'}}) }}
@@ -46,23 +40,19 @@
                             {{ form_row(form.telephone, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            {{ form_row(form.brochure), {'attr':{'class':'form-control'}}) }}
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            {{ form_row(form.description, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
-                    <p class="mb-4"><span class="color">*</span> : champs obligatoires lors de l'inscription.</p>
-                    <p class="mb-4 text-center">Vous pourrez modifier ou compléter votre profil après votre inscription.</p>
-
-
                 </div>
+                <span class="d-flex justify-content-center col-12">
+                    {{ form_row(form.register,{'label':'Modifier', 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
+                </span>
 
-            <span class="d-flex justify-content-center col-12">
-                {{ form_row(form.register,{'label':"S'inscrire", 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
-            </span>
-            {{ form_end(form) }}
+                {{ form_end(form) }}
+            </div>
+
         </div>
-
     </div>
-</div>
 {% endblock %}
