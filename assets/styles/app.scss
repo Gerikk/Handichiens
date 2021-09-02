@@ -139,7 +139,31 @@ body{
             color: $danger;
             font-weight: bold;
         }
+        ul {
+             list-style-type: none;
+             font-size: 13px;
+             padding-left: 0;
+             margin: 10px;
+            li {
+                 &::before {
+                     display: inline-block;
+                     content: '';
+                     background-image: url('../../public/images/exclamation-mark.svg');
+                     height: 12px;
+                     width: 12px;
+                     margin-right: 10px;
+                 }
+            }
+         }
+        .mdp-exclamation {
+            i {
+                color: $danger;
+            }
+            font-size: 13px;
+            font-style: italic;
+        }
     }
+
 }
 
 
