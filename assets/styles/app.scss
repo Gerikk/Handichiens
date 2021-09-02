@@ -106,6 +106,14 @@ body{
     }
 }
 
+.btn-danger {
+    color: #fff;
+    &:hover{
+        color : $danger;
+        background-color: #fff;
+    }
+}
+
 .form-control,
 .form-control:focus {
     background-color: #fff;
@@ -124,5 +132,6 @@ body{
 // Import des fichiers SCSS
 @import 'pages/chiens';
 @import 'pages/profil-chien';
+@import 'pages/ajout-chien';
 @import "pages/dashboard";
 @import 'pages/familles';

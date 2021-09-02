@@ -8,7 +8,7 @@
 <div class="bloc-bottom">
     <div class="btn-ajouter">
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-            <a href="#" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>
+            <a href="/chiens/ajouter" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>
         {% endif %}
     </div>
     <p>Nombre de chiens : 50</p>
