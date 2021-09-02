@@ -41,10 +41,10 @@ class CalendarSubscriber implements EventSubscriberInterface
         $userId = $this->security->getUser()->getId();
 
         switch($filters['calendar-id']) {
-            case 'famille-calendar':
+            case 'dispo-famille-calendar':
                 $this->fillCalendarFamille($calendar, $start, $end, $filters, $userId);
                 break;
-            case 'edu-calendar':
+            case 'profil-famille-calendar':
                 $this->fillCalendarEdu($calendar, $start, $end, $filters);
                 break;
         }
@@ -99,10 +99,11 @@ class CalendarSubscriber implements EventSubscriberInterface
 
     public function fillCalendarEdu(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
     {
-        //TODO: Ajouter id de l'utilisateur visé par la page.
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->andWhere('booking.famille = :famille_id')
+            ->setParameter('famille_id', $filters['famille_id'])
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()
