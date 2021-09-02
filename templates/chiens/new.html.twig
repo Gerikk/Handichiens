@@ -1,0 +1,15 @@
+{% set pageId = "page-chiens-ajouter" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - AJOUTER UN CHIEN{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 s12 m12 l12 title-ajout-chien">
+                <h1>Ajouter un chien</h1>
+            </div>
+        </div>
+    </div>
+    {% include "includes/chien_new.html.twig" %}
+{% endblock %}

@@ -19,23 +19,9 @@
         margin-bottom: 2rem;
     }
     
-    .list-caract {
+    .resume-chien {
         display: flex;
         justify-content: center;
-        list-style-type: none;
-        
-        li {
-            p {
-                display: flex;
-                justify-content: center;
-                font-size: 35px;
-                padding: 0;
-                border: solid $primary;
-                border-radius: .3rem;
-                margin: 0rem 1rem 1rem 1rem;
-                color: $primary;
-            }
-        }
     }
     
     .btn-modifier {

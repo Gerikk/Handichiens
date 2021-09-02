@@ -6,37 +6,20 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <img src="{{ asset('images/chien.jpg') }}" alt="" class="dog-profile">
+        <img src="{{ chien.img }}" alt="" class="dog-profile">
         <h2><strong>Pépite</strong></h2>
     </div>
-    <div class="caract">
-        <h3>Caractère</h3>
+    <div class="resume-title">
+        <h3>Votre chien en quelques mots</h3>
     </div>
-    <div class="row">
-        <ul class="list-caract">
-            <li class="col-3">
-                <p>joueur</p>
-                <p>calme</p>
-            </li>
-            <li class="col-3">
-                <p>calme</p>
-                <p>attentionné</p>
-            </li>
-            <li class="col-3">
-                <p>calme</p>
-                <p>calme</p>
-            </li>
-            <li class="col-3">
-                <p>calme</p>
-                <p>calme</p>
-            </li>
-
-        </ul>
+    <div class="resume-chien">
+        <h5>Le chien est beau</h5>
     </div>
 
     <div class="btn-modifier">
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-            <a href="/profil_chien" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
+            <a href="/modifier_profil_chien" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
+            <a href="/" class="btn btn-danger mx-2 my-sm-0">Supprimer</a>
         {% endif %}
     </div>
 </div>

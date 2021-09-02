@@ -1,0 +1,32 @@
+{{ form_start(form, {'attr': {'class': 'row'}}) }}
+    <div class="img-name-group col-6">
+        <div class="input-field col-12 s12 m12 l12 input-image">
+            {{ form_widget(form.img) }}
+        </div>
+        <div class="input-field col-12 s12 m6 l6 nom-du-chien">
+            {{ form_label(form.name, "Nom de votre chien", {'attr': {'class': 'label-name'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'text-name', 'placeholder': 'Nom de votre nouveau chien'}}) }}
+        </div>
+    </div>
+    <div class="age-race-formation-group col-6">
+        <div class="input-field col-12 s12 m6 l6 age-du-chien">
+            {{ form_label(form.age, "Age de votre chien", {'attr': {'class': 'label-age'}}) }}
+            {{ form_widget(form.age, {'attr': {'class': 'text-age', 'placeholder': 'Age de votre chien'}}) }}
+        </div>
+        <div class="input-field col-12 s12 m6 l6 race-du-chien">
+            {{ form_label(form.race, "Race de votre chien", {'attr': {'class': 'label-race'}}) }}
+            {{ form_widget(form.race, {'attr': {'class': 'text-race', 'placeholder': 'race de votre chien'}}) }}
+        </div>
+        <div class="input-field col-12 s12 m6 l6 formation-du-chien">
+            {{ form_label(form.formation, "formation de votre chien", {'attr': {'class': 'label-formation'}}) }}
+            {{ form_widget(form.formation, {'attr': {'class': 'text-formation', 'placeholder': 'formation de votre chien'}}) }}
+        </div>
+    </div>
+    <div class="input-field col-12 s12 m12 l12 resume">
+        {{ form_label(form.resume, "Les caractère du chien", {'attr': {'class': 'label-resume'}}) }}
+        {{ form_widget(form.resume, {'attr': {'class': 'textarea-resume', 'placeholder': 'Votre chien en quelques mots'}}) }}
+    </div>
+    <div class="input-field col-12 s12 m12 l12">
+        <input type="submit" name="" value="Enregistrer" class="btn btn-primary btn-large">
+    </div>
+{{ form_end(form) }}

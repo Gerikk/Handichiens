@@ -1,0 +1,36 @@
+#page-chiens-ajouter {
+    .title-ajout-chien {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    // CSS du formulaire
+
+    .input-image {
+
+    }
+
+    .nom-du-chien {
+        .label-name {
+            
+        }
+    
+        .text-name {
+            border: solid $primary;
+            border-radius: .3rem;
+            width: 300px;
+        }
+    }
+
+    .resume {
+        .label-resume {
+            
+        }
+    
+        .textarea-resume {
+            border: solid $primary;
+            border-radius: .3rem;
+            width: 1000px;
+        }
+    }
+}
