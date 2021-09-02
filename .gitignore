@@ -20,5 +20,5 @@
 ###< phpunit/phpunit ###
 .idea
 /node_modules/
-
 /public/build/
+.DS_Store

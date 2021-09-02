@@ -33,7 +33,7 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * @Route("/register/{id}/edit", name="edit_profil")
+     * @Route("/profil/{id}/edit", name="edit_profil")
      */
     public function edit(User $profil, UserPasswordHasherInterface $passwordEncoder, Request $request)
     : Response {
@@ -52,7 +52,7 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('profil');
         }
 
-        return $this->render('register/index.html.twig',
+        return $this->render('profil/edit.html.twig',
             ['form' => $form->createView()]
         );
     }

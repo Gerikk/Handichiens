@@ -34,6 +34,8 @@ class RegisterController extends AbstractController
 
         $form->handleRequest($request);
 
+        $user->setRoles(["ROLE_FAMILLE"]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
@@ -42,10 +44,46 @@ class RegisterController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
+
+            return $this->redirectToRoute('home');
         }
 
 
         return $this->render('register/index.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/register", name="register_edu")
+     * @param Request $request
+     * @param UserPasswordHasherInterface $passwordEncoder
+     *
+     * @return Response
+     */
+    public function index_educator(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        $user->setRoles(["ROLE_EDUCATEUR"]);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+
+            // Encoder le mot de passe
+            $user->setPassword($passwordEncoder->hashPassword($user, $user->getPassword()));
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+
+        return $this->render('register/edu.html.twig', [
             'form' => $form->createView()
         ]);
     }

@@ -1,23 +1,36 @@
-;{% extends 'base.html.twig' %}
+{% set pageId = "page-profil" %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Votre profil{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
 
 <div class="example-wrapper">
+    <p><a href="{{ path('dashboard') }}" class="btn btn-primary">Retour au dashboard</a></p>
 
-    <p><a href="{{ path('dashboard') }}">Retour au dashboard</a></p>
+    <h1 class="mb-5">Mon compte</h1>
 
-    <div class="profil flex">
-        <div class="informations">
-            <h2>Mes informations</h2>
-            <ul>
-                <li>Nom : {{ app.user.lastname }}</li>
-                <li>Prénom : {{ app.user.firstname }}</li>
-                <li>E-mail : {{ app.user.email }}</li>
-            </ul>
+    <div class="profil row">
+        <div class="row mb-5">
+            <div class="photo col-5">
+                HELLO PHOTO
+            </div>
+            <div class="informations col-7">
+                <ul>
+                    <li class="form-control mb-3">Nom : {{ app.user.lastname }}</li>
+                    <li class="form-control mb-3">Prénom : {{ app.user.firstname }}</li>
+                    <li class="form-control mb-3">E-mail : {{ app.user.email }}</li>
+                    <li class="form-control mb-3">Téléphone : {{ app.user.telephone }}</li>
+                    <li class="form-control mb-3">Code postal : {{ app.user.codePostal }}</li>
+                    <li class="form-control mb-3">Ville : {{ app.user.ville }}</li>
+                </ul>
+            </div>
+        </div>
 
-            <p>Modifier mes infos : <a class="btn btn-primary" href="{{ path('edit_profil', {'id': app.user.id}) }}">ici</a></p>
+        <div class="button-edit row justify-content-center">
+            <div class="col-1">
+                <a href="{{ path('edit_profil', {'id': app.user.id}) }}" class="btn btn-primary">Modifier</a>
+            </div>
         </div>
     </div>
 </div>

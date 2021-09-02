@@ -7,8 +7,8 @@
 
 <div class="example-wrapper">
 
-    <span><a class="btn btn-primary" href="{{ path('home') }}">Retour à l'accueil</a></span>
-    <form class="bg-light shadow my-3 p-3" method="post">
+    <span><a href="{{ path('home') }}"> < Retour à l'accueil</a></span>
+    <form class="bg-light shadow my-3 p-3 mt-5" method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
