@@ -6,31 +6,34 @@
 {% block body %}
 
 <div>
-
     <h1 class="text-center">HANDI'CHIENS</h1>
     <h2 class="text-center">Bienvenue sur le système de réservation des chiens Handi’Chiens.</h2>
 
-    <div class=" bg-light rounded shadow login-signup-container">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('dashboard') }}" class="btn btn-primary d-grid col-2 mx-auto mt-5">Retour au dasboard</a>
+    {% else %}
+        <div class=" bg-light rounded shadow login-signup-container">
 
-        <article class="d-flex justify-content-around m-5">
+            <article class="d-flex justify-content-around m-5">
 
-            <section class="p-5">
+                <section class="p-5">
 
-                <p class="h5">Vous êtes déjà un <br><strong>membre</strong> ? </p>
+                    <p class="h5">Vous êtes déjà un <br><strong>membre</strong> ? </p>
 
-                <a class="btn-home d-flex justify-content-center btn btn-lg btn-primary p-3 mt-5" href="{{ path('app_login') }}">Se connecter</a>
+                    <a class="btn-home d-flex justify-content-center btn btn-lg btn-primary p-3 mt-5" href="{{ path('app_login') }}">Se connecter</a>
 
-            </section>
+                </section>
 
-            <section class="p-5 border-left">
-                <p class="h5">Vous souhaitez devenir une <br><strong>famille relais</strong> ? </p>
+                <section class="p-5 border-left">
+                    <p class="h5">Vous souhaitez devenir une <br><strong>famille relais</strong> ? </p>
 
-                <a class="btn-home d-flex justify-content-center btn btn-lg btn-secondary p-3 mt-5" href="{{ path('register') }}">S'inscrire</a>
+                    <a class="btn-home d-flex justify-content-center btn btn-lg btn-secondary p-3 mt-5" href="{{ path('register') }}">S'inscrire</a>
 
-            </section>
+                </section>
 
-        </article>
-    </div>
+            </article>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}
