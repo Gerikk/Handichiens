@@ -15,9 +15,15 @@
     </head>
     <body id="{{ pageId is defined ? pageId : '' }}">
             <nav class="navbar navbar-expand-lg mb-5 px-2">
-                <a class="navbar-brand" href="{{ path('home') }}">
-                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
-                </a>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a class="navbar-brand" href="{{ path('dashboard') }}">
+                {% else %}
+                    <a class="navbar-brand" href="{{ path('home') }}">
+                {% endif %}
+                        <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
+                    </a>
+
                 <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
