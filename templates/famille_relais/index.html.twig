@@ -33,7 +33,7 @@
 <div class="bloc-bottom">
     <div class="btn-ajouter">
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('register') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
+            <a href="{{ path('register_fam') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
         {% endif %}
     </div>
     {% set nbFamily = 0 %}

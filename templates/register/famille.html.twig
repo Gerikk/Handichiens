@@ -1,16 +1,16 @@
-{% set pageId = "page-register-edu" %}
+{% set pageId = "page-register-famille" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription Educateur {% endblock %}
+{% block title %}Inscription Famille {% endblock %}
 
 {% block body %}
 
     <div class="example-wrapper">
 
-        <span><a href="{{ path('dashboard') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
+        <span><a href="{{ path('famille_relais') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
 
         <div class="containerRegister bg-light shadow my-3 p-3">
-            <h1 class="text-primary text-center">Inscription - Educateur</h1>
+            <h1 class="text-primary text-center">Inscription - Famille</h1>
 
             <div class="form form-register">
                 {{ form_start(form) }}
@@ -64,7 +64,6 @@
                 </span>
                 {{ form_end(form) }}
             </div>
-
         </div>
     </div>
 {% endblock %}
