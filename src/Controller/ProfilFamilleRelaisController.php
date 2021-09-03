@@ -70,7 +70,7 @@ class ProfilFamilleRelaisController extends AbstractController
         $em->remove($familly);
         $em->flush();
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('famille_relais');
 
     }
 }
