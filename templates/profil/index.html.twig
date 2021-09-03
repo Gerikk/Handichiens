@@ -17,12 +17,31 @@
             </div>
             <div class="informations col-7">
                 <ul>
-                    <li class="form-control mb-3">Nom : {{ app.user.lastname }}</li>
-                    <li class="form-control mb-3">Prénom : {{ app.user.firstname }}</li>
-                    <li class="form-control mb-3">E-mail : {{ app.user.email }}</li>
-                    <li class="form-control mb-3">Téléphone : {{ app.user.telephone }}</li>
-                    <li class="form-control mb-3">Code postal : {{ app.user.codePostal }}</li>
-                    <li class="form-control mb-3">Ville : {{ app.user.ville }}</li>
+                    <li class="form-control mb-3"><strong>Nom</strong> : {{ app.user.lastname }}</li>
+                    <li class="form-control mb-3"><strong>Prénom</strong> : {{ app.user.firstname }}</li>
+                    <li class="form-control mb-3"><strong>E-mail</strong> : {{ app.user.email }}</li>
+                    <li class="form-control mb-3"><strong>Téléphone</strong> :
+                        {%  if app.user.telephone %}
+                            {{ app.user.telephone }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
+                    <li class="form-control mb-3"><strong>Code postal</strong> :
+                        {%  if app.user.codePostal %}
+                            {{ app.user.codePostal }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
+                    </li>
+                    <li class="form-control mb-3"><strong>Ville</strong> :
+                        {%  if app.user.ville %}
+                            {{ app.user.ville }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
                 </ul>
             </div>
         </div>
