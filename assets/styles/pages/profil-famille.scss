@@ -27,12 +27,12 @@
   }
 
   .family-profil_informations {
-    display: flex;
-    justify-content: space-between;
+    //display: flex;
+    //justify-content: space-between;
     margin: 50px 0;
   }
   .family-profil_main-informations {
-    max-width: 290px;
+    //max-width: 290px;
 
     .family-profil_main-informations-detailed {
       background-color: #E7E7E7;
@@ -102,11 +102,12 @@
   }
 
   .family-profil_calendar-container {
-    max-width: 430px;
+    //max-width: 430px;
     width: 100%;
+    font-size: 1rem;
   }
-  .fc-toolbar {
+/*  .fc-toolbar {
     font-size: 10px;
-  }
+  }*/
 
 }
