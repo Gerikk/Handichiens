@@ -1,18 +1,19 @@
-{% set pageId = "page-register" %}
+{% set pageId = "page-register-famille" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription Famille {% endblock %}
 
 {% block body %}
 
-<div class="example-wrapper">
+    <div class="example-wrapper">
 
-    <span><a href="{{ path('home') }}"><i class="bi bi-arrow-left-circle"></i> Retour à l'accueil</a></span>
-    <div class="containerRegister bg-light shadow my-3 p-3">
-        <h1 class="text-primary text-center">Inscription</h1>
+        <span><a href="{{ path('famille_relais') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
 
-        <div class="form form-register">
-            {{ form_start(form) }}
+        <div class="containerRegister bg-light shadow my-3 p-3">
+            <h1 class="text-primary text-center">Inscription - Famille</h1>
+
+            <div class="form form-register">
+                {{ form_start(form) }}
                 <div class="row form-row">
                     <div class="row mb-2">
                         <div class="col-6">
@@ -50,21 +51,19 @@
 
                     <div class="row mb-3">
                         <div class="col-6">
-
                             {{ form_row(form.photos, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
 
                     <p class="mb-4"><span class="color">*</span> : champs obligatoires lors de l'inscription.</p>
-                    <p class="mb-4 text-center">Vous pourrez modifier ou compléter votre profil après votre inscription.</p>
+                    <p class="mb-4 text-center">Le profil pourra être modifié et complété après inscription.</p>
                 </div>
 
-            <span class="d-flex justify-content-center col-12">
-                {{ form_row(form.register,{'label':"S'inscrire", 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
-            </span>
-            {{ form_end(form) }}
+                <span class="d-flex justify-content-center col-12">
+                    {{ form_row(form.register,{'label':"Ajouter", 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
+                </span>
+                {{ form_end(form) }}
+            </div>
         </div>
-
     </div>
-</div>
 {% endblock %}

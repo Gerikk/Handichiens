@@ -32,8 +32,8 @@
             </div>
         </section>
 
-        <section class="family-profil_informations">
-            <div class="family-profil_main-informations">
+        <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
+            <div class="family-profil_main-informations col-12 col-lg-3">
                 <h2>Informations de la famille</h2>
                 <div class="family-profil_main-informations-detailed">
                     <h3>Les informations</h3>
@@ -63,13 +63,13 @@
                     <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
                 </div>
             </div>
-            <div class="family-profil_dog-attribution">
+            <div class="family-profil_dog-attribution col-12 col-lg-3">
                 <h2>Attribution du chien</h2>
                 <div class="family-profil_dog-pick">
                     <p class="guidance-select">
                         Veuillez sélectionner le chien à attribuer:
                     </p>
-                    <select name="dogAttribution" id="dogAttribution" class="dog-attribution">
+                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
                         <option value="#">Pépite</option>
                         <option value="#">Olympe</option>
                         <option value="#">Oscard</option>
@@ -92,10 +92,10 @@
                     </div>
                 </div>
             </div>
-            <div class="family-profil_calendar">
+            <div class="family-profil_calendar bg-light shadow col">
                 <h2>Disponibilités:</h2>
                 <div class="family-profil_calendar-container">
-                    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
+                    <span class="m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
                           id="calendar-holder"
                           data-events-url="{{ path('fc_load_events') }}">
                     </span>
@@ -136,6 +136,9 @@
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    {{ encore_entry_script_tags('calendar') }}
+    <script type="text/javascript">
+        let familleId = {{famille.id}};
+    </script>
+    {{ encore_entry_script_tags('calendar_profil_famille') }}
 
 {% endblock %}

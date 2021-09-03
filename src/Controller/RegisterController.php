@@ -81,7 +81,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/admin/register", name="register_edu")
+     * @Route("/educ/register", name="register_edu")
      * @param Request $request
      * @param UserPasswordHasherInterface $passwordEncoder
      *
@@ -110,6 +110,40 @@ class RegisterController extends AbstractController
 
 
         return $this->render('register/edu.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/fam/register", name="register_fam")
+     * @param Request $request
+     * @param UserPasswordHasherInterface $passwordEncoder
+     *
+     * @return Response
+     */
+    public function index_famille(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        $user->setRoles(["ROLE_FAMILLE"]);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+
+            // Encoder le mot de passe
+            $user->setPassword($passwordEncoder->hashPassword($user, $user->getPassword()));
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('famille_relais');
+        }
+
+
+        return $this->render('register/famille.html.twig', [
             'form' => $form->createView()
         ]);
     }

@@ -12,7 +12,7 @@
     <h3>Disponibilités:</h3>
     <div class="dropdown-select_start-date">
         <span>Du:</span>
-        <select name="startDate" id="startDate">
+        <select class="form-select" name="startDate" id="startDate">
             <option value="#">Date</option>
             <option value="#">Date</option>
             <option value="#">Date</option>
@@ -21,7 +21,7 @@
     </div>
     <div class="dropdown-select_end-date">
         <span>Au:</span>
-        <select name="endDate" id="endDate">
+        <select class="form-select" name="endDate" id="endDate">
             <option value="#">Date</option>
             <option value="#">Date</option>
             <option value="#">Date</option>
@@ -33,7 +33,7 @@
 <div class="bloc-bottom">
     <div class="btn-ajouter">
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('register') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
+            <a href="{{ path('register_fam') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
         {% endif %}
     </div>
     {% set nbFamily = 0 %}
