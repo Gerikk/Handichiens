@@ -13,7 +13,11 @@
     <div class="profil row">
         <div class="row mb-5">
             <div class="photo col-5">
-                HELLO PHOTO
+                {% if app.user.brochureFilename %}
+                    <img src="{{ asset('uploads/photos/' ~ app.user.brochureFilename) }}" alt="Photo de profil de la famille relais">
+                {% else %}
+                    <img src="{{ asset('images/profil-user.svg') }}" alt="Photo de profil de la famille relais">
+                {% endif %}
             </div>
             <div class="informations col-7">
                 <ul>

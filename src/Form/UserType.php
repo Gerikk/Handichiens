@@ -101,10 +101,9 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('photos', FileType::class, [
-                'label' => 'Photo de profil (.jpg)',
-                // unmapped means that this field is not associated to any entity property
+                'label' => 'Photo de profil (.jpg, .png)',
                 'mapped' => false,
-                // make it optional so you don't have to re-upload the PDF file
+                // make it optional so you don't have to re-upload the photo
                 // every time you edit the Product details
                 'required' => false,
                 // unmapped fields can't define their validation using annotations
@@ -115,7 +114,7 @@ class UserType extends AbstractType
                         'mimeTypes' => [
                             'image/*',
                         ],
-                        'mimeTypesMessage' => 'Veuillez ajouter une image au format .jpg',
+                        'mimeTypesMessage' => 'Veuillez ajouter une image au format .jpg ou .png',
                     ])
                 ],
             ])
