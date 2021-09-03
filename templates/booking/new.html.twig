@@ -4,7 +4,11 @@
 {% block title %}Nouvel enregistrement{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un enregistrement</h1>
+    <h1>Ajouter une période de disponibilité</h1>
+
+
+
+    <p><i class="bi-info-circle-fill"></i> Si aucune date n'est sélectionnée comme date de fin, la période sera considérée pour la journée entière</p>
 
     {{ include('booking/_form.html.twig') }}
 

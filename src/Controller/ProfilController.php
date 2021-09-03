@@ -18,8 +18,8 @@ class ProfilController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager, UserRepository $userRepository){
         $this -> entityManager = $entityManager;
         $this -> userRepository = $userRepository;
-
     }
+
     /**
      * @Route("/profil", name="profil")
      */

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: eventsUrl,
                 method: "POST",
                 extraParams: {
-                    filters: JSON.stringify({"calendar-id": "famille-calendar"})
+                    filters: JSON.stringify({"calendar-id": "dispo-famille-calendar"})
                 },
                 failure: () => {
                     // alert("There was an error while fetching FullCalendar!");

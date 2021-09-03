@@ -8,9 +8,12 @@ import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
-import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
+import "./index.css";
+
+//if(familleId){
 
 document.addEventListener("DOMContentLoaded", () => {
+
     let calendarEl = document.getElementById("calendar-holder");
 
     let eventsUrl = calendarEl.dataset.eventsUrl;
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: eventsUrl,
                 method: "POST",
                 extraParams: {
-                    filters: JSON.stringify({ "calendar-id": "edu-calendar" })
+                    filters: JSON.stringify({ "calendar-id": "profil-famille-calendar", "famille_id": familleId }),
                 },
                 failure: () => {
                     // alert("There was an error while fetching FullCalendar!");
@@ -43,10 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
         header: {
             left: "prev,next today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay",
+            right: "dayGridMonth,timeGridWeek",
         },
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin], // https://fullcalendar.io/docs/plugin-index
         timeZone: "UTC",
     });
+
     calendar.render();
+
+
 });

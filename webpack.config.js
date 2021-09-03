@@ -22,7 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('calendar', './assets/js/calendar/index.js')
-    .addEntry('calendar_edu', './assets/js/calendar/educateur.js')
+    .addEntry('calendar_profil_famille', './assets/js/calendar/profil_famille.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
