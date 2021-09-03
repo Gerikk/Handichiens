@@ -7,7 +7,7 @@
 
     <div class="example-wrapper">
 
-        <span><a class="btn btn-primary" href="{{ path('profil') }}">Retour</a></span>
+        <span><a class="btn btn-primary" href="{{ path('profil') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
         <div class="containerRegister bg-light shadow my-3 p-3">
             <h1 class="text-primary text-center">Inscription - Educateur</h1>
 
@@ -44,6 +44,11 @@
                     <div class="row mb-3">
                         <div class="col-6">
                             {{ form_row(form.telephone, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            {{ form_row(form.photos, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
                     <p class="mb-4"><i class="bi bi-exclamation-triangle-fill"></i> Vous devez rentrer à nouveau votre mot de passe pour effectuer vos modifications. </p>

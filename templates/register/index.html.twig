@@ -7,7 +7,7 @@
 
 <div class="example-wrapper">
 
-    <span><a href="{{ path('home') }}"> < Retour à l'accueil</a></span>
+    <span><a href="{{ path('home') }}"><i class="bi bi-arrow-left-circle"></i> Retour à l'accueil</a></span>
     <div class="containerRegister bg-light shadow my-3 p-3">
         <h1 class="text-primary text-center">Inscription</h1>
 
@@ -48,13 +48,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            {{ form_row(form.brochure), {'attr':{'class':'form-control'}}) }}
+                            {{ form_row(form.photos, {'attr':{'class':'form-control'}}) }}
                         </div>
                     </div>
                     <p class="mb-4"><span class="color">*</span> : champs obligatoires lors de l'inscription.</p>
                     <p class="mb-4 text-center">Vous pourrez modifier ou compléter votre profil après votre inscription.</p>
-
-
                 </div>
 
             <span class="d-flex justify-content-center col-12">
