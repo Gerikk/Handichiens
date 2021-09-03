@@ -6,15 +6,18 @@
      {{ encore_entry_link_tags('app') }}
      {{ encore_entry_link_tags('calendar') }}
 {% endblock %}
-{% block javascripts %}
-    {{ encore_entry_script_tags('calendar_edu') }}
-{% endblock %}
+
 {% block body %}
     <div class="container">
-        <a href="/les-familles-relais">< Retour</a>
+        <a href="/les-familles-relais"><i class="bi bi-arrow-left-circle"></i> Retour</a>
         <section class="family-profil_container">
             <div class="family-profil_picture">
-                <img src="{{ asset('images/famille-relais.jpg') }}" alt="Photo de profil de la famille relais">
+                {% if famille.brochureFilename %}
+                    <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="Photo de profil de la famille relais">
+                {% else %}
+                    <img src="{{ asset('images/famille-relais.jpg') }}" alt="Photo de profil de la famille relais">
+                {% endif %}
+
                 <div class="family-profil-status">
                     <span>NOVICE</span>
                 </div>
@@ -34,30 +37,30 @@
                 <h2>Informations de la famille</h2>
                 <div class="family-profil_main-informations-detailed">
                     <h3>Les informations</h3>
-                    <p>Nom: {{famille.lastname}} </p>
-                    <p>Prénom: {{famille.firstname}} </p>
-                    <p> Ville:
+                    <p><strong>Nom:</strong> {{famille.lastname}} </p>
+                    <p><strong>Prénom:</strong> {{famille.firstname}} </p>
+                    <p><strong>Ville:</strong>
                         {%  if famille.ville %}
                             {{famille.ville}}
                         {% else %}
                             Non renseigné
                         {% endif %}
                     </p>
-                    <p> Téléphone:
+                    <p><strong>Téléphone:</strong>
                         {%  if famille.telephone %}
                             {{famille.telephone}}
                         {% else %}
                             Non renseigné
                         {% endif %}
                     </p>
-                    <p> Code postal:
+                    <p><strong>Code postal:</strong>
                         {%  if famille.codePostal %}
                             {{famille.codePostal}}
                         {% else %}
                             Non renseigné
                         {% endif %}
                     </p>
-                    <p>Adresse e-mail: {{famille.email}} </p>
+                    <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
                 </div>
             </div>
             <div class="family-profil_dog-attribution">
@@ -66,7 +69,7 @@
                     <p class="guidance-select">
                         Veuillez sélectionner le chien à attribuer:
                     </p>
-                    <select name="dogAttribution" id="dogAttribution" class="dog-attribution">
+                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
                         <option value="#">Pépite</option>
                         <option value="#">Olympe</option>
                         <option value="#">Oscard</option>
@@ -104,8 +107,38 @@
         <div class="btn-modifier">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
                 <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
-                <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Supprimer</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Supprimer la famille
+                </button>
             {% endif %}
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Suppression de la famille</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous sur de vouloir supprimer la famille ? <br>
+                        <strong>Cette action est irréversible !</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script type="text/javascript">
+        let familleId = {{famille.id}};
+    </script>
+    {{ encore_entry_script_tags('calendar_profil_famille') }}
+
 {% endblock %}

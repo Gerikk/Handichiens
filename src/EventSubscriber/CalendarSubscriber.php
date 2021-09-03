@@ -41,18 +41,18 @@ class CalendarSubscriber implements EventSubscriberInterface
         $userId = $this->security->getUser()->getId();
 
         switch($filters['calendar-id']) {
-            case 'famille-calendar':
-                $this->fillCalendarFamille($calendar, $start, $end, $filters, $userId);
+            case 'dispo-famille-calendar':
+                $this->fillCalendarDispo($calendar, $start, $end, $filters, $userId);
                 break;
-            case 'edu-calendar':
-                $this->fillCalendarEdu($calendar, $start, $end, $filters);
+            case 'profil-famille-calendar':
+                $this->fillCalendarProfilFamille($calendar, $start, $end, $filters);
                 break;
         }
 
 
     }
 
-    public function fillCalendarFamille(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters, $userId){
+    public function fillCalendarDispo(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters, $userId){
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
@@ -97,12 +97,13 @@ class CalendarSubscriber implements EventSubscriberInterface
         }
     }
 
-    public function fillCalendarEdu(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
+    public function fillCalendarProfilFamille(CalendarEvent $calendar, \DateTimeInterface $start, \DateTimeInterface $end, array $filters)
     {
-        //TODO: Ajouter id de l'utilisateur visé par la page.
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->andWhere('booking.famille = :famille_id')
+            ->setParameter('famille_id', $filters['famille_id'])
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()
