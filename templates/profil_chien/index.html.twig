@@ -6,21 +6,30 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <img src="{{ chien.img }}" alt="" class="dog-profile">
-        <h2><strong>Pépite</strong></h2>
-    </div>
-    <div class="resume-title">
-        <h3>Votre chien en quelques mots</h3>
-    </div>
-    <div class="resume-chien">
-        <h5>Le chien est beau</h5>
-    </div>
+        <div class="dog-id-up">
+            <div class="dog-id col-6">
+                <img src="{{ asset('images/chien.jpg') }}" alt="" class="dog-profile">
+                <h2><strong>{{chien.name}}</strong></h2>
+            </div>
+            <div class="chien-information col-6">
+                <h5><strong> Age : </strong>{{chien.age}} ans</h5>
+                <h5><strong> Race : </strong>{{chien.race}}</h5>
+                <h5><strong> Specialité : </strong>{{chien.formation}}</h5>
+            </div>
+        </div>
+        <div class="resume-title">
+            <h3>Votre chien en quelques mots</h3>
+        </div>
+        <div class="resume-chien">
+            <h5>{{chien.resume}}</h5>
+        </div>
 
-    <div class="btn-modifier">
-        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-            <a href="/modifier_profil_chien" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
-            <a href="/" class="btn btn-danger mx-2 my-sm-0">Supprimer</a>
-        {% endif %}
+        <div class="btn-modifier">
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+                <a href="/modifier_profil_chien" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
+                <a href="/" class="btn btn-danger mx-2 my-sm-0">Supprimer</a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

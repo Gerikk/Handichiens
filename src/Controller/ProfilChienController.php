@@ -22,18 +22,13 @@ class ProfilChienController extends AbstractController
     }
 
     /**
-     * @Route("/profil_chien", name="profil_chien")
+     * @Route("/profil_chien/{id}", name="profil_chien")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, Chien $chien): Response
     {
-        $id = $request->get('id');
-
-        $chien = $this->entityManager->getRepository(Chien::class)->findById($id);
         return $this->render('profil_chien/index.html.twig', [
             'controller_name' => 'ProfilChienController',
             'chien' => $chien,
         ]);
     }
-
-
 }

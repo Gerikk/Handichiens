@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Chien;
 use App\Form\NewChienType;
 
@@ -14,10 +15,12 @@ class ChiensController extends AbstractController
     /**
      * @Route("/chiens", name="chiens")
      */
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $chiens = $entityManager->getRepository(Chien::class)->findAll();
         return $this->render('chiens/index.html.twig', [
             'controller_name' => 'ChiensController',
+            'chiens' => $chiens
         ]);
     }
 
@@ -43,7 +46,7 @@ class ChiensController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-            return new Response('Votre nouveau chien à bien été crée');
+            return $this->redirectToRoute('chiens');
         }
 
         return $this->render('chiens/new.html.twig', [
