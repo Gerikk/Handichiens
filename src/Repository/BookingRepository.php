@@ -22,19 +22,29 @@ class BookingRepository extends ServiceEntityRepository
     // /**
     //  * @return Booking[] Returns an array of Booking objects
     //  */
+
+    public function findById($value): ?Booking
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.famille_id = :val')
             ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+*/
 
     /*
     public function findOneBySomeField($value): ?Booking
