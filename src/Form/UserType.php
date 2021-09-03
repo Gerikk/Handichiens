@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
@@ -59,6 +60,14 @@ class UserType extends AbstractType
                 'type'            => PasswordType::class,
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
                 'required'        => true,
+                'constraints' => [
+                    new Length(
+                        [ 'min' => 8 ]
+                    ),
+                    new Regex(
+                        [ 'pattern' => '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/' ]
+                    ),
+                ],
                 'first_options'   => [
                     'label' => 'Mot de passe *',
                     'attr'  => ['placeholder' => 'Votre mot de passe',
