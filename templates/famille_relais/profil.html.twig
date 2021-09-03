@@ -69,7 +69,7 @@
                     <p class="guidance-select">
                         Veuillez sélectionner le chien à attribuer:
                     </p>
-                    <select name="dogAttribution" id="dogAttribution" class="dog-attribution">
+                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
                         <option value="#">Pépite</option>
                         <option value="#">Olympe</option>
                         <option value="#">Oscard</option>
@@ -136,6 +136,9 @@
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    {{ encore_entry_script_tags('calendar') }}
+    <script type="text/javascript">
+        let familleId = {{famille.id}};
+    </script>
+    {{ encore_entry_script_tags('calendar_profil_famille') }}
 
 {% endblock %}
