@@ -3,21 +3,26 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class="welcome col-12">
-        <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
-        <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
-            {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
-            {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
-            Vous êtes connectés en tant
-            {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
-            {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
-            {% if is_granted("ROLE_FAMILLE") %} que famille relais.{% endif %}
-        </small>
-    </div>
-    <div class="row justify-content-between dashboardContainer">
 
-        <div class="col-12 col-sm-6 last-info">
+    {% for message in app.flashes('success') %}
+        <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+    {% endfor %}
 
+    <div class="row justify-content-between">
+        <div class="col-6 last-info">
+            <div class="welcome">
+                <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+                <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
+                        {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
+                        {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
+                    Vous êtes connectés en tant
+                    {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
+                    {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
+                    {% if is_granted("ROLE_FAMILLE") %} que famille relais.{% endif %}
+                </small>
+            </div>
 
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">

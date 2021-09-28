@@ -71,6 +71,8 @@ class RegisterController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
+            $this->addFlash('success', "Votre inscription a bien été prise en compte.");
+
             return $this->redirectToRoute('home');
         }
 
@@ -105,6 +107,8 @@ class RegisterController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
+            $this->addFlash('success', "L'ajout d'un nouvel éducateur a bien été pris en compte.");
+
             return $this->redirectToRoute('dashboard');
         }
 
@@ -138,6 +142,8 @@ class RegisterController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
+
+            $this->addFlash('success', "L'ajout d'une nouvelle famille relais a bien été pris en compte.");
 
             return $this->redirectToRoute('famille_relais');
         }
