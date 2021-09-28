@@ -4,11 +4,12 @@
 {% block title %}Handi'Chiens - LE PROFIL DU CHIEN{% endblock %}
 
 {% block body %}
+<p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour à la liste des chiens</a></p>
 <div class="container">
     <div class="row">
         <div class="dog-id-up">
             <div class="dog-id col-6">
-                <img src="{{ asset('uploads/photo/' ~ chien.img) }}" alt="" class="dog-profile">
+                <img src="{{ asset('uploads/chiens/' ~ chien.img) }}" alt="" class="dog-profile">
                 <h2><strong>{{chien.name}}</strong></h2>
             </div>
             <div class="chien-information col-6">
