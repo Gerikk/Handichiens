@@ -37,7 +37,7 @@
                 text-decoration: none;
                 transition: all 0.3s ease-in-out;
                 padding: 0;
-                position: relative;
+                
                 .card-img-top {
                     width: 100%;
                     height: 15vw;
@@ -63,21 +63,5 @@
                 margin-right: 2rem;
             }       
         }
-    }
-    .dog-status-booked, .dog-status-available {
-        display: block;
-        color: white;
-
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        border-radius: 5px 0 25px;
-        padding: 10px 15px;
-    }
-    .dog-status-booked {
-        background-color: #606060;
-    }
-    .dog-status-available {
-        background-color: #5eb6de;
     }
 }

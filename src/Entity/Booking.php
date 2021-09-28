@@ -38,16 +38,6 @@ class Booking
      */
     private $famille;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Chien::class, inversedBy="booking", cascade={"persist", "remove"})
-     */
-    private $chien_id;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $status;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -97,30 +87,6 @@ class Booking
     public function setFamille(?User $famille): self
     {
         $this->famille = $famille;
-
-        return $this;
-    }
-
-    public function getChienId(): ?Chien
-    {
-        return $this->chien_id;
-    }
-
-    public function setChienId(?Chien $chien_id): self
-    {
-        $this->chien_id = $chien_id;
-
-        return $this;
-    }
-
-    public function getStatus(): ?bool
-    {
-        return $this->status;
-    }
-
-    public function setStatus(bool $status): self
-    {
-        $this->status = $status;
 
         return $this;
     }
