@@ -49,6 +49,8 @@ class ProfilFamilleRelaisController extends AbstractController
             $this->entityManager->persist($profil);
             $this->entityManager->flush();
 
+            $this->addFlash('success', "La modification a bien été prise en compte.");
+
             return $this->redirectToRoute('profil_famille_relais', ['id' => $profil->getId()]);
         }
 
@@ -69,6 +71,8 @@ class ProfilFamilleRelaisController extends AbstractController
         $usrRepo = $em->getRepository(User::class);
         $em->remove($familly);
         $em->flush();
+
+        $this->addFlash('success', "La suppression a bien été prise en compte.");
 
         return $this->redirectToRoute('famille_relais');
 

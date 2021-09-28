@@ -3,6 +3,12 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+    {% endfor %}
+
     <div class="row justify-content-between">
         <div class="col-6 last-info">
             <div class="welcome">

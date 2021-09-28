@@ -67,6 +67,8 @@ class ChiensController extends AbstractController
                 $entityManager->persist($task);
                 $entityManager->flush();
 
+                $this->addFlash('success', "L'ajout d'un nouveau chien a bien été pris en compte.");
+
                 return $this->redirectToRoute('chiens');
             }
 

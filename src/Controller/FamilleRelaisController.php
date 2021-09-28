@@ -13,16 +13,6 @@ class FamilleRelaisController extends AbstractController
     /**
      * @Route("/les-familles-relais", name="famille_relais")
      */
-    public function index(): Response
-    {
-        return $this->render('famille_relais/index.html.twig', [
-            'controller_name' => 'FamilleRelaisController',
-        ]);
-    }
-
-    /**
-     * @Route("/les-familles-relais", name="famille_relais")
-     */
     public function findFamille(EntityManagerInterface $em): Response
     {
         $repository = $em->getRepository(User::class);
