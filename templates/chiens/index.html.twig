@@ -23,7 +23,12 @@
     {% for ch in chiens %}
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
             <a href="{{ path('profil_chien', {'id': ch.id})  }}" class="card col-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('uploads/photo/' ~ ch.img) }}" alt="">
+                {% if ch.booking.id is defined %}
+                    <span class="dog-status-booked">Réservé - Famille: {{ ch.booking.famille.lastname}} </span>
+                    {% else %}
+                    <span class="dog-status-available">Disponible</span>
+                {% endif%}
+                <img class="card-img-top" src="{{ asset('uploads/photos/' ~ ch.img) }}" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{ch.name}}</h5>
                     <div class="btn btn-primary">Voir plus</div>
