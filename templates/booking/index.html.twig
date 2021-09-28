@@ -7,36 +7,37 @@
     <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
     <h1>Vos disponibilités</h1>
 
-    <table class="table table-light table-hover table-bordered text-center table-responsive-sm">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Date début</th>
-                <th>Date fin</th>
-                <th>Famille</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for booking in app.user.bookings %}
-            <tr>
-                <td>{{ booking.title }}</td>
-                <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ booking.famille.firstname }} {{ booking.famille.lastname }}</td>
-                <td>
-                    <a class="btn btn-secondary" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
-                    <a class="btn btn-secondary" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun résultat trouvé</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    <div class="table-responsive">
+        <table class="table table-light table-hover table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Famille</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for booking in app.user.bookings %}
+                <tr>
+                    <td>{{ booking.title }}</td>
+                    <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>{{ booking.famille.firstname }} {{ booking.famille.lastname }}</td>
+                    <td>
+                        <a class="btn btn-secondary m-1" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
+                        <a class="btn btn-secondary m-1" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun résultat trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <a class="btn btn-primary" href="{{ path('booking_new') }}">Créer nouveau</a>
 
 

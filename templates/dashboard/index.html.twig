@@ -3,6 +3,13 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+
+    {% for message in app.flashes('success') %}
+        <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+    {% endfor %}
+
     <div class="row justify-content-between">
         <div class="col-6 last-info">
             <div class="welcome">
@@ -19,14 +26,16 @@
 
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">
-                    <div class="col-3 admin-dogs_single">
+
+                    <div class="col-4 col-md-3 admin-dogs_single">
                         <p class="number-dogs">{{ dogsplaced|length }}</p>
                         <p>Chien(s) placé(s)</p>
                     </div>
-                    <div class="col-3 admin-dogs_single">
+                    <div class="col-4 col-md-3 admin-dogs_single">
                         <p class="number-dogs">
                             {{ dogsfree|length - dogsplaced|length }}
                         </p>
+
                         <p>Chien(s) libre(s)</p>
                     </div>
                 </section>
@@ -75,7 +84,7 @@
             {% endif %}
         </div>
 
-        <div class="col-5 navigation">
+        <div class="col-11 col-sm-6 col-lg-5 navigation">
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <nav class="navigation">
                     <ul class="menu">

@@ -112,3 +112,10 @@ a { text-decoration: none; }
     }
   }
 }
+
+@media (max-width: 576px) {
+  .dashboardContainer{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
