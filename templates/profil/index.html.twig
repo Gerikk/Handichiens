@@ -4,6 +4,11 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+    <span class="alert alert-success">
+            <i class="bi bi-check2-circle"></i> {{ message }}
+        </span>
+{% endfor %}
 
 <div class="example-wrapper">
     <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>

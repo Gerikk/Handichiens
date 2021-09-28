@@ -6,6 +6,12 @@
 {% block body %}
 
 <body>
+{% for message in app.flashes('success') %}
+    <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+{% endfor %}
+
 <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
 <h1>La liste des familles relais</h1>
 <div class="dropdown-select">
