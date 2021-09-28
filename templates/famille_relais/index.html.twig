@@ -14,9 +14,9 @@
 
 <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
 <h1>La liste des familles relais</h1>
-<div class="dropdown-select">
+<div class="dropdown-select d-flex flex-column flex-lg-row">
     <h3>Disponibilités:</h3>
-    <div class="dropdown-select_start-date">
+    <div class="dropdown-select_start-date m-3 m-lg-0">
         <span>Du:</span>
         <select class="form-select" name="startDate" id="startDate">
             <option value="#">Date</option>
@@ -25,7 +25,7 @@
             <option value="#">Date</option>
         </select>
     </div>
-    <div class="dropdown-select_end-date">
+    <div class="dropdown-select_end-date m-3 m-lg-0">
         <span>Au:</span>
         <select class="form-select" name="endDate" id="endDate">
             <option value="#">Date</option>
@@ -36,7 +36,7 @@
     </div>
     <input type="submit" value="Rechercher" class="btn btn-primary">
 </div>
-<div class="bloc-bottom">
+<div class="bloc-bottom flex-column flex-sm-row">
     <div class="btn-ajouter">
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('register_fam') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
@@ -51,7 +51,7 @@
     <p>Nombre de familles relais : {{ nbFamily }}</p>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         {% for famille in familles %}
             {% if famille.roles[0] == 'ROLE_FAMILLE' %}
                 <div class="card col-3" style="width: 18rem;">
@@ -71,7 +71,7 @@
         {% endfor %}
     </div>
 </div>
-</div>
+
 </body>
 
 {% endblock %}
