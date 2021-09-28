@@ -3,27 +3,29 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class="row justify-content-between">
-        <div class="col-6 last-info">
-            <div class="welcome">
-                <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
-                <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
-                        {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
-                        {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
-                    Vous êtes connectés en tant
-                    {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
-                    {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
-                    {% if is_granted("ROLE_FAMILLE") %} que famille relais.{% endif %}
-                </small>
-            </div>
+    <div class="welcome col-12">
+        <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+        <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
+            {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
+            {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
+            Vous êtes connectés en tant
+            {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
+            {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
+            {% if is_granted("ROLE_FAMILLE") %} que famille relais.{% endif %}
+        </small>
+    </div>
+    <div class="row justify-content-between dashboardContainer">
+
+        <div class="col-12 col-sm-6 last-info">
+
 
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">
-                    <div class="col-3 admin-dogs_single">
+                    <div class="col-4 col-md-3 admin-dogs_single">
                         <p class="number-dogs">28</p>
                         <p>Chien(s) placé(s)</p>
                     </div>
-                    <div class="col-3 admin-dogs_single">
+                    <div class="col-4 col-md-3 admin-dogs_single">
                         <p class="number-dogs">6</p>
                         <p>Chien(s) libre(s)</p>
                     </div>
@@ -113,7 +115,7 @@
             {% endif %}
         </div>
 
-        <div class="col-5 navigation">
+        <div class="col-11 col-sm-6 col-lg-5 navigation">
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <nav class="navigation">
                     <ul class="menu">
