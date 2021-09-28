@@ -5,6 +5,38 @@
 
 {% block body %}
 
+<p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+<h1>La liste des chiens</h1>
+<div class="bloc-bottom">
+    <div class="btn-ajouter">
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+            <a href="/chiens/ajouter" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>
+        {% endif %}
+    </div>
+    {% set nbChien = 0 %}
+    {% for ch in chiens %}
+        {% set nbChien = nbChien + 1 %}
+    {% endfor %}
+    <p>Nombre de chiens : {{ nbChien }}</p>
+</div>
+<div class="container">
+    <div class="row">
+    {% for ch in chiens %}
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
+            <a href="{{ path('profil_chien', {'id': ch.id})  }}" class="card col-3" style="width: 18rem;">
+                {% if ch.booking.id is defined %}
+                    <span class="dog-status-booked">Réservé - Famille: {{ ch.booking.famille.lastname}} </span>
+                    {% else %}
+                    <span class="dog-status-available">Disponible</span>
+                {% endif%}
+                <img class="card-img-top" src="{{ asset('uploads/photos/' ~ ch.img) }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ch.name}}</h5>
+                    <div class="btn btn-primary">Voir plus</div>
+                </div>
+            </a>
+        {% endif %}
+
     {% for message in app.flashes('success') %}
         <span class="alert alert-success">
                 <i class="bi bi-check2-circle"></i> {{ message }}

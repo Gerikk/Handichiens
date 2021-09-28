@@ -48,7 +48,7 @@ class ChiensController extends AbstractController
 
                     try {
                         $imgFile->move(
-                            $this->getParameter('img_directory'),
+                            $this->getParameter('photos_directory'),
                             $newFilename
                         );
                     } catch (FileException $e) {
