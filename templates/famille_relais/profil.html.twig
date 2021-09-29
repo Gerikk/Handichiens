@@ -13,11 +13,10 @@
         <section class="family-profil_container">
             <div class="family-profil_picture">
                 {% if famille.brochureFilename %}
-                    <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="Photo de profil de la famille relais">
+                    <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="">
                 {% else %}
-                    <img src="{{ asset('images/famille-relais.jpg') }}" alt="Photo de profil de la famille relais">
+                    <img src="{{ asset('images/default-family.jpg') }}" alt="">
                 {% endif %}
-
                 <div class="family-profil-status">
                     <span>NOVICE</span>
                 </div>
@@ -70,17 +69,27 @@
                         Veuillez sélectionner le chien à attribuer:
                     </p>
                     <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
-                        <option value="#">Pépite</option>
-                        <option value="#">Olympe</option>
-                        <option value="#">Oscard</option>
-                        <option value="#">Pumba</option>
+                        {% for chien in chiens %}
+                            {% if chien.name is defined %}
+                                <option value="{{chien.id }}">{{chien.name}}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                     <input type="submit" value="Valider" class="btn btn-primary mx-2 my-sm-0">
+x
                 </div>
                 <div class="family-profil_dog-history">
-                    <div class="family-profil_dog-history-single">
-                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
-                    </div>
+                    {% for booking in bookings %}
+                        {% if (booking.famille.id == famille.id) %}
+                            <div class="family-profil_dog-history-single">
+                                <p><strong>{{booking.chienid.name }}: </strong>Réservé(e) du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
+                                {% if booking.status == 1 %}<span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
+                                    {% elseif booking.status == 0 %}
+                                        <span class="status terminé">Terminée</span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     <div class="family-profil_dog-history-single">
                         <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
                     </div>

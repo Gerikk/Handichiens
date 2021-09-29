@@ -3,6 +3,13 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+
+    {% for message in app.flashes('success') %}
+        <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+    {% endfor %}
+
     <div class="row justify-content-between">
         <div class="col-6 last-info">
             <div class="welcome">
@@ -19,12 +26,16 @@
 
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">
-                    <div class="col-3 admin-dogs_single">
-                        <p class="number-dogs">28</p>
+
+                    <div class="col-4 col-md-3 admin-dogs_single">
+                        <p class="number-dogs">{{ dogsplaced|length }}</p>
                         <p>Chien(s) placé(s)</p>
                     </div>
-                    <div class="col-3 admin-dogs_single">
-                        <p class="number-dogs">6</p>
+                    <div class="col-4 col-md-3 admin-dogs_single">
+                        <p class="number-dogs">
+                            {{ dogsfree|length - dogsplaced|length }}
+                        </p>
+
                         <p>Chien(s) libre(s)</p>
                     </div>
                 </section>
@@ -32,88 +43,48 @@
                 <section class="row admin-main-content">
                     <h2>Les derniers chiens placés en famille relais</h2>
                     <ul class="list-booked-dogs">
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-award-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>Prunelle</p>
-                                <p>Fabien Bernard</p>
-                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
-                            </div>
-                        </li>
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-award-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>Pepite</p>
-                                <p>Gaëlle Marez</p>
-                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
-                            </div>
-                        </li>
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-award-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>Pimprenelle</p>
-                                <p>Sophie Hourtel</p>
-                                <p>Prise en charge du chien du 23/08/2021 au 25/08/2021</p>
-                            </div>
-                        </li>
+                        {% for booking in bookings %}
+                            {% if booking.chienid.name is defined %}
+                                <li class="row booked-dog">
+                                    <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>Chien: {{ booking.chienid.name }}</p>
+                                        <p>Famille: {{ booking.famille.firstname }} {{ booking.famille.lastname }}</p>
+                                        <p>Prise en charge du chien du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </section>
             {% endif %}
 
             {% if is_granted ('ROLE_FAMILLE') %}
                 <section class="row famille-main-content">
-                    <h2>Mes dernières disponibilités ajoutés</h2>
-
+                    <h2>Mes réservations</h2>
                     <ul class="list-booked-dogs">
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-calendar-week-fill"></i>
-                            </div>
-                            <div class="col-11">
-
-                                <p>23/08/2021 au 25/08/2021</p>
-                                <p class="success-dog">Aucun chien n'a été affecté sur cette période.</p>
-                            </div>
-                        </li>
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-calendar-week-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>23/08/2021 au 25/08/2021</p>
-                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
-                            </div>
-                        </li>
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-calendar-week-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>23/08/2021 au 25/08/2021</p>
-                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
-                            </div>
-                        </li>
-                        <li class="row booked-dog">
-                            <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                <i class="bi bi-calendar-week-fill"></i>
-                            </div>
-                            <div class="col-11">
-                                <p>23/08/2021 au 25/08/2021</p>
-                                <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> Un chien vous a été confié pour cette période.</p>
-                            </div>
-                        </li>
+                        {% for allbooking in allbookings %}
+                            {% if (app.user.id == allbooking.famille.id) and (allbooking.chienid.name is defined) %}
+                                <li class="row booked-dog">
+                                    <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                        <i class="bi bi-calendar-week-fill"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>Du: {{ allbooking.beginAt|date('d-m-Y') }} au {{ allbooking.endAt|date('d-m-Y') }}</p>
+                                        <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> <strong>{{ allbooking.chienid.name }}</strong> vous a été confié pour cette période.</p>
+                                    </div>
+                                </li>
+                                {% else %}
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </section>
             {% endif %}
         </div>
 
-        <div class="col-5 navigation">
+        <div class="col-11 col-sm-6 col-lg-5 navigation">
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <nav class="navigation">
                     <ul class="menu">

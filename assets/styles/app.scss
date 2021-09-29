@@ -132,32 +132,37 @@ body{
     width: 15rem;
 }
 
+
 // CSS page inscription
 #page-register {
     .form-register {
         .row {
             justify-content: start !important;
         }
+
         .color {
             color: $danger;
             font-weight: bold;
         }
+
         ul {
-             list-style-type: none;
-             font-size: 13px;
-             padding-left: 0;
-             margin: 10px;
+            list-style-type: none;
+            font-size: 13px;
+            padding-left: 0;
+            margin: 10px;
+
             li {
-                 &::before {
-                     display: inline-block;
-                     content: '';
-                     background-image: url('../../public/images/exclamation-mark.svg');
-                     height: 12px;
-                     width: 12px;
-                     margin-right: 10px;
-                 }
+                &::before {
+                    display: inline-block;
+                    content: '';
+                    background-image: url('../../public/images/exclamation-mark.svg');
+                    height: 12px;
+                    width: 12px;
+                    margin-right: 10px;
+                }
             }
-         }
+        }
+
         .mdp-exclamation {
             i {
                 color: $danger;
@@ -166,8 +171,29 @@ body{
             font-style: italic;
         }
     }
-
 }
+
+    
+
+// CUSTOM MESSAGE DE SUCCESS
+.alert-success {
+    border: 2px solid #70bf41;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 16px ;
+    display: inline-flex;
+    align-items: center;
+    i {
+        font-size: 30px;
+        color: #70bf41;
+        margin-right: 10px;
+    }
+    margin: -1rem 0 2rem 2rem;
+}
+
+
+
+
 
 // Import des fichiers SCSS
 @import 'pages/chiens';

@@ -48,7 +48,9 @@ class ChiensController extends AbstractController
 
                     try {
                         $imgFile->move(
+
                             $this->getParameter('chiens_directory'),
+
                             $newFilename
                         );
                     } catch (FileException $e) {
@@ -66,6 +68,8 @@ class ChiensController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($task);
                 $entityManager->flush();
+
+                $this->addFlash('success', "L'ajout d'un nouveau chien a bien été pris en compte.");
 
                 return $this->redirectToRoute('chiens');
             }

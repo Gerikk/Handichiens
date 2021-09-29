@@ -7,30 +7,14 @@
     // CSS du formulaire
 
     .input-image {
-
+        margin-bottom: 1rem;
     }
 
-    .nom-du-chien {
-        .label-name {
-            
-        }
-    
-        .text-name {
-            border: solid $primary;
-            border-radius: .3rem;
-            width: 300px;
-        }
-    }
 
     .resume {
         .label-resume {
-            
+
         }
-    
-        .textarea-resume {
-            border: solid $primary;
-            border-radius: .3rem;
-            width: 1000px;
-        }
+
     }
 }

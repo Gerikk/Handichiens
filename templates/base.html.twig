@@ -14,57 +14,75 @@
         {% endblock %}
     </head>
     <body id="{{ pageId is defined ? pageId : '' }}">
-            <nav class="navbar navbar-expand-lg mb-5 px-2">
+        <nav class="navbar navbar-expand-lg mb-5 px-2">
 
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="navbar-brand" href="{{ path('dashboard') }}">
-                {% else %}
-                    <a class="navbar-brand" href="{{ path('home') }}">
-                {% endif %}
-                        <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
-                    </a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="navbar-brand" href="{{ path('dashboard') }}">
+            {% else %}
+                <a class="navbar-brand" href="{{ path('home') }}">
+            {% endif %}
+                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
+                </a>
 
-                <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('chiens') }}">LES CHIENS</a>
-                            </li>
-                            <li class="nav-item">
-
-                                <a class="nav-link" href="{{ path('famille_relais') }}">LES FAMILLES RELAIS</a>
-
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
-                            </li>
-                        {% endif %}
-                        {% if is_granted('ROLE_FAMILLE') %}
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('booking_index') }}">PLANNING</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('historique') }}">HISTORIQUE</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-
-                </div>
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('app_logout') }}" class="btn mx-2 my-sm-0">Déconnexion</a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('chiens') }}">LES CHIENS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('famille_relais') }}">LES FAMILLES RELAIS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
+                        </li>
                     {% endif %}
-            </nav>
+
+                    {% if is_granted('ROLE_FAMILLE') %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('booking_index') }}">PLANNING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('historique') }}">HISTORIQUE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('app_logout') }}" class="btn mx-2 my-sm-0">Déconnexion</a>
+            {% endif %}
+
+        </nav>
+
+        {% for message in app.flashes('success') %}
+            <span class="alert alert-success">
+                <i class="bi bi-check2-circle"></i> {{ message }}
+            </span>
+        {% endfor %}
+
+        {#    Contient le contenu du body    #}
         <div class="container">
-            {% block body %}{% endblock %}
+            {% block body %}
+
+            {% endblock %}
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            window.setTimeout( 'document.querySelector(".alert-success").hidden = true', 5000);
+        </script>
+
     </body>
 </html>

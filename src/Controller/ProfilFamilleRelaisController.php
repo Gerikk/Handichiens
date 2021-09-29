@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
+use App\Entity\Chien;
 use App\Entity\User;
 use App\Form\ProfilFamilleType;
 use App\Form\UserType;
@@ -23,14 +25,23 @@ class ProfilFamilleRelaisController extends AbstractController
     /**
      * @Route("/profil-famille-relais/{id}/", name="profil_famille_relais")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
         $id = $request->get('id');
-
         $fam = $this->entityManager->getRepository(User::class)->findById($id);
+
+        $repository = $em->getRepository(Booking::class);
+        $bookings = $repository->findAll();
+
+        $repositoryChien = $em->getRepository(Chien::class);
+        $chiens = $repositoryChien->findAll();
+
+
         return $this->render('famille_relais/profil.html.twig', [
             'controller_name' => 'ProfilFamilleRelaisController',
             'famille' => $fam,
+            'bookings' => $bookings,
+            'chiens' => $chiens,
         ]);
     }
 
@@ -48,6 +59,8 @@ class ProfilFamilleRelaisController extends AbstractController
 
             $this->entityManager->persist($profil);
             $this->entityManager->flush();
+
+            $this->addFlash('success', "La modification a bien été prise en compte.");
 
             return $this->redirectToRoute('profil_famille_relais', ['id' => $profil->getId()]);
         }
@@ -69,6 +82,8 @@ class ProfilFamilleRelaisController extends AbstractController
         $usrRepo = $em->getRepository(User::class);
         $em->remove($familly);
         $em->flush();
+
+        $this->addFlash('success', "La suppression a bien été prise en compte.");
 
         return $this->redirectToRoute('famille_relais');
 
