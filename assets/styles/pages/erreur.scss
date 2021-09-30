@@ -1,0 +1,68 @@
+#page-erreur{
+  h1 {
+    text-align: center;
+    font-size: 120px;
+    font-weight: bold;
+    color: $primary;
+    margin-top: -3rem;
+    margin-bottom: 4rem;
+  }
+  section {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    display: flex;
+    justify-content: space-between;
+    .informations {
+      h2 {
+        font-size: 50px;
+        margin-bottom: 2rem;
+      }
+      a {
+        text-decoration: underline !important;
+      }
+    }
+  }
+
+
+  @media (max-width: 1000px) {
+    h1 {
+      margin-bottom: 2rem;
+    }
+    section {
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      .informations {
+        h2 {
+          font-size: 40px;
+          margin-bottom: 1rem;
+        }
+        margin-bottom: 2rem;
+      }
+      .image {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @media (max-width: 580px) {
+    h1 {
+      font-size: 80px;
+      margin-bottom: 2rem;
+      margin-top: -2rem;
+    }
+    section {
+      .informations {
+        h2 {
+          font-size: 35px;
+        }
+      }
+      .image {
+        img {
+          max-width: 320px;
+        }
+      }
+    }
+  }
+
+}
