@@ -39,7 +39,7 @@ class ChiensController extends AbstractController
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-                $imgFile = $form->get('img')->getData();
+                $imgFile = $form->get('photos')->getData();
                 if ($imgFile) {
                     $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
                     // this is needed to safely include the file name as part of the URL
@@ -49,7 +49,7 @@ class ChiensController extends AbstractController
                     try {
                         $imgFile->move(
 
-                            $this->getParameter('chiens_directory'),
+                            $this->getParameter('photos_directory'),
 
                             $newFilename
                         );
