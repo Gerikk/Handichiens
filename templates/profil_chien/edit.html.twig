@@ -1,0 +1,20 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du chien{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+
+        <span><a href="{{ path('profil') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
+        <div class="containerRegister bg-light shadow my-3 p-3">
+            <h1 class="text-primary text-center">Modification du CHIEN</h1>
+
+            <div class="form form-register">
+                {{ form(form) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

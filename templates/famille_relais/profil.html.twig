@@ -38,13 +38,7 @@
                     <h3>Les informations</h3>
                     <p><strong>Nom:</strong> {{famille.lastname}} </p>
                     <p><strong>Prénom:</strong> {{famille.firstname}} </p>
-                    <p><strong>Ville:</strong>
-                        {%  if famille.ville %}
-                            {{famille.ville}}
-                        {% else %}
-                            Non renseigné
-                        {% endif %}
-                    </p>
+                    <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
                     <p><strong>Téléphone:</strong>
                         {%  if famille.telephone %}
                             {{famille.telephone}}
@@ -59,9 +53,17 @@
                             Non renseigné
                         {% endif %}
                     </p>
-                    <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
+                    <p><strong>Ville:</strong>
+                        {%  if famille.ville %}
+                            {{famille.ville}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
                 </div>
             </div>
+            
+            
             <div class="family-profil_dog-attribution col-12 col-lg-3">
                 <h2>Attribution du chien</h2>
                 <div class="family-profil_dog-pick">
@@ -75,9 +77,18 @@
                             {% endif %}
                         {% endfor %}
                     </select>
+                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
+                        {% for booking in bookings %}
+                            {% if booking.famille.dat is defined %}
+                                <option value="{{chien.id }}">{{chien.name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+
                     <input type="submit" value="Valider" class="btn btn-primary mx-2 my-sm-0">
-x
                 </div>
+                
+                
                 <div class="family-profil_dog-history">
                     {% for booking in bookings %}
                         {% if (booking.famille.id == famille.id) %}
@@ -90,15 +101,6 @@ x
                             </div>
                         {% endif %}
                     {% endfor %}
-                    <div class="family-profil_dog-history-single">
-                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
-                    </div>
-                    <div class="family-profil_dog-history-single">
-                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
-                    </div>
-                    <div class="family-profil_dog-history-single">
-                        <p><strong>Olympe: </strong>Réservé(e) du 25/08/2021 au 01/09/2021</p><span class="status terminé">Terminée</span>
-                    </div>
                 </div>
             </div>
             <div class="family-profil_calendar bg-light shadow col">
