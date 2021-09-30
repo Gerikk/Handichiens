@@ -68,7 +68,7 @@ class ProfilChienController extends AbstractController
         $em->remove($chien);
         $em->flush();
 
-        return $this->redirectToRoute('chien');
+        return $this->redirectToRoute('chiens');
 
     }
 }
