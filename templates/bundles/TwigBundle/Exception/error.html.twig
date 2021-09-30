@@ -1,3 +1,20 @@
+{# templates/bundles/TwigBundle/Exception/error.html.twig #}
+{% set pageId = "page-erreur" %}
 {% extends 'base.html.twig' %}
 
-{% block title %}ERROR{% endblock %}
+{% block title %}Erreur{% endblock %}
+
+{% block body %}
+    <h1>{{ status_code }}</h1>
+    <section>
+        <div class="informations">
+            <h2>Oups !</h2>
+            <p>Il semble y avoir une erreur sur la page que vous voulez consulter.</p>
+            <p>A la place, vous pouvez retournez sur votre <a href="home">page d'accueil</a>.</p>
+        </div>
+        <div class="image">
+            <img src="{{ asset('images/chiens-erreur.png') }}">
+        </div>
+    </section>
+
+{% endblock %}
