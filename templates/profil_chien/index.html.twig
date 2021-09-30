@@ -7,7 +7,7 @@
 <p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour à la liste des chiens</a></p>
 <div class="container">
     <div class="row">
-        <div class="dog-id-up">
+        <div class="dog-id-up flex-column flex-sm-row">
             <div class="dog-id col-6">
                 <img src="{{ asset('uploads/chiens/' ~ chien.img) }}" alt="" class="dog-profile">
                 <h2><strong>{{chien.name}}</strong></h2>
@@ -15,7 +15,7 @@
             <div class="chien-information col-6">
                 <h5><strong> Age : </strong>{{chien.age}} ans</h5>
                 <h5><strong> Race : </strong>{{chien.race}}</h5>
-                <h5><strong> Specialité : </strong>{{chien.formation}}</h5>
+                <h5><strong> Spécialité : </strong>{{chien.formation}}</h5>
             </div>
         </div>
         <div class="resume-title">
@@ -27,8 +27,10 @@
 
         <div class="btn-modifier">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+
                 <a href="{{ path('edit_profil_chien', {'id': chien.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
                 <a href="{{ path('delete_profil_chien', {'id': chien.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                
             {% endif %}
         </div>
     </div>

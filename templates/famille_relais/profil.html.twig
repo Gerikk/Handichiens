@@ -10,7 +10,7 @@
 {% block body %}
     <div class="container">
         <a href="/les-familles-relais"><i class="bi bi-arrow-left-circle"></i> Retour</a>
-        <section class="family-profil_container">
+        <section class="family-profil_container flex-column flex-sm-row">
             <div class="family-profil_picture">
                 {% if famille.brochureFilename %}
                     <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="">
