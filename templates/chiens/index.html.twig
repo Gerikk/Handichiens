@@ -13,7 +13,7 @@
 
 <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
 <h1>La liste des chiens</h1>
-<div class="bloc-bottom">
+<div class="bloc-bottom flex-column flex-sm-row">
     <div class="btn-ajouter">
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
             <a href="/chiens/ajouter" class="btn btn-primary mx-2 my-sm-0">Ajouter un chien</a>

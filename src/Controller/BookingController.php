@@ -15,14 +15,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class BookingController extends AbstractController
 {
+    /*private function defineAvailability($bookings)
+    {
+        foreach ($bookings as $result){
+
+            $date_diff=date_diff( $result->getEndAt(), new \DateTimeImmutable);
+            if($date_diff>=0){
+                $result->setStatus(0);
+            }else{
+                $result->setStatus(1);
+            }
+
+            //$entityManager->flush;
+
+        }
+    }*/
     /**
      * @Route("/", name="booking_index", methods={"GET"})
      */
     public function index(BookingRepository $bookingRepository): Response
     {
+        //$this->defineAvailability($bookingRepository->findAll());
         return $this->render('booking/index.html.twig', [
             'bookings' => $bookingRepository->findAll(),
-
             // TODO: Limiter le repository au user connecté ?
         ]);
     }
@@ -38,6 +53,7 @@ class BookingController extends AbstractController
         $form->handleRequest($request);
 
         $booking->setFamille($user);
+        $booking->setStatus(1);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

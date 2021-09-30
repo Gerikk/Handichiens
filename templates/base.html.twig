@@ -20,15 +20,17 @@
                 <a class="navbar-brand" href="{{ path('dashboard') }}">
                     <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
                 </a>
+
+                <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             {% else %}
                 <a class="navbar-brand" href="{{ path('home') }}">
                     <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
                 </a>
             {% endif %}
 
-                    <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+
             <div class="collapse navbar-collapse justify-content-center" id="mainNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
@@ -60,13 +62,16 @@
                             <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
                         </li>
                     {% endif %}
+                    <li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('app_logout') }}" class="btn mx-2 my-sm-0">Déconnexion</a>
+                        {% endif %}
+                    </li>
                 </ul>
 
             </div>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="{{ path('app_logout') }}" class="btn mx-2 my-sm-0">Déconnexion</a>
-            {% endif %}
+
 
         </nav>
 
