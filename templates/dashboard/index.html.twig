@@ -69,16 +69,27 @@
                             {% if (app.user.id == allbooking.famille.id) and (allbooking.chienid.name is defined) %}
                                 <li class="row booked-dog">
                                     <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
-                                        <i class="bi bi-calendar-week-fill"></i>
+                                        <i class="bi bi-calendar-check-fill"></i>
                                     </div>
                                     <div class="col-11">
-                                        <p>Du: {{ allbooking.beginAt|date('d-m-Y') }} au {{ allbooking.endAt|date('d-m-Y') }}</p>
+                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
                                         <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> <strong>{{ allbooking.chienid.name }}</strong> vous a été confié pour cette période.</p>
                                     </div>
                                 </li>
-                                {% else %}
+                            {% endif %}
+                            {% if (app.user.id == allbooking.famille.id) and (allbooking.chienid is null) %}
+                                <li class="row booked-dog">
+                                    <div class="col-1 d-flex justify-content-center align-items-center icon-dog">
+                                        <i class="bi bi-calendar-x-fill" style="color: #D41B1B"></i>
+                                    </div>
+                                    <div class="col-11">
+                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
+                                        <p>Pour le moment, aucun chien ne vous a été confié.</p>
+                                    </div>
+                                </li>
                             {% endif %}
                         {% endfor %}
+
                     </ul>
                 </section>
             {% endif %}
