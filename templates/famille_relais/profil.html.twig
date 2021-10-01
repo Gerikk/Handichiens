@@ -9,8 +9,8 @@
 
 {% block body %}
     <div class="container">
-        <a href="/les-familles-relais"><i class="bi bi-arrow-left-circle"></i> Retour</a>
-        <section class="family-profil_container flex-column flex-sm-row">
+        <a href="{{ path("famille_relais") }}"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+        <section class="family-profil_container flex-column flex-md-row">
             <div class="family-profil_picture">
                 {% if famille.brochureFilename %}
                     <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="">
@@ -85,7 +85,7 @@
                         {% endfor %}
                     </select>
 
-                    <input type="submit" value="Valider" class="btn btn-primary mx-2 my-sm-0">
+                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">
                 </div>
                 
                 
