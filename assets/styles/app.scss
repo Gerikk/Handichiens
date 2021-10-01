@@ -7,7 +7,6 @@ $danger: #D41B1B;
 @import "~bootstrap/scss/bootstrap";
 
 // Boostrap Icons
-//@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
@@ -64,15 +63,15 @@ body{
         margin-right: 1rem;
 
         &:hover {
-            color: #5EB6DE;
+            color: $primary;
         }
     }
     .btn {
         margin-right: 2rem;
         border-radius: .3rem;
-        background-color: #5EB6DE;
+        background-color: $primary;
         &:hover {
-            color: #5EB6DE;
+            color: $primary;
             background-color: white;
         }
     }
@@ -85,6 +84,9 @@ body{
     &:hover{
         color : $primary;
         background-color: #fff;
+    }
+    &:focus:not(&:hover){
+        color: #fff;
     }
 }
 
@@ -112,10 +114,15 @@ body{
     margin: 0 auto;
 }
 
-.navbar-toggler:focus{
-    color: transparent;
-    border: 1px solid $primary;
+.navbar-toggler{
+    transition: border 0.15s ease-in-out;
+    &:focus,
+    &:hover{
+        color: transparent;
+        border: 1px solid $primary;
+    }
 }
+
 
 // CSS page inscription
 #page-register {
