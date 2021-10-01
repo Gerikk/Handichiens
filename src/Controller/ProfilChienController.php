@@ -46,6 +46,8 @@ class ProfilChienController extends AbstractController
             $this->entityManager->persist($profil);
             $this->entityManager->flush();
 
+            $this->addFlash('success', "La modification a bien été prise en compte.");
+
             return $this->redirectToRoute('profil_chien', ['id' => $profil->getId()]);
         }
 
@@ -67,6 +69,8 @@ class ProfilChienController extends AbstractController
         $usrRepo = $em->getRepository(Chien::class);
         $em->remove($chien);
         $em->flush();
+
+        $this->addFlash('success', "La suppression a bien été prise en compte.");
 
         return $this->redirectToRoute('chiens');
 
