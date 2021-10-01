@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Chien;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -38,7 +39,7 @@ class NewChienType extends AbstractType
             ],
         ])
             ->add('name', TextType::class)
-            ->add('age', TextType::class)
+            ->add('age', NumberType::class)
             ->add('race', TextType::class)
             ->add('formation', TextType::class)
             ->add('resume', TextareaType::class)

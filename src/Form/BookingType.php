@@ -17,22 +17,21 @@ class BookingType extends AbstractType
             ->add('beginAt', DateTimeType::class,
                   [
                       'label' => 'Date de début',
-                      'placeholder' => '...',
                       'required' => true,
                       'widget' => 'choice',
                       'date_format' => 'ddMMMMy',
                       'years' => range(date('Y'), date('Y')),
-                      'data' => new \DateTime(),
+                      'data' => new \DateTime('now +2 hour'),
                       'attr' => ['class' => 'booking-select']
                   ])
             ->add('endAt', DateTimeType::class,
                   [
                       'label' => 'Date de fin',
-                      'placeholder' => '...',
-                      'required' => false,
+                      'required' => true,
                       'widget' => 'choice',
                       'date_format' => 'ddMMMMy',
                       'years' => range(date('Y'), date('Y')),
+                      'data' => new \DateTime('now +1 day +2 hour'),
                       'attr' => ['class' => 'booking-select']
                   ])
             ->add('title', TextType::class,
