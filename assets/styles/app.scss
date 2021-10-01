@@ -115,6 +115,7 @@ body{
 }
 
 .navbar-toggler{
+    margin-right: 2rem;
     transition: border 0.15s ease-in-out;
     &:focus,
     &:hover{
@@ -194,6 +195,7 @@ body{
 @import 'pages/profil-user';
 @import 'pages/profil-chien';
 @import 'pages/ajout-chien';
+@import 'pages/edit-chien';
 @import 'pages/profil-famille';
 @import "pages/dashboard";
 @import 'pages/familles';

@@ -42,7 +42,6 @@ class NewChienType extends AbstractType
             ->add('race', TextType::class)
             ->add('formation', TextType::class)
             ->add('resume', TextareaType::class)
-            ->add('register', SubmitType::class)
         ;
     }
 

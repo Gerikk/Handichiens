@@ -1,18 +1,11 @@
-{{ form_start(form, {'attr': {'class': 'containerRegister row bg-light shadow m-3 p-3'}}) }}
+{{ form_start(form) }}
 
-        <h1 class="title-ajout-chien text-center text-primary">Ajouter un chien</h1>
+    <div class="info-group row row-cols row-cols-md-2">
 
-    <div class="img-name-group col-12 col-md-6">
-        <div class="input-field input-image">
-            {{ form_label(form.photos, "Photo de votre chien", {'attr': {'class': 'label-name'}}) }}
-            {{ form_widget(form.photos, {'attr':{'class':'file-input form-control'}}) }}
-        </div>
         <div class="input-field nom-du-chien mb-3">
             {{ form_label(form.name, "Nom de votre chien", {'attr': {'class': 'label-name'}}) }}
             {{ form_widget(form.name, {'attr': {'class': 'text-name form-control', 'placeholder': 'Nom de votre nouveau chien'}}) }}
         </div>
-    </div>
-    <div class="age-race-formation-group col-12 col-md-6">
         <div class="input-field age-du-chien mb-3">
             {{ form_label(form.age, "Age de votre chien", {'attr': {'class': 'label-age'}}) }}
             {{ form_widget(form.age, {'attr': {'class': 'text-age form-control', 'placeholder': 'Age de votre chien'}}) }}
@@ -25,7 +18,12 @@
             {{ form_label(form.formation, "Formation de votre chien", {'attr': {'class': 'label-formation'}}) }}
             {{ form_widget(form.formation, {'attr': {'class': 'text-formation form-control', 'placeholder': 'Formation de votre chien'}}) }}
         </div>
+        <div class="input-field input-image mb-3">
+            {{ form_label(form.photos, "Photo de votre chien", {'attr': {'class': 'label-name'}}) }}
+            {{ form_widget(form.photos, {'attr':{'class':'file-input form-control'}}) }}
+        </div>
     </div>
+
     <div class="input-field col-12 resume">
         {{ form_label(form.resume, "Les caractère du chien", {'attr': {'class': 'label-resume'}}) }}
         {{ form_widget(form.resume, {'attr': {'class': 'textarea-resume form-control', 'placeholder': 'Votre chien en quelques mots'}}) }}
