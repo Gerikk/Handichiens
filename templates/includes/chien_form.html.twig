@@ -3,19 +3,19 @@
     <div class="info-group row row-cols row-cols-md-2">
 
         <div class="input-field nom-du-chien mb-3">
-            {{ form_label(form.name, "Nom de votre chien", {'attr': {'class': 'label-name'}}) }}
+            {{ form_label(form.name, "Nom de votre chien ", {'attr': {'class': 'label-name'}}) }}<span class="required_form_color">*</span>
             {{ form_widget(form.name, {'attr': {'class': 'text-name form-control', 'placeholder': 'Nom de votre nouveau chien'}}) }}
         </div>
         <div class="input-field age-du-chien mb-3">
-            {{ form_label(form.age, "Age de votre chien", {'attr': {'class': 'label-age'}}) }}
+            {{ form_label(form.age, "Age de votre chien ", {'attr': {'class': 'label-age'}}) }}<span class="required_form_color">*</span>
             {{ form_widget(form.age, {'attr': {'class': 'text-age form-control', 'placeholder': 'Age de votre chien'}}) }}
         </div>
         <div class="input-field race-du-chien mb-3">
-            {{ form_label(form.race, "Race de votre chien", {'attr': {'class': 'label-race'}}) }}
+            {{ form_label(form.race, "Race de votre chien ", {'attr': {'class': 'label-race'}}) }}<span class="required_form_color">*</span>
             {{ form_widget(form.race, {'attr': {'class': 'text-race form-control', 'placeholder': 'Race de votre chien'}}) }}
         </div>
         <div class="input-field formation-du-chien mb-3">
-            {{ form_label(form.formation, "Formation de votre chien", {'attr': {'class': 'label-formation'}}) }}
+            {{ form_label(form.formation, "Formation de votre chien ", {'attr': {'class': 'label-formation'}}) }}<span class="required_form_color">*</span>
             {{ form_widget(form.formation, {'attr': {'class': 'text-formation form-control', 'placeholder': 'Formation de votre chien'}}) }}
         </div>
         <div class="input-field input-image mb-3">

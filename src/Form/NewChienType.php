@@ -9,11 +9,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class NewChienType extends AbstractType
 {
@@ -38,10 +35,10 @@ class NewChienType extends AbstractType
                 ])
             ],
         ])
-            ->add('name', TextType::class)
-            ->add('age', NumberType::class)
-            ->add('race', TextType::class)
-            ->add('formation', TextType::class)
+            ->add('name', TextType::class, ['required'=>true])
+            ->add('age', NumberType::class, ['required'=>true])
+            ->add('race', TextType::class, ['required'=>true])
+            ->add('formation', TextType::class, ['required'=>true])
             ->add('resume', TextareaType::class)
         ;
     }
