@@ -165,6 +165,13 @@ body{
     }
 }
 
+// CSS couleur champ obligatoire
+.required_form_color{
+    font-weight: bold;
+    color: $danger;
+    margin-left: .5rem;
+}
+
     
 
 // CUSTOM MESSAGE DE SUCCESS
