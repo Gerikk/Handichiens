@@ -8,6 +8,26 @@
 {% endblock %}
 
 {% block body %}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Suppression de la famille</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sur de vouloir supprimer la famille ? <br>
+                        <strong>Cette action est irréversible !</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <a href="{{ path("famille_relais") }}"><i class="bi bi-arrow-left-circle"></i> Retour</a>
         <section class="family-profil_container flex-column flex-md-row">
@@ -115,33 +135,16 @@
             </div>
         </section>
 
-        <div class="btn-modifier">
+        <div class="btn-modifier mb-3">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
                 <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Supprimer la famille
                 </button>
             {% endif %}
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Suppression de la famille</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Êtes-vous sur de vouloir supprimer la famille ? <br>
-                        <strong>Cette action est irréversible !</strong></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
     </div>
 {% endblock %}

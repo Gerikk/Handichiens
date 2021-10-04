@@ -22,7 +22,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label'       => 'Prénom *',
+                'label'       => 'Prénom',
                 'attr'        => [
                     'placeholder' => 'Votre prénom'
                 ],
@@ -35,7 +35,7 @@ class UserType extends AbstractType
                 )
             ])
             ->add('lastname', TextType::class, [
-                'label'       => 'Nom *',
+                'label'       => 'Nom',
                 'attr'        => [
                     'placeholder' => 'Votre nom'
                 ],
@@ -50,7 +50,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Adresse mail *',
+                'label' => 'Adresse mail',
                 'attr'  => [
                     'placeholder' => 'Votre adresse mail'
                 ],
@@ -69,12 +69,12 @@ class UserType extends AbstractType
                     ),
                 ],
                 'first_options'   => [
-                    'label' => 'Mot de passe *',
+                    'label' => 'Mot de passe',
                     'attr'  => ['placeholder' => 'Votre mot de passe',
                                 'class'=>'form-control']
                 ],
                 'second_options'  => [
-                    'label' => 'Confirmez votre mot de passe *',
+                    'label' => 'Confirmez votre mot de passe',
                     'attr'  => ['placeholder' => 'Merci de confirmer votre mot de passe',
                                 'class'=>'form-control']
                 ]

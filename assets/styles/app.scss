@@ -155,15 +155,18 @@ body{
             }
         }
 
-        .mdp-exclamation {
-            i {
-                color: $danger;
-            }
-            font-size: 13px;
-            font-style: italic;
-        }
+
     }
 }
+
+.mdp-exclamation {
+    i {
+        color: $danger;
+    }
+    font-size: 13px;
+    font-style: italic;
+}
+
 
 // CSS couleur champ obligatoire
 .required_form_color{
