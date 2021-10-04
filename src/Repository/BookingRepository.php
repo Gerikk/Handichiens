@@ -32,19 +32,17 @@ class BookingRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
-    /*
-    public function findByExampleField($value)
+
+    public function findDogsPlaced()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.famille_id = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('count(c.id)')
+            ->where('c.chien_id IS NOT NULL')
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
             ;
     }
-*/
+
 
     /*
     public function findOneBySomeField($value): ?Booking

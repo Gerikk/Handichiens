@@ -8,8 +8,8 @@
 <body>
 {% for message in app.flashes('success') %}
     <span class="alert alert-success">
-                <i class="bi bi-check2-circle"></i> {{ message }}
-            </span>
+        <i class="bi bi-check2-circle"></i> {{ message }}
+    </span>
 {% endfor %}
 
 <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
@@ -58,7 +58,7 @@
                     {% if famille.brochureFilename %}
                         <img class="card-img-top" src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="Photo de profil de la famille relais">
                     {% else %}
-                        <img class="card-img-top" src="{{ asset('images/logo_handichiens.png') }}" width="150" height="150" alt="Logo handi'chiens">
+                        <img class="card-img-top" src="{{ asset('images/default-family.jpg') }}" width="150" height="150" alt="Logo handi'chiens">
                     {% endif %}
 
                     <div class="card-body">

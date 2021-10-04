@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ChienRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -104,13 +105,36 @@ class ChiensController extends AbstractController
     /**
      * @Route("/profil_chien/{id}/edit", name="edit_profil_chien")
      */
-    public function edit(Chien $profil, Request $request): Response {
+    public function edit(Chien $profil, SluggerInterface $slugger, Request $request): Response {
         $form = $this->createForm(NewChienType::class, $profil);
         $id = $request->get('id');
         $ch = $this->entityManager->getRepository(Chien::class)->findById($id);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $photoFile = $form->get('photos')->getData();
+
+            if ($photoFile) {
+                $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $photoFile->move(
+                        $this->getParameter('photos_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $profil->setImg($newFilename);
+            }
+
             $profil = $form->getData();
 
             $this->entityManager->persist($profil);
