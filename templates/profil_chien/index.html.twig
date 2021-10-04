@@ -9,7 +9,11 @@
     <div class="row">
         <div class="dog-id-up flex-column flex-sm-row">
             <div class="dog-id col-6">
-                <img src="{{ asset('uploads/photos/' ~ chien.img) }}" alt="" class="dog-profile">
+                {% if chien.img is null %}
+                    <img class="dog-profile" src="{{ asset('images/patte_chien.png') }}" alt="">
+                {% else %}
+                    <img class="dog-profile" src="{{ asset('uploads/photos/' ~ chien.img) }}" alt="">
+                {% endif %}
                 <h2><strong>{{chien.name}}</strong></h2>
             </div>
             <div class="chien-information col-6">

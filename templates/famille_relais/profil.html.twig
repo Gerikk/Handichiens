@@ -41,21 +41,10 @@
                     <span>NOVICE</span>
                 </div>
             </div>
-            <div class="family-profil_description">
-                <h2>Caractéristiques de la famille</h2>
-                {%  if famille.description %}
-                    <p>{{ famille.description }}</p>
-                {% else %}
-                    <p>Non renseigné</p>
-                {% endif %}
-            </div>
-        </section>
 
-        <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
             <div class="family-profil_main-informations col-12 col-lg-3">
                 <h2>Informations de la famille</h2>
                 <div class="family-profil_main-informations-detailed">
-                    <h3>Les informations</h3>
                     <p><strong>Nom:</strong> {{famille.lastname}} </p>
                     <p><strong>Prénom:</strong> {{famille.firstname}} </p>
                     <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
@@ -82,8 +71,18 @@
                     </p>
                 </div>
             </div>
-            
-            
+
+            <div class="family-profil_description">
+                <h2>Caractéristiques de la famille</h2>
+                {%  if famille.description %}
+                    <p>{{ famille.description }}</p>
+                {% else %}
+                    <p>Non renseigné</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
             <div class="family-profil_dog-attribution col-12 col-lg-3">
                 <h2>Attribution du chien</h2>
                 <div class="family-profil_dog-pick">
@@ -114,9 +113,10 @@
                         {% if (booking.famille.id == famille.id) %}
                             <div class="family-profil_dog-history-single">
                                 <p><strong>{{booking.chienid.name }}: </strong>Réservé(e) du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
-                                {% if booking.status == 1 %}<span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
-                                    {% elseif booking.status == 0 %}
-                                        <span class="status terminé">Terminée</span>
+                                {% if booking.status == 1 %}
+                                    <span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
+                                {% elseif booking.status == 0 %}
+                                    <span class="status terminé">Terminée</span>
                                 {% endif %}
                             </div>
                         {% endif %}

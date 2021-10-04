@@ -8,11 +8,11 @@
     position: relative;
     img {
       max-width: 610px;
+      margin-left: 60px;
     }
   }
   .family-profil_description {
     max-width: 610px;
-    width: 100%;
   }
   .family-profil-status {
     position: absolute;
@@ -37,10 +37,6 @@
     .family-profil_main-informations-detailed {
       background-color: #E7E7E7;
       padding: 25px 20px;
-      min-height: 340px;
-      h3 {
-        margin: 0 0 25px 0;
-      }
 
     }
 
@@ -99,6 +95,12 @@
       }
     }
 
+  }
+
+  .btn-modifier {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 30px;
   }
 
   .family-profil_calendar-container {
