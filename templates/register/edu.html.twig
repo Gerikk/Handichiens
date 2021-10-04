@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <p class="mb-4"><span class="color">*</span> : champs obligatoires lors de l'inscription.</p>
+                    <p class="mb-4"><span class="required_form_color">*</span> : champs obligatoires lors de l'inscription.</p>
                     <p class="mb-4 text-center">Le profil pourra être modifié et complété après inscription.</p>
                 </div>
 
@@ -68,3 +68,8 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('requiredStar') }}
+{% endblock %}
+

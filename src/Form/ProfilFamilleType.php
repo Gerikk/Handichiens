@@ -5,8 +5,6 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,7 +18,7 @@ class ProfilFamilleType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label'       => 'Prénom *',
+                'label'       => 'Prénom',
                 'attr'        => [
                     'placeholder' => 'Votre prénom'
                 ],
@@ -33,7 +31,7 @@ class ProfilFamilleType extends AbstractType
                 )
             ])
             ->add('lastname', TextType::class, [
-                'label'       => 'Nom *',
+                'label'       => 'Nom',
                 'attr'        => [
                     'placeholder' => 'Votre nom'
                 ],
@@ -48,7 +46,7 @@ class ProfilFamilleType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Adresse mail *',
+                'label' => 'Adresse mail',
                 'attr'  => [
                     'placeholder' => 'Votre adresse mail'
                 ],

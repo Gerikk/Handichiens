@@ -126,7 +126,7 @@ body{
 
 
 // CSS page inscription
-#page-register {
+//#page-register {
     .form-register {
         .row {
             justify-content: start !important;
@@ -155,14 +155,24 @@ body{
             }
         }
 
-        .mdp-exclamation {
-            i {
-                color: $danger;
-            }
-            font-size: 13px;
-            font-style: italic;
-        }
+
     }
+//}
+
+.mdp-exclamation {
+    i {
+        color: $danger;
+    }
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+// CSS couleur champ obligatoire
+.required_form_color{
+    font-weight: bold;
+    color: $danger;
+    margin-left: .5rem;
 }
 
     

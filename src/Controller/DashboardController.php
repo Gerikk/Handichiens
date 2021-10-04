@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Chien;
-use App\Entity\User;
 use App\Entity\Booking;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
