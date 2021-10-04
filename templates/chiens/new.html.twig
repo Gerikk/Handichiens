@@ -4,12 +4,13 @@
 {% block title %}Handi'Chiens - AJOUTER UN CHIEN{% endblock %}
 
 {% block body %}
-    <p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour</a></p>
+    <div class="example-wrapper ">
+        <p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour</a></p>
+        <div class="containerRegister row bg-light shadow m-3 p-3">
+            <h1 class="title-ajout-chien">Ajouter un chien</h1>
 
-    <div class="containerRegister row bg-light shadow m-3 p-3">
-        <h1 class="title-ajout-chien">Ajouter un chien</h1>
-        {{  include("includes/chien_form.html.twig") }}
+            {{  include("includes/chien_form.html.twig") }}
+        </div>
     </div>
-
 
 {% endblock %}
