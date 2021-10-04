@@ -54,7 +54,7 @@
     <div class="row justify-content-center">
         {% for famille in familles %}
             {% if famille.roles[0] == 'ROLE_FAMILLE' %}
-                <div class="card col-3" style="width: 18rem;">
+                <a href="{{ path('profil_famille_relais', {'id': famille.id}) }}" class="card col-3" style="width: 18rem;">
                     {% if famille.brochureFilename %}
                         <img class="card-img-top" src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="Photo de profil de la famille relais">
                     {% else %}
@@ -63,9 +63,9 @@
 
                     <div class="card-body">
                         <h5 class="card-title">{{ famille.lastname }} - {{ famille.firstname }}</h5>
-                        <a href="{{ path('profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary">Voir plus</a>
+                        <div class="btn btn-primary">Voir plus</div>
                     </div>
-                </div>
+                </a>
             {% endif %}
         {% endfor %}
     </div>
