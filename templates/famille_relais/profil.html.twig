@@ -137,7 +137,7 @@
 
         <div class="btn-modifier mb-3">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-                <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-warning mx-2 my-sm-0">Modifier</a>
+                <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Supprimer la famille
                 </button>

@@ -1,5 +1,4 @@
 const requiredLabels = document.querySelectorAll('label.required');
-console.log(requiredLabels);
 if (requiredLabels!=null){
 
     for( i = 0; i<requiredLabels.length;i++){
