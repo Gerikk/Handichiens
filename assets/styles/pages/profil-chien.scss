@@ -5,14 +5,23 @@
             display: flex;
             flex-direction: row;
 
-            .dog-profile {
-                display: flex;
-                justify-content: center;
+            .dog-id-img {
+                border-radius: 50%;
                 max-width: 250px;
                 max-height: 250px;
-                object-fit: cover;
-                border-radius: 50%;
+                width: 100%;
+                height: 100%;
                 margin: 0 auto 2rem;
+                overflow: hidden;
+
+                .dog-profile {
+                    display: flex;
+                    justify-content: center;
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                    margin: 0px auto 6rem;
+                }
             }
 
             .chien-information {
