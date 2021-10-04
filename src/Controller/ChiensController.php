@@ -106,8 +106,6 @@ class ChiensController extends AbstractController
      */
     public function edit(Chien $profil, Request $request): Response {
         $form = $this->createForm(NewChienType::class, $profil);
-        $id = $request->get('id');
-        $ch = $this->entityManager->getRepository(Chien::class)->findById($id);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -122,7 +120,7 @@ class ChiensController extends AbstractController
         }
 
         return $this->render('chiens/edit.html.twig',
-                             ['form' => $form->createView(), 'chien' => $ch],
+                             ['form' => $form->createView(), 'chien' => $profil],
 
         );
     }
