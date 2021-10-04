@@ -58,7 +58,7 @@ class UserType extends AbstractType
             ])
             ->add('password', RepeatedType::class, [
                 'type'            => PasswordType::class,
-                'invalid_message' => 'Le mot de passe et la confirmation doivent être identique.',
+                'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques.',
                 'required'        => true,
                 'constraints' => [
                     new Length(

@@ -39,7 +39,7 @@ class NewChienType extends AbstractType
             ->add('age', NumberType::class, ['required'=>true])
             ->add('race', TextType::class, ['required'=>true])
             ->add('formation', TextType::class, ['required'=>true])
-            ->add('resume', TextareaType::class)
+            ->add('resume', TextareaType::class, ['required'=>true])
         ;
     }
 
