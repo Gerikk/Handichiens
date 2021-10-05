@@ -102,9 +102,11 @@
                         Veuillez sélectionner la date :
                     </p>
                     <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution">
-                        {% for booking in bookings %}
+                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %}
                             {% if (famille.id is defined) and (famille.id == booking.famille.id) %}
-                                <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>
+                                {% if booking.endAt >= date("now") %}
+                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -124,8 +126,6 @@
                                     {% elseif booking.status == 0 %}
                                         <span class="status terminé">Terminée</span>
                                     {% endif %}
-                                {% else %}
-                                    <p>Aucun historique à afficher</p>
                                 {% endif %}
                             </div>
                         {% endif %}
