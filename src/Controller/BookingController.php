@@ -35,7 +35,6 @@ class BookingController extends AbstractController
      */
     public function index(BookingRepository $bookingRepository): Response
     {
-        //$this->defineAvailability($bookingRepository->findAll());
         return $this->render('booking/index.html.twig', [
             'bookings' => $bookingRepository->findAll(),
         ]);

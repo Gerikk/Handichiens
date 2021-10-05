@@ -26,7 +26,7 @@ class RegisterController extends AbstractController
      * @Route("/register", name="register")
      * @param Request $request
      * @param UserPasswordHasherInterface $passwordEncoder
-     *
+     * @param SluggerInterface $slugger
      * @return Response
      */
     public function index(Request $request, UserPasswordHasherInterface $passwordEncoder, SluggerInterface $slugger): Response

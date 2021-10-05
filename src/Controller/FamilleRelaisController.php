@@ -6,7 +6,6 @@ use App\Entity\Booking;
 use App\Entity\Chien;
 use App\Entity\User;
 use App\Form\ProfilFamilleType;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class FamilleRelaisController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $userRepository){
+
+    public function __construct(EntityManagerInterface $entityManager){
         $this -> entityManager = $entityManager;
-        $this -> userRepository = $userRepository;
     }
 
     /**
@@ -28,10 +27,10 @@ class FamilleRelaisController extends AbstractController
     public function findFamille(EntityManagerInterface $em): Response
     {
         $repository = $em->getRepository(User::class);
-        $bookingrepository = $em->getRepository(Booking::class);
+        $bookingRepository = $em->getRepository(Booking::class);
 
         $familles = $repository->findAll();
-        $bookings = $bookingrepository->findAll();
+        $bookings = $bookingRepository->findAll();
 
         return $this->render('famille_relais/index.html.twig', [
             'familles' => $familles,
@@ -89,15 +88,14 @@ class FamilleRelaisController extends AbstractController
     }
     /**
      * @Route("/profil-famille-relais/{id}/suppression", name="delete_profil_famille_relais", methods={"POST", "GET"})
-     *
      */
-    public function deleteUser(User $familly, Request $request): Response
+    public function deleteUser(User $family, Request $request): Response
     {
         $id = $request->get('id');
 
         $em = $this->getDoctrine()->getManager();
-        //$usrRepo = $em->getRepository(User::class);
-        $em->remove($familly);
+        $usrRepo = $em->getRepository(User::class);
+        $em->remove($family);
         $em->flush();
 
         $this->addFlash('success', "La suppression a bien été prise en compte.");

@@ -42,8 +42,6 @@
                 </div>
             </div>
 
-
-
             <div class="family-profil_description col col-lg-3">
                 <h2>Caractéristiques de la famille</h2>
                 {%  if famille.description %}
@@ -119,11 +117,9 @@
                         {% endfor %}
                     {% endif %}
                     </select>
-
                     <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">
                 </div>
-                
-                
+
                 <div class="family-profil_dog-history">
                     {% for booking in bookings %}
                         {% if (booking.famille.id == famille.id) %}
@@ -156,14 +152,11 @@
         <div class="btn-modifier mb-3">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
                 <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-danger mx-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Supprimer la famille
                 </button>
             {% endif %}
         </div>
-
-
-
     </div>
 {% endblock %}
 {% block javascripts %}

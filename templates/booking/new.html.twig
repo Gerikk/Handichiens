@@ -7,19 +7,8 @@
     <div class="example-wrapper">
         <span><a href="{{ path('booking_index') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
         <article class="bg-light shadow my-3 p-3">
-
-
-    <h1 class="text-primary text-center">Ajouter une période de disponibilité</h1>
-
-
-
-{#
-    <p><i class="bi-info-circle-fill"></i> Si aucune date n'est sélectionnée comme date de fin, la période sera considérée pour la journée entière</p>
-#}
-
-    {{ include('booking/_form.html.twig') }}
-
-    {#<a class="btn btn-primary my-3" href="{{ path('booking_index') }}">Retour à ligne</a>#}
+            <h1 class="text-primary text-center">Ajouter une période de disponibilité</h1>
+            {{ include('booking/_form.html.twig') }}
         </article>
     </div>
 {% endblock %}
