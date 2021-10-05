@@ -96,7 +96,7 @@ class FamilleRelaisController extends AbstractController
         $id = $request->get('id');
 
         $em = $this->getDoctrine()->getManager();
-        $usrRepo = $em->getRepository(User::class);
+        //$usrRepo = $em->getRepository(User::class);
         $em->remove($familly);
         $em->flush();
 

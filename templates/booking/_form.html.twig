@@ -1,4 +1,6 @@
 {{ form_start(formPlanning) }}
     {{ form_widget(formPlanning) }}
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+<span class="d-flex flex-row justify-content-center">
+    <button class="btn btn-primary btn-lg">{{ button_label|default('Enregistrer') }}</button>
+</span>
 {{ form_end(formPlanning) }}

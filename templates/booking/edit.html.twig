@@ -4,11 +4,23 @@
 {% block title %}Modifier enregistrement{% endblock %}
 
 {% block body %}
-    <h1>Modifier enregistrement</h1>
 
-    {{ include('booking/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a class="btn btn-primary my-3" href="{{ path('booking_index') }}">Retour à la liste</a>
 
-    {{ include('booking/_delete_form.html.twig') }}
+    <div class="example-wrapper">
+
+        <span>
+            <a href="{{ path('booking_index') }}"><i class="bi bi-arrow-left-circle"></i> Retour à la liste</a>
+        </span>
+        <div class="bg-light shadow my-3 p-3">
+            <h1 class="text-center text-primary">Modifier enregistrement</h1>
+
+
+                {{ include('booking/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+                {#{{ include('booking/_delete_form.html.twig') }}#}
+
+
+        </div>
+    </div>
 {% endblock %}

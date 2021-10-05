@@ -23,10 +23,6 @@ class ChiensController extends AbstractController
         $this -> chienRepository = $chienRepository;
     }
 
-
-    private function addImage(){
-
-    }
     /**
      * @Route("/chiens", name="chiens")
      */
@@ -56,7 +52,7 @@ class ChiensController extends AbstractController
                     $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
                     // this is needed to safely include the file name as part of the URL
                     $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
+                    $newFilename = $safeFilename.'-'.uniqid('', true).'.'.$imgFile->guessExtension();
 
                     try {
                         $imgFile->move(
@@ -116,7 +112,7 @@ class ChiensController extends AbstractController
                 $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+                $newFilename = $safeFilename.'-'.uniqid('', true).'.'.$photoFile->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
