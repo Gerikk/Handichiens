@@ -38,7 +38,6 @@ class BookingController extends AbstractController
         //$this->defineAvailability($bookingRepository->findAll());
         return $this->render('booking/index.html.twig', [
             'bookings' => $bookingRepository->findAll(),
-            // TODO: Limiter le repository au user connecté ?
         ]);
     }
 
