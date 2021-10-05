@@ -26,8 +26,9 @@
 
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">
-
+                    {% if dogsAll != null %}
                     <div class="col-4 col-md-3 admin-dogs_single">
+
                         <p class="number-dogs">{{ dogsplaced|length }}</p>
                         <p>Chien(s) placé(s)</p>
                     </div>
@@ -36,7 +37,22 @@
                             {{ dogsAll|length - dogsplaced|length }}
                         </p>
                         <p>Chien(s) libre(s)</p>
+
                     </div>
+                        {% else %}
+                            <div class="col-4 col-md-3 admin-dogs_single">
+
+                                <p class="number-dogs">{{ dogsAll|length }}</p>
+                                <p>Chien(s) placé(s)</p>
+                            </div>
+                            <div class="col-4 col-md-3 admin-dogs_single">
+                                <p class="number-dogs">
+                                    {{ dogsAll|length}}
+                                </p>
+                                <p>Chien(s) libre(s)</p>
+
+                            </div>
+                    {% endif %}
                 </section>
 
                 <section class="row admin-main-content">
@@ -98,10 +114,10 @@
                 <nav class="navigation">
                     <ul class="menu">
                         <li class="menu-item">
-                            <a href="/chiens"><i class="bi bi-award-fill"></i> Les chiens</a>
+                            <a href="{{ path("chiens") }}"><i class="bi bi-award-fill"></i> Les chiens</a>
                         </li>
                         <li class="menu-item">
-                            <a href="/les-familles-relais"><i class="bi bi-people-fill"></i> Les familles relais</a>
+                            <a href="{{ path("famille_relais") }}"><i class="bi bi-people-fill"></i> Les familles relais</a>
                         </li>
                         <li class="menu-item">
                             <a href="{{ path("profil") }}"><i class="bi bi-person-circle"></i> Mon compte</a>
