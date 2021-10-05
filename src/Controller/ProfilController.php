@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -17,9 +16,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProfilController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $userRepository){
+    public function __construct(EntityManagerInterface $entityManager){
         $this -> entityManager = $entityManager;
-        $this -> userRepository = $userRepository;
     }
 
     /**
@@ -49,7 +47,7 @@ class ProfilController extends AbstractController
                 $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
+                $newFilename = $safeFilename.'-'.uniqid('', true).'.'.$photoFile->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {

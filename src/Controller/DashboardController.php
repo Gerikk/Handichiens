@@ -28,17 +28,17 @@ class DashboardController extends AbstractController
         $repository = $em->getRepository(Booking::class);
 
         $bookings = $repository->findBy(array(),array('id'=>'DESC'),3,0);
-        $allbookings = $repository->findAll();
-        $dogsplaced = $repository->findDogsPlaced();
+        $allBookings = $repository->findAll();
+        $dogsPlaced = $repository->findDogsPlaced();
 
-        $dogsrepository = $em->getRepository(Chien::class);
-        $dogsAll = $dogsrepository->findAll();
+        $dogsRepository = $em->getRepository(Chien::class);
+        $dogsAll = $dogsRepository->findAll();
 
         return $this->render('dashboard/index.html.twig', [
             'bookings' => $bookings,
-            'dogsplaced' => $dogsplaced,
+            'dogsplaced' => $dogsPlaced,
             'dogsAll' => $dogsAll,
-            'allbookings' => $allbookings,
+            'allbookings' => $allBookings,
         ]);
     }
 }
