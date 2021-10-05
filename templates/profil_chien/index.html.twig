@@ -4,8 +4,27 @@
 {% block title %}Handi'Chiens - LE PROFIL DU CHIEN{% endblock %}
 
 {% block body %}
-<p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour à la liste des chiens</a></p>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Suppression du chien</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sur de vouloir supprimer le chien ? <br>
+                <strong>Cette action est irréversible !</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <a href="{{ path('delete_profil_chien', {'id': chien.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
+    <p><a href="{{ path('chiens') }}" ><i class="bi bi-arrow-left-circle"></i> Retour à la liste des chiens</a></p>
     <div class="row">
         <div class="dog-id-up flex-column flex-sm-row">
             <div class="dog-id col-6">
@@ -35,7 +54,7 @@
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
 
                 <a href="{{ path('edit_profil_chien', {'id': chien.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
-                <a href="{{ path('delete_profil_chien', {'id': chien.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                <a href="{{ path('delete_profil_chien', {'id': chien.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</a>
                 
             {% endif %}
         </div>
