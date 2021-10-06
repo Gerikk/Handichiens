@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FamilleRelaisController extends AbstractController
@@ -75,12 +74,10 @@ class FamilleRelaisController extends AbstractController
     }
 
     /**
-     * @Route("/profil-famille-relais/affect/{id}", name="affectation_edit", methods={"GET","POST"})
+     * @Route("/profil-famille-relais/affect/{id}/{booking}", name="affectation_edit", methods={"GET","POST"})
      */
     public function editAffect(Request $request, Booking $booking): Response
     {
-        $id = $request->get('id');
-        $fam = $this->entityManager->getRepository(User::class)->findById($id);
 
         $form = $this->createForm(AffectationType::class, $booking);
         $form->handleRequest($request);
@@ -96,14 +93,13 @@ class FamilleRelaisController extends AbstractController
         return $this->renderForm('famille_relais/edit_affect.html.twig', [
             'booking' => $booking,
             'form' => $form,
-            'famille'=>$fam,
         ]);
     }
 
     /**
      * @Route("/profil-famille-relais/{id}/edit", name="edit_profil_famille_relais")
      */
-    public function edit(User $profil, UserPasswordHasherInterface $passwordEncoder, Request $request): Response {
+    public function edit(User $profil, Request $request): Response {
         $form = $this->createForm(ProfilFamilleType::class, $profil);
         $id = $request->get('id');
         $fam = $this->entityManager->getRepository(User::class)->findById($id);
@@ -121,7 +117,10 @@ class FamilleRelaisController extends AbstractController
         }
 
         return $this->render('famille_relais/edit.html.twig',
-                             ['form' => $form->createView(), 'famille' => $fam],
+                             ['form' => $form->createView(),
+                                 'famille' => $fam,
+                                 'bookings' => $fam,
+                             ],
 
         );
     }
