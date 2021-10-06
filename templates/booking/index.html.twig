@@ -14,7 +14,7 @@
                     <th>Titre</th>
                     <th>Date début</th>
                     <th>Date fin</th>
-                    <th>Famille</th>
+
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,7 +24,7 @@
                     <td>{{ booking.title }}</td>
                     <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
                     <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
-                    <td>{{ booking.famille.firstname }} {{ booking.famille.lastname }}</td>
+
                     <td>
                         <a class="btn btn-secondary m-1" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
                         <a class="btn btn-secondary m-1" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning index{% endblock %}
+
+{% block body %}
+<p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+<h1 class="text-primary text-center">Disponibilités de {{ famille.firstname }}</h1>
+
+<div class="table-responsive">
+    <table class="table table-light table-hover table-bordered text-center">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for booking in famille.bookings %}
+            <tr>
+                <td>{{ booking.title }}</td>
+                <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-secondary m-1" href="{{ path('affectation_edit', {'id': famille.id}) }}">Choisir chien</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun résultat trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

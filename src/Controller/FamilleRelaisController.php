@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Booking;
 use App\Entity\Chien;
 use App\Entity\User;
+use App\Form\AffectationType;
 use App\Form\ProfilFamilleType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,6 +59,39 @@ class FamilleRelaisController extends AbstractController
             'famille' => $fam,
             'bookings' => $bookings,
             'chiens' => $chiens,
+        ]);
+    }
+
+    /**
+     * @Route("/profil-famille-relais/show/{id}", name="affectation_show", methods={"GET"})
+     */
+    public function show(Booking $booking, Request $request): Response
+    {
+        $id = $request->get('id');
+        $fam = $this->entityManager->getRepository(User::class)->findById($id);
+
+        return $this->render('famille_relais/show.html.twig', [
+            'booking' => $booking,
+            'famille'=>$fam,
+        ]);
+    }
+
+    /**
+     * @Route("/profil-famille-relais/affect/{id}", name="affectation_edit", methods={"GET","POST"})
+     */
+    public function editAffect(Request $request, Booking $booking): Response
+    {
+        $form = $this->createForm(AffectationType::class, $booking);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('affectation_show', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('famille_relais/edit_affect.html.twig', [
+            'booking' => $booking,
+            'form' => $form,
         ]);
     }
 
