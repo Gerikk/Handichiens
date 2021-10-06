@@ -13,6 +13,7 @@
             <th>Titre</th>
             <th>Date début</th>
             <th>Date fin</th>
+            <th>Chien affecté</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -23,7 +24,14 @@
                 <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-secondary m-1" href="{{ path('affectation_edit', {'id': famille.id}) }}">Choisir chien</a>
+                    {% if booking.chienid != null %}
+                        {{ booking.chienid.name }}
+                        {% else %}
+                        Aucun chien
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-secondary m-1" href="{{ path('affectation_edit', {'id': famille.id, 'booking':booking.id}) }}">Choisir chien</a>
                 </td>
             </tr>
         {% else %}

@@ -77,10 +77,11 @@ class FamilleRelaisController extends AbstractController
     }
 
     /**
-     * @Route("/profil-famille-relais/affect/{id}", name="affectation_edit", methods={"GET","POST"})
+     * @Route("/profil-famille-relais/affect/{id}/{booking}", name="affectation_edit", methods={"GET","POST"})
      */
     public function editAffect(Request $request, Booking $booking): Response
     {
+
         $form = $this->createForm(AffectationType::class, $booking);
         $form->handleRequest($request);
 
@@ -98,7 +99,7 @@ class FamilleRelaisController extends AbstractController
     /**
      * @Route("/profil-famille-relais/{id}/edit", name="edit_profil_famille_relais")
      */
-    public function edit(User $profil, UserPasswordHasherInterface $passwordEncoder, Request $request): Response {
+    public function edit(User $profil, Request $request): Response {
         $form = $this->createForm(ProfilFamilleType::class, $profil);
         $id = $request->get('id');
         $fam = $this->entityManager->getRepository(User::class)->findById($id);
@@ -116,7 +117,10 @@ class FamilleRelaisController extends AbstractController
         }
 
         return $this->render('famille_relais/edit.html.twig',
-                             ['form' => $form->createView(), 'famille' => $fam],
+                             ['form' => $form->createView(),
+                                 'famille' => $fam,
+                                 'bookings' => $fam,
+                             ],
 
         );
     }
