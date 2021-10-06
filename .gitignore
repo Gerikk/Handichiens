@@ -19,3 +19,7 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 .idea
+/node_modules/
+/public/build/
+.DS_Store
+/public/uploads/

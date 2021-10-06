@@ -1,0 +1,176 @@
+{% set pageId = "page-profil-famille" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - PROFIL DE LA FAMILLE{% endblock %}
+{% block stylesheets  %}
+     {{ encore_entry_link_tags('app') }}
+     {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Suppression de la famille</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sur de vouloir supprimer la famille ? <br>
+                        <strong>Cette action est irréversible !</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="{{ path("famille_relais") }}"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+        <section class="family-profil_container flex-column flex-lg-row">
+            <div class="family-profil_picture col-auto col-xl-3">
+                {% if famille.brochureFilename %}
+                    <img src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="">
+                {% else %}
+                    <img src="{{ asset('images/default-family.jpg') }}" alt="">
+                {% endif %}
+                <div class="family-profil-status">
+                    <span>NOVICE</span>
+                </div>
+            </div>
+
+            <div class="family-profil_description col col-lg-3">
+                <h2>Caractéristiques de la famille</h2>
+                {%  if famille.description %}
+                    <p>{{ famille.description }}</p>
+                {% else %}
+                    <p>Non renseigné</p>
+                {% endif %}
+            </div>
+
+            <div class="family-profil_main-informations col col-lg-3">
+                <h2>Informations de la famille</h2>
+                <div class="family-profil_main-informations-detailed">
+                    <p><strong>Nom:</strong> {{famille.lastname}} </p>
+                    <p><strong>Prénom:</strong> {{famille.firstname}} </p>
+                    <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
+                    <p><strong>Téléphone:</strong>
+                        {%  if famille.telephone %}
+                            {{famille.telephone}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                    <p><strong>Code postal:</strong>
+                        {%  if famille.codePostal %}
+                            {{famille.codePostal}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                    <p><strong>Ville:</strong>
+                        {%  if famille.ville %}
+                            {{famille.ville}}
+                        {% else %}
+                            Non renseigné
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
+            <div class="family-profil_dog-attribution col-12 col-lg-3">
+                <h2 class="mb-4">Attribution d'un chien</h2>
+
+                <div class="ms-4">
+                    <a href="{{ path('affectation_show', {'id': famille.id}) }}" class="btn btn-primary" style="width:250px">Affecter un chien</a>
+                </div>
+
+{#                <div class="family-profil_dog-pick">#}
+{#                    <p class="guidance-select">#}
+{#                        Veuillez sélectionner le chien à attribuer :#}
+{#                    </p>#}
+{#                    #}
+{#                    {% if chiens is empty %}#}
+{#                        <p>Aucun chien n'est stockée</p>#}
+{#                    {% else %}#}
+{#                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">#}
+{#                            {% for chien in chiens %}#}
+{#                                {% if chien is defined %}#}
+{#                                    <option value="{{chien.id }}">{{chien.name}}</option>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+{#                        {% endif %}#}
+{#                    </select>#}
+{#                    <p class="mt-4 guidance-select">#}
+{#                        Veuillez sélectionner la date :#}
+{#                    </p>#}
+{#                    {% if bookings is empty %}#}
+{#                        <p>Aucune date n'est stockée</p>#}
+{#                    {% else %}#}
+{#                    <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution">#}
+{#                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %}#}
+{#                            {% if (famille.id is defined) and (famille.id == booking.famille.id) %}#}
+{#                                {% if booking.endAt >= date("now") %}#}
+{#                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>#}
+{#                                {% endif %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                    </select>#}
+{#                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">#}
+{#                </div>#}
+
+                <div class="family-profil_dog-history">
+                    {% for booking in bookings %}
+                        {% if (booking.famille.id == famille.id) %}
+                            <div class="family-profil_dog-history-single">
+                                {% if chienid is defined %}
+                                    <p><strong>{{booking.chienid.name }}: </strong>Réservé(e) du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
+                                    {% if booking.status == 1 %}
+                                        <span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
+                                    {% elseif booking.status == 0 %}
+                                        <span class="status terminé">Terminée</span>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="family-profil_calendar bg-light shadow col">
+                <h2>Disponibilités:</h2>
+                <div class="family-profil_calendar-container">
+                    <span class="m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
+                          id="calendar-holder"
+                          data-events-url="{{ path('fc_load_events') }}">
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="btn-modifier mb-3">
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+                <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
+                <button type="button" class="btn btn-danger mx-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Supprimer la famille
+                </button>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script type="text/javascript">
+        let familleId = {{famille.id}};
+    </script>
+    {{ encore_entry_script_tags('calendar_profil_famille') }}
+
+{% endblock %}

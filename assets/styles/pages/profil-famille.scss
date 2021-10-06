@@ -1,0 +1,124 @@
+#page-profil-famille {
+
+  .family-profil_container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .family-profil_picture {
+    position: relative;
+    img {
+      max-width: 610px;
+    }
+  }
+  .family-profil_description {
+    max-width: 610px;
+  }
+  .family-profil-status {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+
+    background-color: #5EB6DE;
+    color: #FFF;
+
+    font-weight: bold;
+    padding: 15px 50px;
+  }
+
+  .family-profil_informations {
+
+    margin: 50px 0;
+  }
+  .family-profil_main-informations {
+    //max-width: 290px;
+
+    .family-profil_main-informations-detailed {
+      background-color: #E7E7E7;
+      padding: 25px 20px;
+
+    }
+
+  }
+  .family-profil_dog-attribution {
+    max-width: 455px;
+    width: 100%;
+
+    .family-profil_dog-history {
+      margin: 30px 0;
+      padding-left: 20px;
+
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+
+        height: 100%;
+        width: 2px;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background-color: #000000;
+      }
+    }
+
+    .family-profil_dog-pick {
+      margin: 15px 0;
+
+      .guidance-select {
+        color: #676767;
+        font-size: 16px;
+      }
+
+      .dog-attribution {
+        max-width: 300px;
+        width: 100%;
+        padding: 5px;
+        display: unset;
+      }
+
+    }
+
+    .family-profil_dog-history-single {
+      display: flex;
+      align-items: baseline;
+      p {
+        max-width: 305px;
+        width: 100%;
+      }
+      .status.terminé {
+        color: #2FAC2C;
+      }
+    }
+
+  }
+
+  .btn-modifier {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 30px;
+
+    .btn {
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    }
+    .btn:hover,
+    .btn:focus {
+      box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .family-profil_calendar-container {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+
+  @media(max-width: 768px){
+    .family-profil_calendar-container{
+      font-size: 80%;
+    }
+  }
+
+}

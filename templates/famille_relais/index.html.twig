@@ -1,0 +1,76 @@
+{% set pageId = "page-familles" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - Les familles relais{% endblock %}
+
+{% block body %}
+
+<body>
+{% for message in app.flashes('success') %}
+    <span class="alert alert-success">
+        <i class="bi bi-check2-circle"></i> {{ message }}
+    </span>
+{% endfor %}
+
+<p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+<h1>La liste des familles relais</h1>
+{#<div class="dropdown-select d-flex flex-column flex-lg-row">#}
+{#    <h3>Disponibilités:</h3>#}
+{#    <div class="dropdown-select_start-date m-3 m-lg-0">#}
+{#        <span>Du:</span>#}
+{#        <select class="form-select" name="startDate" id="startDate">#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#        </select>#}
+{#    </div>#}
+{#    <div class="dropdown-select_end-date m-3 m-lg-0">#}
+{#        <span>Au:</span>#}
+{#        <select class="form-select" name="endDate" id="endDate">#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#            <option value="#">Date</option>#}
+{#        </select>#}
+{#    </div>#}
+{#    <input type="submit" value="Rechercher" class="btn btn-primary">#}
+{#</div>#}
+<div class="bloc-bottom flex-column flex-sm-row">
+    <div class="btn-ajouter">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('register_fam') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter une famille</a>
+        {% endif %}
+    </div>
+    {% set nbFamily = 0 %}
+    {% for famille in familles %}
+        {% if famille.roles[0] == 'ROLE_FAMILLE' %}
+            {% set nbFamily = nbFamily + 1 %}
+        {% endif %}
+    {% endfor %}
+    <p>Nombre de familles relais : {{ nbFamily }}</p>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        {% for famille in familles %}
+            {% if famille.roles[0] == 'ROLE_FAMILLE' %}
+                <a href="{{ path('profil_famille_relais', {'id': famille.id}) }}" class="card col-3" style="width: 18rem;">
+                    {% if famille.brochureFilename %}
+                        <img class="card-img-top" src="{{ asset('uploads/photos/' ~ famille.brochureFilename) }}" alt="Photo de profil de la famille relais">
+                    {% else %}
+                        <img class="card-img-top" src="{{ asset('images/default-family.jpg') }}" width="150" height="150" alt="Logo handi'chiens">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ famille.lastname }} - {{ famille.firstname }}</h5>
+                        <div class="btn btn-primary">Voir plus</div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+
+{% endblock %}

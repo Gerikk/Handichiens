@@ -1,0 +1,16 @@
+#page-planning {
+  .calendar-famille {
+    margin: 50px 0;
+    #calendar-holder {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 567px) {
+  .calendar-famille {
+    #calendar-holder {
+      font-size: 80%;
+    }
+  }
+}

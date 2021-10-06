@@ -1,0 +1,46 @@
+{% set pageId = "page-planning-detail" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block body %}
+
+
+    <div class="example-wrapper">
+
+        <span>
+        <a href="{{ path('booking_index') }}"><i class="bi bi-arrow-left-circle"></i> Retour à la liste</a>
+    </span>
+
+        <div class="bg-light shadow my-3 p-3">
+
+            <h1 class="text-primary text-center">Enregistrement de "{{ booking.title }}"</h1>
+
+            <table class="table table-hover">
+
+                <tbody>
+
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ booking.title }}</td>
+                </tr>
+                <tr>
+                    <th>Date début</th>
+                    <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Date fin</th>
+                    <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex flex-row justify-content-around">
+            <a class="btn btn-primary btn-lg mx-3" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+            {{ include('booking/_delete_form.html.twig') }}
+        </div>
+
+
+        </div>
+    </div>
+{% endblock %}

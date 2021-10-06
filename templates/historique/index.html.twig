@@ -1,0 +1,46 @@
+{% set pageId = "page-familles" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens - Historique{% endblock %}
+
+{% block body %}
+
+<body>
+    <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+    <h1>Mon historique</h1>
+
+    <div class="container">
+        <div class="row row-cols-auto justify-content-center">
+            <div href="#" class="card col" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Pépite</h5>
+                    <p><span>18/09/2021</span> au <span>18/09/2021</span></p>
+                </div>
+            </div>
+            <div href="#" class="card col" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Pépite</h5>
+                    <p><span>18/09/2021</span> au <span>18/09/2021</span></p>
+                </div>
+            </div>
+            <div href="#" class="card col" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Pépite</h5>
+                    <p><span>18/09/2021</span> au <span>18/09/2021</span></p>
+                </div>
+            </div>
+            <div href="#" class="card col" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/chien.jpg') }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Pépite</h5>
+                    <p><span>18/09/2021</span> au <span>18/09/2021</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock %}

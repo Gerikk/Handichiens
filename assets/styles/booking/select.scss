@@ -1,0 +1,10 @@
+.booking-select select{
+  @extend .form-select;
+  margin: 0 1rem;
+  width: auto;
+}
+
+.booking-select div{
+  display: flex;
+  margin-bottom: 1rem;
+}

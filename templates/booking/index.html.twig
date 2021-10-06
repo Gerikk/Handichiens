@@ -1,0 +1,60 @@
+{% set pageId = "page-planning" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning index{% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+    <h1 class="text-primary text-center">Vos disponibilités</h1>
+
+    <div class="table-responsive">
+        <table class="table table-light table-hover table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for booking in app.user.bookings %}
+                <tr>
+                    <td>{{ booking.title }}</td>
+                    <td>{{ booking.beginAt ? booking.beginAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>{{ booking.endAt ? booking.endAt|date('d-m-Y H:i:s') : '' }}</td>
+
+                    <td>
+                        <a class="btn btn-secondary m-1" href="{{ path('booking_show', {'id': booking.id}) }}">Voir</a>
+                        <a class="btn btn-secondary m-1" href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun résultat trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-primary" href="{{ path('booking_new') }}">Ajouter disponibilité</a>
+
+
+<div class="row justify-content-end calendar-famille">
+    <span class="bg-light m-3 p-3 col-11 col-sm-10 col-md-8 col-lg-6"
+          id="calendar-holder"
+          data-events-url="{{ path('fc_load_events') }}">
+    </span>
+</div>
+
+{% endblock %}
+
+{% block stylesheets  %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}

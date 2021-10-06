@@ -1,0 +1,65 @@
+{% set pageId = "page-profil" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <span class="alert alert-success">
+            <i class="bi bi-check2-circle"></i> {{ message }}
+        </span>
+{% endfor %}
+
+<div class="example-wrapper">
+    <p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
+
+    <h1 class="mb-5">Mon compte</h1>
+
+    <div class="profil row">
+        <div class="row justify-content-center mb-5">
+            <div class="photo d-flex justify-content-center mb-3 mb-md-0 col-10 col-md-5">
+                {% if app.user.brochureFilename %}
+                    <img src="{{ asset('uploads/photos/' ~ app.user.brochureFilename) }}" alt="Photo de profil de la famille relais">
+                {% else %}
+                    <img src="{{ asset('images/profil-user.svg') }}" alt="Photo de profil de la famille relais">
+                {% endif %}
+            </div>
+            <div class="informations col-12 col-md-7">
+                <ul>
+                    <li class="form-control mb-3"><strong>Nom</strong> : {{ app.user.lastname }}</li>
+                    <li class="form-control mb-3"><strong>Prénom</strong> : {{ app.user.firstname }}</li>
+                    <li class="form-control mb-3"><strong>E-mail</strong> : {{ app.user.email }}</li>
+                    <li class="form-control mb-3"><strong>Téléphone</strong> :
+                        {%  if app.user.telephone %}
+                            {{ app.user.telephone }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
+                    <li class="form-control mb-3"><strong>Code postal</strong> :
+                        {%  if app.user.codePostal %}
+                            {{ app.user.codePostal }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
+                    </li>
+                    <li class="form-control mb-3"><strong>Ville</strong> :
+                        {%  if app.user.ville %}
+                            {{ app.user.ville }}
+                        {% else %}
+                            Non renseigné.
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="button-edit row justify-content-center">
+            <div class="text-center">
+                <a href="{{ path('edit_profil', {'id': app.user.id}) }}" class="btn btn-primary">Modifier</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

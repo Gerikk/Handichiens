@@ -1,0 +1,27 @@
+#page-edit-profil, #page-register-edu, #page-register-famille {
+    .form-register {
+      .row {
+        justify-content: start !important;
+      }
+
+      i {
+        color: $danger;
+        font-weight: bold;
+      }
+
+      .form-control {
+          &::placeholder {
+            font-size: 13px !important;
+        }
+      }
+    }
+}
+
+#page-profil {
+  .photo {
+    img {
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+}

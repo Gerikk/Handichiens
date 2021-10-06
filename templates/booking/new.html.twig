@@ -1,0 +1,14 @@
+{% set pageId = "page-planning-nouveau" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel enregistrement{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <span><a href="{{ path('booking_index') }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
+        <article class="bg-light shadow my-3 p-3">
+            <h1 class="text-primary text-center">Ajouter une période de disponibilité</h1>
+            {{ include('booking/_form.html.twig') }}
+        </article>
+    </div>
+{% endblock %}
