@@ -4,15 +4,15 @@
 
 {% block body %}
 
-    <p><a href="{{ path('affectation_show', {'id': famille.id}) }}"><i class="bi bi-arrow-left-circle"></i> Retour
+    <p><a href="{{ path('affectation_show', {'id': booking.famille.id}) }}"><i class="bi bi-arrow-left-circle"></i> Retour
             profil</a></p>
 
     <div class="example-wrapper">
         <div class="containerRegister bg-light shadow my-3 p-3">
             <h1 class="text-primary text-center mt-4 mb-3">Affectation d'un chien</h1>
-            <h2 class="mb-3">{{ famille.firstname }} {{ famille.lastname }}</h2>
+            <h2 class="mb-3">{{ booking.famille.firstname }} {{ booking.famille.lastname }}</h2>
             <div class="form form-register">
-
+                {{ form_start(form) }}
                 <div class="row form-row">
                     <div class="row mb-2">
                         <div class="col-12">
@@ -34,6 +34,7 @@
                 <span class="d-flex justify-content-center col-12">
                     {{ form_row(form.register,{'label':'Affecter', 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
                 </span>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

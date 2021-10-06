@@ -85,7 +85,7 @@ class FamilleRelaisController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', "La modification a bien été prise en compte.");
+            $this->addFlash('success', "L'affectation a bien été prise en compte.");
 
             return $this->redirectToRoute('dashboard', [], Response::HTTP_SEE_OTHER);
         }
