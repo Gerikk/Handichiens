@@ -29,12 +29,12 @@
                     {% if dogsAll != null %}
                     <div class="col-4 col-md-3 admin-dogs_single">
 
-                        <p class="number-dogs">{{ dogsplaced|length }}</p>
+                        <p class="number-dogs">{{ dogsplaced['1'] }}</p>
                         <p>Chien(s) placé(s)</p>
                     </div>
                     <div class="col-4 col-md-3 admin-dogs_single">
                         <p class="number-dogs">
-                            {{ dogsAll|length - dogsplaced|length }}
+                            {{ dogsAll|length - dogsplaced["1"] }}
                         </p>
                         <p>Chien(s) libre(s)</p>
 
