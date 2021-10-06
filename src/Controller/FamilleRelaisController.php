@@ -11,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FamilleRelaisController extends AbstractController
@@ -65,13 +64,12 @@ class FamilleRelaisController extends AbstractController
     /**
      * @Route("/profil-famille-relais/show/{id}", name="affectation_show", methods={"GET"})
      */
-    public function show(User $profil, Booking $booking): Response
+    public function show(User $profil): Response
     {
-        $fam = $this->entityManager->getRepository(User::class)->findById($profil->getId());
+        $famille = $this->entityManager->getRepository(User::class)->findById($profil->getId());
 
         return $this->render('famille_relais/show.html.twig', [
-            'booking' => $booking,
-            'famille'=>$fam,
+            'famille'=>$famille,
         ]);
     }
 
