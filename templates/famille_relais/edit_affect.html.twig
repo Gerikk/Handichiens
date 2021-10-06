@@ -1,11 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Affectation à la famille {% endblock %}
+{% block title %}Affectation à la famille{% endblock %}
 
 {% block body %}
 
-    <h1>PROUT</h1>
+    <p><a href="{{ path('affectation_show', {'id': famille.id}) }}"><i class="bi bi-arrow-left-circle"></i> Retour
+            profil</a></p>
 
-    {{ form(form) }}
+    <div class="example-wrapper">
+        <div class="containerRegister bg-light shadow my-3 p-3">
+            <h1 class="text-primary text-center mt-4 mb-3">Affectation d'un chien</h1>
+            <h2 class="mb-3">{{ famille.firstname }} {{ famille.lastname }}</h2>
+            <div class="form form-register">
 
+                <div class="row form-row">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <p class="form-control mb-3"><strong>Date de début</strong> : {{ booking.beginAt|date('d-m-y') }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <p class="form-control mb-3"><strong>Date de fin</strong> : {{ booking.endAt|date('d-m-y') }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{ form_row(form.chien_id) }}
+                        </div>
+                    </div>
+                </div>
+
+                <span class="d-flex justify-content-center col-12">
+                    {{ form_row(form.register,{'label':'Affecter', 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
+                </span>
+            </div>
+        </div>
+    </div>
 {% endblock %}

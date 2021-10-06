@@ -28,7 +28,7 @@ class AffectationType extends AbstractType
                               ;
                       },
                       'choice_label' => 'name',
-                      'placeholder' => 'Chiens restants',
+                      'placeholder' => '- Chiens restants -',
                       'label'=>'Veuillez sélectionner le chien à attribuer : ',
                       'attr'=>[
                           'class'=>'form-select dog-attribution'

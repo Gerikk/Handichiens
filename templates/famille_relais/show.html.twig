@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Planning index{% endblock %}
+{% block title %}Affectation à la famille{% endblock %}
 
 {% block body %}
-<p><a href="{{ path('dashboard') }}" ><i class="bi bi-arrow-left-circle"></i> Retour au dashboard</a></p>
-<h1 class="text-primary text-center">Disponibilités de {{ famille.firstname }}</h1>
+<p><a href="{{ path('profil_famille_relais', {'id': famille.id}) }}" ><i class="bi bi-arrow-left-circle"></i> Retour profil</a></p>
+<h1 class="text-primary text-center mb-4">Disponibilités de {{ famille.firstname }} {{ famille.lastname }}</h1>
 
 <div class="table-responsive">
     <table class="table table-light table-hover table-bordered text-center">

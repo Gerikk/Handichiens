@@ -86,44 +86,46 @@
 
         <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
             <div class="family-profil_dog-attribution col-12 col-lg-3">
-                <h2>Attribution du chien</h2>
+                <h2 class="mb-4">Attribution d'un chien</h2>
 
-                <a href="{{ path('affectation_show', {'id': famille.id}) }}" class="card col-3" style="width: 18rem;"> affectation</a>
-
-                <div class="family-profil_dog-pick">
-                    <p class="guidance-select">
-                        Veuillez sélectionner le chien à attribuer :
-                    </p>
-                    
-                    {% if chiens is empty %}
-                        <p>Aucun chien n'est stockée</p>
-                    {% else %}
-                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">
-                            {% for chien in chiens %}
-                                {% if chien is defined %}
-                                    <option value="{{chien.id }}">{{chien.name}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    </select>
-                    <p class="mt-4 guidance-select">
-                        Veuillez sélectionner la date :
-                    </p>
-                    {% if bookings is empty %}
-                        <p>Aucune date n'est stockée</p>
-                    {% else %}
-                    <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution">
-                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %}
-                            {% if (famille.id is defined) and (famille.id == booking.famille.id) %}
-                                {% if booking.endAt >= date("now") %}
-                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    </select>
-                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">
+                <div class="ms-4">
+                    <a href="{{ path('affectation_show', {'id': famille.id}) }}" class="btn btn-primary" style="width:250px">Affecter un chien</a>
                 </div>
+
+{#                <div class="family-profil_dog-pick">#}
+{#                    <p class="guidance-select">#}
+{#                        Veuillez sélectionner le chien à attribuer :#}
+{#                    </p>#}
+{#                    #}
+{#                    {% if chiens is empty %}#}
+{#                        <p>Aucun chien n'est stockée</p>#}
+{#                    {% else %}#}
+{#                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">#}
+{#                            {% for chien in chiens %}#}
+{#                                {% if chien is defined %}#}
+{#                                    <option value="{{chien.id }}">{{chien.name}}</option>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+{#                        {% endif %}#}
+{#                    </select>#}
+{#                    <p class="mt-4 guidance-select">#}
+{#                        Veuillez sélectionner la date :#}
+{#                    </p>#}
+{#                    {% if bookings is empty %}#}
+{#                        <p>Aucune date n'est stockée</p>#}
+{#                    {% else %}#}
+{#                    <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution">#}
+{#                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %}#}
+{#                            {% if (famille.id is defined) and (famille.id == booking.famille.id) %}#}
+{#                                {% if booking.endAt >= date("now") %}#}
+{#                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>#}
+{#                                {% endif %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                    </select>#}
+{#                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">#}
+{#                </div>#}
 
                 <div class="family-profil_dog-history">
                     {% for booking in bookings %}

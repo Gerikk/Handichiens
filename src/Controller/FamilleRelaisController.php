@@ -65,14 +65,12 @@ class FamilleRelaisController extends AbstractController
     /**
      * @Route("/profil-famille-relais/show/{id}", name="affectation_show", methods={"GET"})
      */
-    public function show(Booking $booking, Request $request): Response
+    public function show(User $profil): Response
     {
-        $id = $request->get('id');
-        $fam = $this->entityManager->getRepository(User::class)->findById($id);
+        $famille = $this->entityManager->getRepository(User::class)->findById($profil->getId());
 
         return $this->render('famille_relais/show.html.twig', [
-            'booking' => $booking,
-            'famille'=>$fam,
+            'famille'=>$famille,
         ]);
     }
 
@@ -81,17 +79,24 @@ class FamilleRelaisController extends AbstractController
      */
     public function editAffect(Request $request, Booking $booking): Response
     {
+        $id = $request->get('id');
+        $fam = $this->entityManager->getRepository(User::class)->findById($id);
+
         $form = $this->createForm(AffectationType::class, $booking);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', "La modification a bien été prise en compte.");
+
             return $this->redirectToRoute('dashboard', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('famille_relais/edit_affect.html.twig', [
             'booking' => $booking,
             'form' => $form,
+            'famille'=>$fam,
         ]);
     }
 
