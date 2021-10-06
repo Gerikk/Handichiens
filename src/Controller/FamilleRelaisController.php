@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Booking;
 use App\Entity\Chien;
 use App\Entity\User;
+use App\Form\AffectationType;
 use App\Form\ProfilFamilleType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -62,9 +63,42 @@ class FamilleRelaisController extends AbstractController
     }
 
     /**
+     * @Route("/profil-famille-relais/show/{id}", name="affectation_show", methods={"GET"})
+     */
+    public function show(User $profil, Booking $booking): Response
+    {
+        $fam = $this->entityManager->getRepository(User::class)->findById($profil->getId());
+
+        return $this->render('famille_relais/show.html.twig', [
+            'booking' => $booking,
+            'famille'=>$fam,
+        ]);
+    }
+
+    /**
+     * @Route("/profil-famille-relais/affect/{id}/{booking}", name="affectation_edit", methods={"GET","POST"})
+     */
+    public function editAffect(Request $request, Booking $booking): Response
+    {
+
+        $form = $this->createForm(AffectationType::class, $booking);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('dashboard', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('famille_relais/edit_affect.html.twig', [
+            'booking' => $booking,
+            'form' => $form,
+        ]);
+    }
+
+    /**
      * @Route("/profil-famille-relais/{id}/edit", name="edit_profil_famille_relais")
      */
-    public function edit(User $profil, UserPasswordHasherInterface $passwordEncoder, Request $request): Response {
+    public function edit(User $profil, Request $request): Response {
         $form = $this->createForm(ProfilFamilleType::class, $profil);
         $id = $request->get('id');
         $fam = $this->entityManager->getRepository(User::class)->findById($id);
@@ -82,7 +116,10 @@ class FamilleRelaisController extends AbstractController
         }
 
         return $this->render('famille_relais/edit.html.twig',
-                             ['form' => $form->createView(), 'famille' => $fam],
+                             ['form' => $form->createView(),
+                                 'famille' => $fam,
+                                 'bookings' => $fam,
+                             ],
 
         );
     }
