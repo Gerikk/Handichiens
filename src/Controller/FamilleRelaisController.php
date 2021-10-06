@@ -65,10 +65,9 @@ class FamilleRelaisController extends AbstractController
     /**
      * @Route("/profil-famille-relais/show/{id}", name="affectation_show", methods={"GET"})
      */
-    public function show(Booking $booking, Request $request): Response
+    public function show(User $profil, Booking $booking): Response
     {
-        $id = $request->get('id');
-        $fam = $this->entityManager->getRepository(User::class)->findById($id);
+        $fam = $this->entityManager->getRepository(User::class)->findById($profil->getId());
 
         return $this->render('famille_relais/show.html.twig', [
             'booking' => $booking,
