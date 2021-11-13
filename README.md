@@ -43,8 +43,26 @@ Vous pouvez également saisir votre adresse et numéro de téléphone, ainsi que
 Une fois le compte créé, vous pouvez vous inscrire sur la page de connexion avec votre adresse mail et mot de passe.
 
 >#### Compte utilisateur
-Une fois connecté, vous serez redirigé sur la page dashboard, qui regroupe vos dates de planning enregistrées.
+Une fois connecté, vous serez redirigé sur la page `Dashboard`, qui regroupe vos disponibilités enregistrées et précise si un chien vous a été confié pour les dates indiquées.
+En appuyant sur le bouton `Mon Compte`, vous pouvez voir vos informations de contact et les modifier.
 
-En appuyant sur le bouton `Mon Compte`, vous pouvez voir vos informations de contact et les modifier
+>#### Planning
+Pour ajouter vos disponibilités, appuyez sur le bouton `Planning`, puis sur `Ajouter disponibilité`.
+Il vous sera demandé de saisir le début et la fin de votre période de disponibilité.
+Une fois celle-ci enregistrée, elle apparaitra sur le calendrier de planning, ainsi que sur la page `Dashboard`.
 
-Pour ajouter
+### Pour les éducateurs :
+
+Les éducateurs ont accès à des options supplémentaires :
+* Consultation des chiens placés en famille d'accueil et ceux en attente de placement.
+* Consultation de l'ensemble des profils des familles d'accueils et de leurs disponibilités.
+* Modification des coordonnées des familles d'accueil et ajout de caractéristiques.
+* Affecter un chien à une famille d'accueil durant une disponibilité choisie.
+
+>#### Ajout d'un nouvel éducateur
+
+Pour ajouter un nouvel éducateur, connectez vous à l'application avec un compte administrateur ou un compte éducateur existant. Une fois connecté, vous aurez accès à l'option `Ajouter un éducateur`, qui vous permettra de créerun compte pour le nouvel éducateur.
+
+>#### Ajout d'un chien
+
+Sélectionnez 
