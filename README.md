@@ -65,4 +65,20 @@ Pour ajouter un nouvel éducateur, connectez vous à l'application avec un compt
 
 >#### Ajout d'un chien
 
-Sélectionnez 
+Sélectionnez `Les chiens` sur la page `Dashboard`. Vous serez redirigé vers la liste des chiens.
+
+Sur cette page, vous pouvez voir si les chiens sont en attente ou déjà confiés à une famille. Vous pouvez également ajouter des chiens avec le bouton `Ajouter un chien`.
+
+En cliquant sur la fiche d'un chien, vous pouvez accéder aux informations à son sujet.
+
+>#### Famille d'accueil
+
+Sur la page `Les Familles Relais`, vous pouvez sélectionner une famille d'accueil et consulter ses informations et disponibilités. Il est également possible de modifier les coordonnées et d'ajouter des informations supplémentaires pour les éducateurs.
+
+Il est également possible de supprimer une famille relais.
+
+>#### Affectation d'un chien à une famille
+
+Pour affecter un chien à une famille d'accueil, rendez-vous sur la page de la famille d'accueil choisie, et appuyez sur `Affecter un chien`. Vous aurez alors accès à la liste des disponibilités de la famille d'accueil. Choisissez la période voulue avec `Choisir chien`, vous serez alors redirigé vers une page rappelant la date de début et de fin de la période, ainsi qu'un menu déroulant vous permettant de choisir le chien à attribuer.
+
+Confirmez votre choix en appuyant sur le bouton `Affecter`.
