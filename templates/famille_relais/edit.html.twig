@@ -4,10 +4,9 @@
 {% block title %}Modification du profil de la famille{% endblock %}
 
 {% block body %}
-
     <div class="example-wrapper">
-
         <span><a href="{{ path('profil_famille_relais', {'id': famille.id}) }}"><i class="bi bi-arrow-left-circle"></i> Retour</a></span>
+
         <div class="containerRegister bg-light shadow my-3 p-3">
             <h1 class="text-primary text-center">Modification du profil</h1>
 
@@ -46,13 +45,13 @@
                         </div>
                     </div>
                 </div>
+
                 <span class="d-flex justify-content-center col-12">
                     {{ form_row(form.register,{'label':'Modifier', 'attr':{'class':'btn btn-lg btn-primary my-3'}}) }}
                 </span>
 
                 {{ form_end(form) }}
             </div>
-
         </div>
     </div>
 {% endblock %}
