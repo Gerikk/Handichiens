@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+               and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,94 +14,81 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body id="{{ pageId is defined ? pageId : '' }}">
-    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
-            <nav class="navbar navbar-expand-xl mb-5 px-2">
-            {% else %}
-            <nav class="navbar navbar-expand-lg mb-5 px-2">
-    {% endif %}
+        <nav class="navbar navbar-expand-{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}xl{% else %}lg{% endif %} mb-5 px-2">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a class="navbar-brand" href="{{ path('dashboard') }}">
-                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
+                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100"
+                         class="d-inline-block align-top" alt="">
                 </a>
 
-                <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             {% else %}
                 <a class="navbar-brand" href="{{ path('home') }}">
-                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100" class="d-inline-block align-top" alt="">
+                    <img src="{{ asset('images/logo_handichiens.png') }}" width="100" height="100"
+                         class="d-inline-block align-top" alt="">
                 </a>
             {% endif %}
 
-
             <div class="collapse navbar-collapse justify-content-center" id="mainNav">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
+                    </li>
+
+                    {% if not is_granted('ROLE_EDUCATEUR') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('chiens') }}">LES CHIENS</a>
+                            <a class="nav-link" href="{{ path('booking_index') }}">PLANNING</a>
                         </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_EDUCATEUR') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('famille_relais') }}">LES FAMILLES RELAIS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
+                            <a class="nav-link" href="{{ path('chiens') }}">LES CHIENS</a>
                         </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('register_edu') }}">AJOUT EDUCATEUR</a>
                         </li>
                     {% endif %}
 
-                    {% if is_granted('ROLE_FAMILLE') %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('dashboard') }}">DASHBOARD</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('booking_index') }}">PLANNING</a>
-                        </li>
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="{{ path('historique') }}">HISTORIQUE</a>#}
-{#                        </li>#}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">MON COMPTE</a>
-                        </li>
-                    {% endif %}
                     <li>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <a href="{{ path('app_logout') }}" class="btn mx-2 my-sm-0">Déconnexion</a>
                         {% endif %}
                     </li>
                 </ul>
-
             </div>
-
-
         </nav>
 
         {% for message in app.flashes('success') %}
             <span class="alert alert-success">
-                <i class="bi bi-check2-circle"></i> {{ message }}
+                <span class="bi bi-check2-circle"></span> {{ message }}
             </span>
         {% endfor %}
 
         {#    Contient le contenu du body    #}
-        <div class="container">
-            {% block body %}
-
-            {% endblock %}
-        </div>
-
+        <main class="container">
+            {% block body %}{% endblock %}
+        </main>
 
 
         <script type="text/javascript">
-
-            if(document.querySelector(".alert-success")){
-                window.setTimeout( 'document.querySelector(".alert-success").hidden = true', 5000);
+            if (document.querySelector('.alert-success')) {
+                window.setTimeout('document.querySelector(".alert-success").hidden = true', 5000);
             }
         </script>
-
     </body>
 </html>

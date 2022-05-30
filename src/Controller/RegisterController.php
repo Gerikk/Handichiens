@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,7 +84,8 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/educ/register", name="register_edu")
+     * @IsGranted("ROLE_ADMIN")
+     * @Route("/educ/register", name="register_edu", methods={"GET", "POST"})
      * @param Request $request
      * @param UserPasswordHasherInterface $passwordEncoder
      *
