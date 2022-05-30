@@ -42,6 +42,10 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_EDUCATEUR
+        ROLE_EDUCATEUR : ROLE_FAMILLE
+        ROLE_FAMILLE: ROLE_USER
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/educateur, roles: ROLE_EDUCATEUR }
