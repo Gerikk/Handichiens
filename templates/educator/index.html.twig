@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Handi'Chiens Educateurs{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <span class="alert alert-success">
+            <span class="bi bi-check2-circle"></span> {{ message }}
+        </span>
+    {% endfor %}
+
+    <p><a href="{{ path('dashboard') }}" ><span class="bi bi-arrow-left-circle"></span> Retour au dashboard</a></p>
+
+    <h1 class="text-center mb-5">Liste des utilistateurs Handi'Chiens</h1>
+
+    <hr class="mt-5">
+
+    <h2>Les éducateurs</h2>
+    <table class="table table-striped">
+        <caption>Liste des éducateurs</caption>
+
+        <thead>
+            <tr>
+                <th class="col-2">Nom</th>
+                <th class="col-2">Prénom</th>
+                <th class="col-3">Adresse mail</th>
+                <th>Rôles</th>
+                <th class="col-3">Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        {% for educateur in educateurs %}
+            <tr>
+                <td>{{ educateur.lastname }}</td>
+                <td>{{ educateur.firstname }}</td>
+                <td>{{ educateur.email }}</td>
+                <td>
+                    <ul>
+                    {% for role in educateur.roles %}
+                        <li>{{ role }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path('educator_promote', {'user': educateur.id}) }}" class="btn btn-warning">Promouvoir administrateur</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr class="mt-5">
+
+    <h2>Les administrateurs</h2>
+    <table class="table table-striped">
+        <caption>Liste des administreurs</caption>
+
+        <thead>
+            <tr>
+                <th class="col-2">Nom</th>
+                <th class="col-2">Prénom</th>
+                <th class="col-3">Adresse mail</th>
+                <th>Rôles</th>
+                <th class="col-3">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for administrateur in administrateurs %}
+            <tr>
+                <td>{{ administrateur.lastname }}</td>
+                <td>{{ administrateur.firstname }}</td>
+                <td>{{ administrateur.email }}</td>
+                <td>
+                    <ul>
+                        {% for role in administrateur.roles %}
+                            <li>{{ role }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path('educator_demote', {'user': administrateur.id}) }}" class="btn btn-warning">Redéfinir comme éducateur</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

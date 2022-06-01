@@ -24,7 +24,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="register", methods={"GET", "POST"})
      * @param Request $request
      * @param UserPasswordHasherInterface $passwordEncoder
      * @param SluggerInterface $slugger
@@ -121,7 +121,8 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/admin/fam/register", name="register_fam")
+     * @IsGranted("ROLE_ADMIN")
+     * @Route("/admin/fam/register", name="register_fam", methods={"GET", "POST"})
      * @param Request $request
      * @param UserPasswordHasherInterface $passwordEncoder
      *
@@ -155,4 +156,5 @@ class RegisterController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
 }
