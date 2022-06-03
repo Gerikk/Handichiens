@@ -2,9 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Handi'Chiens - PROFIL DE LA FAMILLE{% endblock %}
-{% block stylesheets  %}
-     {{ encore_entry_link_tags('app') }}
-     {{ encore_entry_link_tags('calendar') }}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('calendar') }}
 {% endblock %}
 
 {% block body %}
@@ -22,7 +22,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
+                    <a href="{{ path('delete_profil_famille_relais', {'id': famille.id}) }}"
+                       class="btn btn-danger mx-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Supprimer</a>
                 </div>
             </div>
         </div>
@@ -44,7 +45,7 @@
 
             <div class="family-profil_description col col-lg-3">
                 <h2>Caractéristiques de la famille</h2>
-                {%  if famille.description %}
+                {% if famille.description %}
                     <p>{{ famille.description }}</p>
                 {% else %}
                     <p>Non renseigné</p>
@@ -54,26 +55,26 @@
             <div class="family-profil_main-informations col col-lg-3">
                 <h2>Informations de la famille</h2>
                 <div class="family-profil_main-informations-detailed">
-                    <p><strong>Nom:</strong> {{famille.lastname}} </p>
-                    <p><strong>Prénom:</strong> {{famille.firstname}} </p>
-                    <p><strong>Adresse e-mail:</strong> {{famille.email}} </p>
+                    <p><strong>Nom:</strong> {{ famille.lastname }} </p>
+                    <p><strong>Prénom:</strong> {{ famille.firstname }} </p>
+                    <p><strong>Adresse e-mail:</strong> {{ famille.email }} </p>
                     <p><strong>Téléphone:</strong>
-                        {%  if famille.telephone %}
-                            {{famille.telephone}}
+                        {% if famille.telephone %}
+                            {{ famille.telephone }}
                         {% else %}
                             Non renseigné
                         {% endif %}
                     </p>
                     <p><strong>Code postal:</strong>
-                        {%  if famille.codePostal %}
-                            {{famille.codePostal}}
+                        {% if famille.codePostal %}
+                            {{ famille.codePostal }}
                         {% else %}
                             Non renseigné
                         {% endif %}
                     </p>
                     <p><strong>Ville:</strong>
-                        {%  if famille.ville %}
-                            {{famille.ville}}
+                        {% if famille.ville %}
+                            {{ famille.ville }}
                         {% else %}
                             Non renseigné
                         {% endif %}
@@ -83,58 +84,61 @@
         </section>
 
 
-
         <section class="family-profil_informations row justify-content-between flex-column flex-lg-row">
             <div class="family-profil_dog-attribution col-12 col-lg-3">
                 <h2 class="mb-4">Attribution d'un chien</h2>
 
                 <div class="ms-4">
-                    <a href="{{ path('affectation_show', {'id': famille.id}) }}" class="btn btn-primary" style="width:250px">Affecter un chien</a>
+                    <a href="{{ path('affectation_show', {'id': famille.id}) }}" class="btn btn-primary"
+                       style="width:250px">Affecter un chien</a>
                 </div>
 
-{#                <div class="family-profil_dog-pick">#}
-{#                    <p class="guidance-select">#}
-{#                        Veuillez sélectionner le chien à attribuer :#}
-{#                    </p>#}
-{#                    #}
-{#                    {% if chiens is empty %}#}
-{#                        <p>Aucun chien n'est stockée</p>#}
-{#                    {% else %}#}
-{#                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution">#}
-{#                            {% for chien in chiens %}#}
-{#                                {% if chien is defined %}#}
-{#                                    <option value="{{chien.id }}">{{chien.name}}</option>#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-{#                    </select>#}
-{#                    <p class="mt-4 guidance-select">#}
-{#                        Veuillez sélectionner la date :#}
-{#                    </p>#}
-{#                    {% if bookings is empty %}#}
-{#                        <p>Aucune date n'est stockée</p>#}
-{#                    {% else %}#}
-{#                    <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution">#}
-{#                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %}#}
-{#                            {% if (famille.id is defined) and (famille.id == booking.famille.id) %}#}
-{#                                {% if booking.endAt >= date("now") %}#}
-{#                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option>#}
-{#                                {% endif %}#}
-{#                            {% endif %}#}
-{#                        {% endfor %}#}
-{#                    {% endif %}#}
-{#                    </select>#}
-{#                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0">#}
-{#                </div>#}
+                {#                <div class="family-profil_dog-pick"> #}
+                {#                    <p class="guidance-select"> #}
+                {#                        Veuillez sélectionner le chien à attribuer : #}
+                {#                    </p> #}
+                {#                    #}
+                {#                    {% if chiens is empty %} #}
+                {#                        <p>Aucun chien n'est stockée</p> #}
+                {#                    {% else %} #}
+                {#                    <select name="dogAttribution" id="dogAttribution" class="form-select dog-attribution"> #}
+                {#                            {% for chien in chiens %} #}
+                {#                                {% if chien is defined %} #}
+                {#                                    <option value="{{chien.id }}">{{chien.name}}</option> #}
+                {#                                {% endif %} #}
+                {#                            {% endfor %} #}
+                {#                        {% endif %} #}
+                {#                    </select> #}
+                {#                    <p class="mt-4 guidance-select"> #}
+                {#                        Veuillez sélectionner la date : #}
+                {#                    </p> #}
+                {#                    {% if bookings is empty %} #}
+                {#                        <p>Aucune date n'est stockée</p> #}
+                {#                    {% else %} #}
+                {#                    <select name="dateAttribution" id="dateAttribution" class="mb-4 form-select date-attribution"> #}
+                {#                        {% for booking in bookings|sort((a, b) => a.beginAt <=> b.beginAt) %} #}
+                {#                            {% if (famille.id is defined) and (famille.id == booking.famille.id) %} #}
+                {#                                {% if booking.endAt >= date("now") %} #}
+                {#                                    <option value="{{ booking.id }}">Du {{ booking.beginAt|date('d-m') }} au {{ booking.endAt|date('d-m') }}</option> #}
+                {#                                {% endif %} #}
+                {#                            {% endif %} #}
+                {#                        {% endfor %} #}
+                {#                    {% endif %} #}
+                {#                    </select> #}
+                {#                    <input type="submit" value="Valider" class="btn btn-primary my-2 my-sm-0"> #}
+                {#                </div> #}
 
                 <div class="family-profil_dog-history">
                     {% for booking in bookings %}
                         {% if (booking.famille.id == famille.id) %}
                             <div class="family-profil_dog-history-single">
                                 {% if chienid is defined %}
-                                    <p><strong>{{booking.chienid.name }}: </strong>Réservé(e) du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
+                                    <p><strong>{{ booking.chienid.name }}: </strong>Réservé(e)
+                                        du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
                                     {% if booking.status == 1 %}
-                                        <span class="status en-cours"><input type="submit" value="Annuler la réservation" class="btn btn-danger mx-2 my-sm-0"></span>
+                                        <span class="status en-cours"><input type="submit"
+                                                                             value="Annuler la réservation"
+                                                                             class="btn btn-danger mx-2 my-sm-0"></span>
                                     {% elseif booking.status == 0 %}
                                         <span class="status terminé">Terminée</span>
                                     {% endif %}
@@ -157,19 +161,23 @@
         </section>
 
         <div class="btn-modifier mb-3">
-            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR')  %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDUCATEUR') %}
                 <a href="{{ path('edit_profil_famille_relais', {'id': famille.id}) }}" class="btn btn-primary mx-2 my-sm-0">Modifier</a>
-                <button type="button" class="btn btn-danger mx-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Supprimer la famille
-                </button>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <button type="button" class="btn btn-danger mx-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Supprimer la famille
+                    </button>
+                {% endif %}
             {% endif %}
         </div>
     </div>
 {% endblock %}
+
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
     <script type="text/javascript">
-        let familleId = {{famille.id}};
+        let familleId = {{ famille.id }};
     </script>
     {{ encore_entry_script_tags('calendar_profil_famille') }}
 

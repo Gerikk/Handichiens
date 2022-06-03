@@ -14,9 +14,10 @@
         <div class="col-12 col-md-6 last-info">
             <div class="welcome">
                 <h1>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h1>
-                <small> {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
-                        {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
-                        {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
+                <small>
+                    {% if is_granted("ROLE_ADMIN") %}<i class="bi bi-shield-fill"></i>{% endif %}
+                    {% if is_granted("ROLE_EDUCATEUR") %}<i class="bi bi-person-fill"></i>{% endif %}
+                    {% if is_granted("ROLE_FAMILLE") %}<i class="bi bi-people-fill"></i>{% endif %}
                     Vous êtes connectés en tant
                     {% if is_granted("ROLE_ADMIN") %} qu'administrateur.{% endif %}
                     {% if is_granted("ROLE_EDUCATEUR") %} qu'éducateur.{% endif %}
@@ -27,31 +28,31 @@
             {% if is_granted ('ROLE_ADMIN') or is_granted ('ROLE_EDUCATEUR') %}
                 <section class="row justify-content-around admin-dogs-counter">
                     {% if dogsAll != null %}
-                    <div class="col-4 col-md-3 admin-dogs_single">
+                        <div class="col-4 col-md-3 admin-dogs_single">
 
-                        <p class="number-dogs">{{ dogsplaced['1'] }}</p>
-                        <p>Chien(s) placé(s)</p>
-                    </div>
-                    <div class="col-4 col-md-3 admin-dogs_single">
-                        <p class="number-dogs">
-                            {{ dogsAll|length - dogsplaced["1"] }}
-                        </p>
-                        <p>Chien(s) libre(s)</p>
+                            <p class="number-dogs">{{ dogsplaced['1'] }}</p>
+                            <p>Chien(s) placé(s)</p>
+                        </div>
+                        <div class="col-4 col-md-3 admin-dogs_single">
+                            <p class="number-dogs">
+                                {{ dogsAll|length - dogsplaced["1"] }}
+                            </p>
+                            <p>Chien(s) libre(s)</p>
 
-                    </div>
-                        {% else %}
-                            <div class="col-4 col-md-3 admin-dogs_single">
+                        </div>
+                    {% else %}
+                        <div class="col-4 col-md-3 admin-dogs_single">
 
-                                <p class="number-dogs">{{ dogsAll|length }}</p>
-                                <p>Chien(s) placé(s)</p>
-                            </div>
-                            <div class="col-4 col-md-3 admin-dogs_single">
-                                <p class="number-dogs">
-                                    {{ dogsAll|length}}
-                                </p>
-                                <p>Chien(s) libre(s)</p>
+                            <p class="number-dogs">{{ dogsAll|length }}</p>
+                            <p>Chien(s) placé(s)</p>
+                        </div>
+                        <div class="col-4 col-md-3 admin-dogs_single">
+                            <p class="number-dogs">
+                                {{ dogsAll|length }}
+                            </p>
+                            <p>Chien(s) libre(s)</p>
 
-                            </div>
+                        </div>
                     {% endif %}
                 </section>
 
@@ -67,7 +68,8 @@
                                     <div class="col-11">
                                         <p>Chien: {{ booking.chienid.name }}</p>
                                         <p>Famille: {{ booking.famille.firstname }} {{ booking.famille.lastname }}</p>
-                                        <p>Prise en charge du chien du {{ booking.beginAt|date('d-m-Y') }} au {{ booking.endAt|date('d-m-Y') }}</p>
+                                        <p>Prise en charge du chien du {{ booking.beginAt|date('d-m-Y') }}
+                                            au {{ booking.endAt|date('d-m-Y') }}</p>
                                     </div>
                                 </li>
                             {% endif %}
@@ -87,8 +89,11 @@
                                         <i class="bi bi-calendar-check-fill"></i>
                                     </div>
                                     <div class="col-11">
-                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
-                                        <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i> <strong>{{ allbooking.chienid.name }}</strong> vous a été confié pour cette période.</p>
+                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au
+                                            <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
+                                        <p class="warning-dog"><i class="bi bi-exclamation-triangle-fill"></i>
+                                            <strong>{{ allbooking.chienid.name }}</strong> vous a été confié pour cette
+                                            période.</p>
                                     </div>
                                 </li>
                             {% endif %}
@@ -98,7 +103,8 @@
                                         <i class="bi bi-calendar-x-fill" style="color: #D41B1B"></i>
                                     </div>
                                     <div class="col-11">
-                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
+                                        <p>Du : <strong>{{ allbooking.beginAt|date('d-m-Y') }}</strong> au
+                                            <strong>{{ allbooking.endAt|date('d-m-Y') }}</strong></p>
                                         <p>Pour le moment, aucun chien ne vous a été confié.</p>
                                     </div>
                                 </li>
@@ -123,7 +129,8 @@
                             <a href="{{ path("profil") }}"><i class="bi bi-person-circle"></i> Mon compte</a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{ path("register_edu") }}"><i class="bi bi-person-plus-fill"></i> Ajouter un éducateur </a>
+                            <a href="{{ path("register_edu") }}"><i class="bi bi-person-plus-fill"></i> Ajouter un
+                                éducateur </a>
                         </li>
                     </ul>
                 </nav>
@@ -136,11 +143,11 @@
                         <li class="menu-item">
                             <a href="{{ path("booking_index") }}"><i class="bi bi-calendar-week-fill"></i> Planning</a>
                         </li>
-{#                        <li class="menu-item">#}
-{#                            <a href="{{ path('historique') }}"><i class="bi bi-clock-history"></i> Historique</a>#}
-{#                        </li>#}
+                        {#                        <li class="menu-item"> #}
+                        {#                            <a href="{{ path('historique') }}"><i class="bi bi-clock-history"></i> Historique</a> #}
+                        {#                        </li> #}
                         <li class="menu-item">
-                            <a href="{{ path("profil") }}"><i class="bi bi-person-circle"></i> Mon compte</a>
+                            <a href="{{ path("profil") }}"><i class="bi bi-person-circle" aria-hidden="true"></i> Mon compte</a>
                         </li>
                     </ul>
                 </nav>
