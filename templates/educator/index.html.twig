@@ -3,7 +3,6 @@
 {% block title %}Handi'Chiens Educateurs{% endblock %}
 
 {% block body %}
-
     {% for message in app.flashes('success') %}
         <span class="alert alert-success">
             <span class="bi bi-check2-circle"></span> {{ message }}
@@ -13,6 +12,13 @@
     <p><a href="{{ path('dashboard') }}" ><span class="bi bi-arrow-left-circle"></span> Retour au dashboard</a></p>
 
     <h1 class="text-center mb-5">Liste des utilistateurs Handi'Chiens</h1>
+
+    <div class="bloc-bottom flex-column flex-sm-row">
+        <div class="btn-ajouter">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('register_edu') }}" class="btn btn-primary mx-2 my-sm-0">Ajouter un éducateur</a>
+            {% endif %}
+        </div>
 
     <hr class="mt-5">
 
